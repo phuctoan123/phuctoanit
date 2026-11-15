@@ -2746,6 +2746,20 @@ blockquote p::after {
           box-shadow: 0 8px 24px rgba(0, 104, 255, 0.55);
 }
 
+.floating-social-dock .dock-link.nasani:hover,
+.floating-social-dock .dock-link.nasani.pulse-glow,
+.floating-social-dock .dock-link.website:hover,
+.floating-social-dock .dock-link.website.pulse-glow {
+  background: #FF5100;
+  border-color: #FF5100;
+  color: #ffffff;
+  -webkit-transform: scale(1.15);
+      -ms-transform: scale(1.15);
+          transform: scale(1.15);
+  -webkit-box-shadow: 0 8px 24px rgba(255, 81, 0, 0.55);
+          box-shadow: 0 8px 24px rgba(255, 81, 0, 0.55);
+}
+
 .floating-social-dock .dock-link.facebook:hover,
 .floating-social-dock .dock-link.facebook.pulse-glow {
   background: #1877F2;
@@ -2851,18 +2865,19 @@ blockquote p::after {
     -webkit-transform: translateX(50%);
         -ms-transform: translateX(50%);
             transform: translateX(50%);
-    padding: 8px 14px;
+    padding: 8px 12px;
+    max-width: 96vw;
   }
   .floating-social-dock .dock-list {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    gap: 10px;
+    gap: 8px;
   }
   .floating-social-dock .dock-link {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     font-size: 17px;
   }
   .floating-social-dock .dock-label {
@@ -2888,6 +2903,20 @@ blockquote p::after {
     -webkit-transform: translateX(-50%) translateY(0);
         -ms-transform: translateX(-50%) translateY(0);
             transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .floating-social-dock {
+    padding: 6px 10px;
+  }
+  .floating-social-dock .dock-list {
+    gap: 6px;
+  }
+  .floating-social-dock .dock-link {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
   }
 }
 
@@ -2921,6 +2950,21 @@ blockquote p::after {
 .site-footer .site-footer--content .footer-left {
   -ms-flex-preferred-size: 55%;
       flex-basis: 55%;
+}
+
+.site-footer .site-footer--content .footer-left img,
+.site-footer .site-footer--content .footer-left .footer-logo {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 15px;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .site-footer .site-footer--content .footer-left img,
+  .site-footer .site-footer--content .footer-left .footer-logo {
+    max-width: 240px;
+  }
 }
 
 .site-footer .site-footer--content .footer-left p {

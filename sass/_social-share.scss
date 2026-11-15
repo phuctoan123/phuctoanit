@@ -91,6 +91,18 @@
       box-shadow: 0 8px 24px rgba(0, 104, 255, 0.55);
     }
 
+    /* Website Nasani: #FF5100 */
+    &.nasani:hover,
+    &.nasani.pulse-glow,
+    &.website:hover,
+    &.website.pulse-glow {
+      background: #FF5100;
+      border-color: #FF5100;
+      color: #ffffff;
+      transform: scale(1.15);
+      box-shadow: 0 8px 24px rgba(255, 81, 0, 0.55);
+    }
+
     /* Facebook: #1877F2 */
     &.facebook:hover,
     &.facebook.pulse-glow {
@@ -175,17 +187,18 @@
     bottom: 20px;
     right: 50%;
     transform: translateX(50%);
-    padding: 8px 14px;
+    padding: 8px 12px;
+    max-width: 96vw;
 
     .dock-list {
       flex-direction: row;
-      gap: 10px;
+      gap: 8px;
     }
 
     .dock-link {
-      width: 42px;
-      height: 42px;
-      font-size: 18px;
+      width: 40px;
+      height: 40px;
+      font-size: 17px;
     }
 
     /* On mobile, tooltip floats above instead of left */
@@ -208,6 +221,20 @@
 
     .dock-link:hover .dock-label {
       transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    padding: 6px 10px;
+
+    .dock-list {
+      gap: 6px;
+    }
+
+    .dock-link {
+      width: 36px;
+      height: 36px;
+      font-size: 15px;
     }
   }
 }
