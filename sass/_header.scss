@@ -1,0 +1,308 @@
+.site-header {
+  z-index: 100;
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  background-color: #FFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  @media screen and (min-width: 1250px) {
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 25px;
+  }
+
+  .nav-logo {
+    align-self: flex-start;
+    padding: 10px 15px 5px;
+
+    @media screen and (min-width: 1250px) {
+      align-self: center;
+      order: 1;
+      padding: 10px 0;
+    }
+
+    a {
+      display: block;
+      img {
+        max-width: 180px;
+        height: auto;
+        @media screen and (min-width: 768px) {
+          max-width: 260px;
+        }
+        @media screen and (min-width: 1250px) {
+          max-width: 314px;
+        }
+      }
+    }
+  }
+
+  .nav-links {
+    width: 100%;
+    background-color: #DEF0FF;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                visibility 0.4s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    &.active {
+      max-height: 700px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media screen and (min-width: 1250px) {
+      display: block !important;
+      max-height: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      overflow: visible !important;
+      width: auto;
+      order: 2;
+      background-color: #FFF;
+      margin-left: auto;
+      box-shadow: none;
+      transition: none !important;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      @media screen and (min-width: 1250px) {
+        flex-direction: row;
+      }
+
+      li {
+        list-style: none;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+
+        @media screen and (min-width: 1250px) {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+
+        a {
+          font-size: 17px;
+          text-transform: uppercase;
+          font-weight: 500;
+          color: #7f53ac;
+          letter-spacing: 1px;
+          padding: 13px 20px;
+          text-decoration: none;
+          display: block;
+          transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+
+          @media screen and (min-width: 1250px) {
+            padding: 15px 12px;
+            font-weight: 400;
+          }
+
+          &:hover {
+            color: #5d358a;
+            @media screen and (max-width: 1249px) {
+              padding-left: 26px;
+            }
+          }
+        }
+      }
+
+      li:hover {
+        background-color: #efe0ff;
+      }
+    }
+  }
+
+  // Stagger animation on mobile when menu is active
+  .nav-links.active {
+    ul li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    ul li:nth-child(1) { transition-delay: 0.05s; }
+    ul li:nth-child(2) { transition-delay: 0.09s; }
+    ul li:nth-child(3) { transition-delay: 0.13s; }
+    ul li:nth-child(4) { transition-delay: 0.17s; }
+    ul li:nth-child(5) { transition-delay: 0.21s; }
+    ul li:nth-child(6) { transition-delay: 0.25s; }
+    ul li:nth-child(7) { transition-delay: 0.29s; }
+    ul li:nth-child(8) { transition-delay: 0.33s; }
+
+    .lang-switcher-mobile {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.37s;
+    }
+  }
+
+  // Hamburger button with smooth icon rotation
+  button.hamburger {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 6px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 105;
+    transition: background-color 0.25s ease;
+
+    &:hover {
+      background-color: rgba(127, 83, 172, 0.08);
+    }
+
+    img,
+    i,
+    svg {
+      max-width: 30px;
+      height: auto;
+      pointer-events: none;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &.active img,
+    &.active i,
+    &.active svg {
+      transform: rotate(90deg) scale(1.08);
+    }
+
+    @media screen and (min-width: 768px) {
+      top: 18px;
+      right: 20px;
+      img,
+      i,
+      svg {
+        max-width: 34px;
+      }
+    }
+
+    @media screen and (min-width: 1250px) {
+      display: none;
+    }
+  }
+}
+
+// ── Language Switcher (Header Bar) ──────────────────────────────────────────
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  top: 13px;
+  right: 65px;
+  z-index: 105;
+
+  @media screen and (min-width: 768px) {
+    top: 20px;
+    right: 80px;
+  }
+
+  @media screen and (min-width: 1250px) {
+    position: static;
+    order: 3;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 2px solid #e2d9f3;
+  }
+
+  .lang-icon {
+    font-size: 15px;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .lang-sep {
+    color: #a598b9;
+    font-size: 13px;
+    user-select: none;
+  }
+}
+
+// ── Shared Language Button Style ────────────────────────────────────────────
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+  max-width: none;
+  background: transparent;
+  border: 1.5px solid #7f53ac;
+  border-radius: 4px;
+  color: #7f53ac;
+  cursor: pointer;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 8px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+
+  &:hover {
+    background: #efe0ff;
+    color: #5d358a;
+  }
+
+  &--active {
+    background: #7f53ac !important;
+    color: #ffffff !important;
+    border-color: #7f53ac !important;
+    box-shadow: 0 1px 4px rgba(127, 83, 172, 0.35);
+
+    &:hover {
+      background: #6a3e99 !important;
+      border-color: #6a3e99 !important;
+    }
+  }
+}
+
+// ── Mobile Drawer Language Switcher ─────────────────────────────────────────
+.lang-switcher-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px;
+  border-top: 1px solid #c9e2f8;
+  background-color: #d2e8fb;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+
+  .lang-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #555;
+  }
+
+  .lang-btn {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+
+  @media screen and (min-width: 1250px) {
+    display: none !important;
+  }
+}

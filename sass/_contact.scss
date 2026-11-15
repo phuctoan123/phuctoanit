@@ -1,0 +1,980 @@
+// ═══════════════════════════════════════════════════════════════
+// _contact.scss — High-Converting B2B Multi-Step Wizard Contact Form
+// ═══════════════════════════════════════════════════════════════
+
+#contact {
+  padding: 90px 15px;
+
+  .contact-detail {
+    max-width: 760px;
+    display: block;
+    margin: 0 auto 48px;
+  }
+}
+
+// ── Two-column layout: Info (left) | Form (right)
+.contact-layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// ── Left: Info block
+.contact-info {
+  flex: 0 0 330px;
+  width: 330px;
+  max-width: 100%;
+  font-style: normal;
+  padding-top: 8px;
+  box-sizing: border-box;
+
+  .contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .contact-icon {
+    font-size: 1.2rem;
+    color: #9921e8;
+    width: 22px;
+    flex-shrink: 0;
+    text-align: center;
+    margin-top: 3px;
+  }
+
+  .contact-info-text {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .contact-label {
+    font-weight: 600;
+    color: #1f2937;
+    margin-right: 6px;
+    display: inline;
+  }
+
+  .contact-link {
+    color: #9921e8;
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    display: inline;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #7b15be;
+      text-decoration: underline;
+    }
+  }
+
+  .contact-label-block {
+    display: block;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .contact-note {
+    display: block;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 3px;
+  }
+
+  // Fallback for direct <p> tags
+  p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    align-items: baseline;
+    margin-bottom: 22px;
+    line-height: 1.6;
+    color: #333;
+
+    a {
+      text-decoration: none;
+      color: #9921e8;
+      font-weight: 500;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #7b15be;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// ── Right: Form wrapper
+.contact-form-wrap {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SUCCESS STATE (Rich Confirmation Card)
+// ═══════════════════════════════════════════════════════════════
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 44px 32px;
+  background: #ffffff;
+  border: 1px solid rgba(153, 33, 232, 0.25);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(153, 33, 232, 0.08);
+  animation: fadeInUp 0.45s ease both;
+
+  &[hidden] {
+    display: none !important;
+  }
+
+  .form-success-icon {
+    font-size: 56px;
+    color: #10b981;
+    line-height: 1;
+  }
+
+  .form-success-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  .form-success-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #4b5563;
+    max-width: 520px;
+  }
+
+  .success-contact-card {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 10px;
+    padding: 18px 20px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .success-engineer-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .engineer-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #9921e8 0%, #7b15be 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .engineer-meta {
+      strong {
+        display: block;
+        font-size: 1rem;
+        color: #111827;
+      }
+      span {
+        display: block;
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+    }
+  }
+
+  .success-quick-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    .success-link {
+      flex: 1 1 180px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+
+      &.zalo {
+        background: #0068ff;
+        color: #fff;
+        &:hover { background: #0056d6; }
+      }
+
+      &.phone {
+        background: #10b981;
+        color: #fff;
+        &:hover { background: #059669; }
+      }
+    }
+  }
+
+  .btn-reset-form {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1.5px solid #d1d5db;
+    border-radius: 30px;
+    color: #4b5563;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+      color: #111827;
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MULTI-STEP WIZARD FORM CONTAINER
+// ═══════════════════════════════════════════════════════════════
+.contact-form.wizard-form {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 34px 34px 28px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+// ── Progress Bar & Step Indicators
+.wizard-progress {
+  width: 100%;
+  margin-bottom: 26px;
+
+  .wizard-track {
+    width: 100%;
+    height: 6px;
+    background: #f3f4f6;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+
+  .wizard-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #9921e8 0%, #cb2027 100%);
+    border-radius: 99px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .wizard-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .wizard-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #f3f4f6;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex-shrink: 0;
+    }
+
+    &.is-active {
+      color: #9921e8;
+      .step-num {
+        background: linear-gradient(135deg, #9921e8 0%, #7b15be 100%);
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(153, 33, 232, 0.35);
+        transform: scale(1.08);
+      }
+    }
+
+    &.is-completed {
+      color: #10b981;
+      .step-num {
+        background: #10b981;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// ── Wizard Panels (Step 1, Step 2, Step 3)
+.wizard-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+
+  &.is-active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 1;
+    transform: translateY(0);
+    animation: panelFadeIn 0.35s ease forwards;
+  }
+
+  .panel-header {
+    margin-bottom: 4px;
+
+    .panel-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 6px 0;
+      line-height: 1.4;
+    }
+
+    .panel-desc {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+}
+
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ── Form Row & Groups
+.form-row {
+  display: flex;
+  gap: 20px;
+
+  .form-group {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &--full {
+    width: 100%;
+  }
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #4b5563;
+  }
+
+  .req {
+    color: #cb2027;
+    margin-left: 2px;
+  }
+}
+
+// ── Inputs & Textareas
+.contact-form {
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: #f9fafb;
+    border: 1.5px solid #d1d5db;
+    border-radius: 10px;
+    color: #111;
+    font-size: 0.95rem;
+    font-family: inherit;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+    appearance: none;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+
+    &:focus {
+      border-color: #9921e8;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 4px rgba(153, 33, 232, 0.14), 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  input.touched:invalid,
+  textarea.touched:invalid {
+    border-color: #cb2027;
+    box-shadow: 0 0 0 3px rgba(203, 32, 39, 0.12);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+}
+
+.field-error {
+  font-size: 0.78rem;
+  color: #cb2027;
+  display: none;
+  margin-top: 2px;
+}
+
+.contact-form input.touched:invalid ~ .field-error,
+.contact-form textarea.touched:invalid ~ .field-error {
+  display: block;
+}
+
+// ── Interactive Service Chips
+.service-chips-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 4px;
+}
+
+.service-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  background-color: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 50px;
+  color: #374151;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-sizing: border-box;
+  min-height: 44px; // Touch target compliant
+
+  .chip-icon {
+    font-size: 0.95rem;
+    color: #9921e8;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .chip-check {
+    font-size: 0.78rem;
+    max-width: 0;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &:hover {
+    background-color: #f5f0fb;
+    border-color: #c084fc;
+    color: #7b15be;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(153, 33, 232, 0.12);
+
+    .chip-icon {
+      transform: scale(1.1);
+    }
+  }
+
+  &.active,
+  &[aria-pressed="true"] {
+    background: linear-gradient(135deg, #9921e8 0%, #7b15be 100%);
+    border-color: #9921e8;
+    color: #ffffff;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 18px rgba(153, 33, 232, 0.32);
+
+    .chip-icon {
+      color: #ffffff;
+    }
+
+    .chip-check {
+      max-width: 14px;
+      opacity: 1;
+      transform: scale(1);
+      color: #ffffff;
+      margin-left: 2px;
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(153, 33, 232, 0.35);
+  }
+}
+
+// ── Conditional Field (Ngành nghề kinh doanh / Quy mô)
+.conditional-field {
+  padding: 16px 18px;
+  background: rgba(153, 33, 232, 0.04);
+  border: 1.5px dashed rgba(153, 33, 232, 0.3);
+  border-radius: 12px;
+  animation: panelFadeIn 0.3s ease forwards;
+  margin-top: 4px;
+
+  &[hidden] {
+    display: none !important;
+  }
+}
+
+// ── Step 1 Validation Error
+.step-error {
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #b91c1c;
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: panelFadeIn 0.3s ease forwards;
+
+  &[hidden] {
+    display: none !important;
+  }
+}
+
+// ── Step 3 Recap Box
+.selected-services-recap {
+  padding: 12px 18px;
+  background: #faf5ff;
+  border: 1px solid rgba(153, 33, 232, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+
+  .recap-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #7b15be;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .recap-list {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+}
+
+// ── Wizard Navigation Buttons (Next / Back)
+.wizard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 18px;
+  border-top: 1px solid #f3f4f6;
+
+  &--end {
+    justify-content: flex-end;
+  }
+
+  .wizard-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 28px;
+    border-radius: 50px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    min-height: 46px;
+    border: none;
+    outline: none;
+
+    &--next {
+      background: linear-gradient(135deg, #9921e8 0%, #7b15be 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(153, 33, 232, 0.3);
+
+      &:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 22px rgba(153, 33, 232, 0.45);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    &--back {
+      background: #f3f4f6;
+      color: #4b5563;
+      border: 1.5px solid #e5e7eb;
+
+      &:hover {
+        background: #e5e7eb;
+        color: #111827;
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+// ── B2B Form Actions (Submit + Zalo Quick-Chat)
+.form-actions-b2b {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 6px;
+
+  .form-submit-btn {
+    flex: 1 1 240px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 28px;
+    background: linear-gradient(135deg, #9921e8 0%, #cb2027 100%);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
+    box-shadow: 0 4px 20px rgba(153, 33, 232, 0.35);
+    min-height: 48px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(153, 33, 232, 0.5), 0 2px 8px rgba(203, 32, 39, 0.25);
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-loading {
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-label {
+      display: inline-flex;
+    }
+
+    .btn-icon {
+      font-size: 0.95em;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover .btn-icon {
+      transform: translateX(4px) rotate(-20deg);
+    }
+
+    &.is-loading {
+      .btn-label {
+        display: none;
+      }
+      .btn-loading {
+        display: inline-flex;
+      }
+      .btn-icon {
+        display: none;
+      }
+    }
+  }
+
+  .btn-zalo-direct {
+    flex: 1 1 240px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 24px;
+    background: #0068ff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 16px rgba(0, 104, 255, 0.28);
+    min-height: 48px;
+
+    .zalo-svg {
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background: #0056d6;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 104, 255, 0.45);
+      color: #ffffff;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// ── Trust & Security Commitment
+.trust-commitment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #6b7280;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #f9fafb;
+  border-radius: 8px;
+
+  .trust-icon {
+    color: #10b981;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+}
+
+// ── Toast notification
+.form-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: #1f2937;
+  border: 1px solid rgba(153, 33, 232, 0.5);
+  border-radius: 12px;
+  padding: 14px 24px;
+  color: #fff;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+
+  &.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  i {
+    color: #4ade80;
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ── Responsive Layout & Mobile Compatibility (< 768px & < 480px)
+@media screen and (max-width: 900px) {
+  .contact-layout {
+    flex-direction: column;
+    gap: 36px;
+    width: 100%;
+  }
+
+  .contact-info {
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+    padding-top: 0;
+  }
+
+  .contact-form-wrap {
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .contact-form.wizard-form {
+    padding: 28px 22px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #contact {
+    padding: 65px 15px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  // Mobile step names: keep icons and compact labels
+  .wizard-progress .wizard-step {
+    .step-name {
+      font-size: 0.78rem;
+    }
+  }
+
+  .form-actions-b2b {
+    flex-direction: column;
+    .form-submit-btn,
+    .btn-zalo-direct {
+      width: 100%;
+      flex: 1 1 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #contact {
+    padding: 50px 12px;
+  }
+
+  .contact-form.wizard-form {
+    padding: 22px 16px;
+    border-radius: 16px;
+  }
+
+  .wizard-progress {
+    margin-bottom: 20px;
+
+    .wizard-steps {
+      .wizard-step {
+        .step-name {
+          display: none; // Keep clean icons on ultra-small phones
+        }
+      }
+    }
+  }
+
+  .service-chips-wrapper {
+    gap: 8px;
+  }
+
+  .service-chip {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+
+    .chip-icon {
+      font-size: 0.88rem;
+    }
+  }
+
+  .wizard-nav .wizard-btn {
+    padding: 11px 20px;
+    font-size: 0.88rem;
+  }
+}

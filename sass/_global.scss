@@ -1,0 +1,97 @@
+html {
+  line-height: 1.15;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Oxygen', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// ── Vietnamese font override ──────────────────────────────────────────────
+// When lang="vi" is active, switch body text to Times New Roman.
+// This scopes the rule so EN content keeps its sans-serif while VI gets serif.
+// Fallback stack covers Linux (DejaVu Serif) and older CJK/Viet OS builds.
+html[lang="vi"] body {
+  font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+}
+section {
+  padding: 90px 15px;
+}
+.content {
+  max-width: 1200px;
+  display: block;
+  margin: 0 auto;
+}
+p {
+  font-size: 18px;
+  margin: 5px 0 10px;
+}
+.bold {
+  font-weight: 700;
+}
+.orange {
+  color: #FF5100
+}
+h2 {
+  font-size: 36px;
+  margin: 5px 0 10px;
+  @media screen and (min-width: 768px) {
+    font-size: 70px;
+    color: #848484;
+    font-weight: 700;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.center {
+  text-align: center;
+}
+
+
+// ── Font Awesome Icons ─────────────────────────────────────────────────────
+.feature-icon {
+  font-size: 52px;
+  line-height: 1;
+  margin: 15px auto 25px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 70px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#skill .feature-icon {
+  color: #ff9800;
+}
+
+#service .feature-icon,
+#pricing .feature-icon {
+  color: #7f53ac;
+}
+
+.item:hover .feature-icon {
+  transform: scale(1.12);
+}
+
+.contact-icon {
+  color: #7f53ac;
+  width: 24px;
+  text-align: center;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.footer-icon {
+  color: #cbb4e8;
+  width: 20px;
+  text-align: center;
+  margin-right: 8px;
+  display: inline-block;
+}

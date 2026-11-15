@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <!-- font-family: 'Roboto Condensed', sans-serif; -->
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;700&display=swap" rel="stylesheet">
+  <!-- font-family: 'Oxygen', sans-serif; -->
+  <link rel="stylesheet" type="text/css" href="sass/style.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@phuctoannguyen">
+  <meta name="twitter:creator" content="@phuctoannguyen">
+  <meta name="twitter:title" content="Phuc Toan Nguyen – Sales Engineer">
+  <meta name="twitter:description"
+    content="Sales Specialist representing a reputable tech company with 15+ years of experience in demo and technology consulting for B2B businesses in Ho Chi Minh City and nationwide.">
+  <meta name="twitter:image" content="assets/images/social-media-thumbnail.jpg">
+  <!-- Twitter Card End -->
+  <!-- Linkedin & Facebook Card -->
+  <meta property="og:title" content="Phuc Toan Nguyen – Sales Engineer" />
+  <meta property="og:image" content="assets/images/social-media-thumbnail.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description"
+    content="Sales Specialist representing a reputable tech company with 15+ years of experience in demo and technology consulting for B2B businesses in Ho Chi Minh City and nationwide." />
+  <meta property="og:url" content="assets/images/social-media-thumbnail.jpg" />
+  <!-- Linkedin Card End -->
+  <!-- aos -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <title>Phuc Toan Nguyen – Sales Engineer</title>
+</head>
+
+<body>
+  <nav class="site-header">
+    <div class="nav-logo">
+      <a href="index.html">
+        <!-- TODO: Thay logo.png bằng logo/ảnh thật của bạn -->
+        <img src="assets/images/toan-logo.png" alt="logo" width="314" height="60">
+      </a>
+    </div>
+    <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"><img
+        src="assets/images/menu.png" alt="menu toggle icon"></button>
+    <!-- Language Switcher — Header Topbar -->
+    <div class="lang-switcher" role="group" aria-label="Language selector">
+      <span class="lang-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
+      <button type="button" class="lang-btn lang-btn--active" data-lang="en" aria-pressed="true"
+        title="English">EN</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false" title="Tiếng Việt">VI</button>
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="#about" data-i18n="nav.about">About Me</a></li>
+        <li><a href="#skill" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#service" data-i18n="nav.services">Services</a></li>
+        <li><a href="#portfolio" data-i18n="nav.portfolio">Case Studies</a></li>
+        <li><a href="#testimonial" data-i18n="nav.testimonial">Testimonial</a></li>
+        <li><a href="#pricing" data-i18n="nav.pricing">Collaboration</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <!-- Language Switcher for Mobile Drawer -->
+      <div class="lang-switcher-mobile" role="group" aria-label="Mobile Language selector">
+        <span class="lang-label"><i class="fa-solid fa-globe" aria-hidden="true"></i> Language:</span>
+        <button type="button" class="lang-btn lang-btn--active" data-lang="en" aria-pressed="true">English (EN)</button>
+        <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false">Tiếng Việt (VI)</button>
+      </div>
+    </div>
+  </nav><!-- .site-header -->
+
+  <section class="banner" id="banner">
+    <video class="banner-video" autoplay loop muted playsinline preload="auto">
+      <source src="assets/videos/chip.mp4" type="video/mp4">
+    </video>
+    <div class="banner--content" data-aos="fade-in" data-aos-duration="2000">
+      <h3 class="name"><a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc
+          Toan Nguyen</a></h3>
+      <h1 class="designation"><span id="typed-designation" data-i18n="banner.designation">Sales Engineer</span><span
+          class="typed-cursor" aria-hidden="true">|</span></h1>
+      <p class="tagline" data-i18n="banner.tagline">Consulting &amp; demoing technology solutions – the bridge between
+        tech teams and enterprise clients.</p>
+    </div>
+  </section><!-- .banner -->
+
+  <section class="promo">
+    <div class="content" data-aos="fade-up" data-aos-offset="50">
+      <h2 data-i18n-html="promo.heading">Representing a reputable company with <span class="bold">15+ years of
+          experience</span> in technology solutions<span class="orange">.</span></h2>
+      <p data-i18n="promo.sub">Specializing in Custom Web Development, Hosting, Mail Server &amp; Enterprise Software
+        for B2B.</p>
+    </div>
+  </section><!-- introduction-->
+
+  <section id="about">
+    <div class="content">
+      <h2 data-i18n="about.heading">About Me</h2>
+      <div class="about-container">
+        <div class="about-container-left" data-aos="fade-up-right" data-aos-duration="1000">
+          <p data-i18n="about.p1">I am Phuc Toan – a Sales Specialist representing a reputable technology company with
+            over 15 years of experience in the software industry in Ho Chi Minh City. My role is to bridge the gap
+            between the technical team and enterprise clients, translating business requirements into suitable and
+            effective technology solutions.</p>
+          <h3 data-i18n="about.h3">Core Competencies</h3>
+          <ul>
+            <li data-i18n="about.li1">Product demo &amp; building POC environments tailored to each client's specific
+              needs</li>
+            <li data-i18n="about.li2">Consulting on Website, Hosting, Mail Server, and multi-industry Management
+              Software solutions</li>
+            <li data-i18n="about.li3">Analyzing business requirements, drafting proposals/RFPs, and supporting technical
+              negotiations</li>
+          </ul>
+          <p data-i18n="about.p2">I work directly with numerous B2B enterprises across retail, F&amp;B, logistics,
+            education, real estate, and manufacturing sectors – helping them find digital transformation solutions that
+            align with their budget and growth roadmap.</p>
+          <h4 data-i18n="about.h4">Work Philosophy</h4>
+          <p data-i18n="about.p3">Listen to the client's problem, propose practical solutions – never sell what the
+            client doesn't need, only recommend what truly creates value for their business.</p>
+        </div>
+        <div class="about-container-right" data-aos="fade-up-left" data-aos-duration="1500">
+          <!-- TODO: Thay headshot.jpg bằng ảnh chân dung thật của bạn -->
+          <img src="assets/images/headshot.jpg" alt="Phuc Toan Nguyen, Sales Engineer">
+        </div>
+      </div>
+    </div>
+  </section><!-- #about -->
+
+  <section id="skill">
+    <div class="content skill--content">
+      <div class="left">
+        <h2 data-i18n="skill.heading">My Skills &amp; Expertise</h2>
+        <p data-i18n="skill.p">With a solid technical foundation combined with hands-on sales experience, I confidently
+          advise on and demo complex technology solutions in a clear, understandable way for both technical teams and
+          executive decision-makers.</p>
+      </div>
+      <div class="right">
+        <div class="item" data-aos="flip-left" data-aos-duration="1000">
+          <div class="feature-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+          <h3 data-i18n="skill.item1_title">Technical &amp; Integration</h3>
+          <p data-i18n="skill.item1_p">API/Integration, Cloud hosting, SQL, building demo/POC environments, Mail Server
+            configuration, and web infrastructure setup on demand.</p>
+        </div>
+        <div class="item" data-aos="flip-right" data-aos-duration="2000">
+          <div class="feature-icon"><i class="fa-solid fa-cubes" aria-hidden="true"></i></div>
+          <h3 data-i18n="skill.item2_title">Product &amp; Solutions</h3>
+          <p data-i18n="skill.item2_p">In-depth knowledge of the product portfolio, competitive analysis, writing
+            RFPs/proposals, and comparing competitor solutions for each client's specific problem.</p>
+        </div>
+        <div class="item" data-aos="flip-left" data-aos-duration="1500">
+          <div class="feature-icon"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></div>
+          <h3 data-i18n="skill.item3_title">Presentation &amp; Consulting</h3>
+          <p data-i18n="skill.item3_p">Technical presentations for C-level executives, solution negotiation, consulting
+            based on real client challenges, and guiding clients through the entire decision-making process.</p>
+        </div>
+      </div>
+    </div>
+  </section><!-- #skill -->
+
+  <section id="service">
+    <h2 class="center" data-i18n="service.heading">Services We Offer</h2>
+    <p class="center service-sub" data-i18n="service.sub">Accompanying you to elevate your brand</p>
+    <div class="content service--content" data-aos="fade-up" data-aos-duration="1500">
+
+      <!-- CARD 1: WEBSITE DESIGN -->
+      <div class="service-card" tabindex="0" role="region" aria-label="Website Design Service">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="card-badge">01</span>
+            <div class="service-icon-wrapper">
+              <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="service.item1_title">Website Design</h3>
+            <p class="service-short-desc" data-i18n="service.item1_short">Modern UX/UI & Fast Speed</p>
+            <div class="flip-hint">
+              <span data-i18n="service.flip_hint">Explore Details</span>
+              <i class="fa-solid fa-arrow-rotate-right" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="service-card-back">
+            <div class="back-header">
+              <div class="back-icon"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div>
+              <h3 data-i18n="service.item1_title">Website Design</h3>
+            </div>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item1_f1">Custom
+                  & modern UX/UI</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item1_f2">SEO &
+                  speed optimization</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item1_f3">100%
+                  Mobile responsive</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span
+                  data-i18n="service.item1_f4">Seamless API integration</span></li>
+            </ul>
+            <a href="#contact" class="service-btn" data-i18n="service.cta">Contact Now</a>
+          </div>
+        </div>
+      </div><!-- .service-card -->
+
+      <!-- CARD 2: WEB HOSTING -->
+      <div class="service-card" tabindex="0" role="region" aria-label="Web Hosting Service">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="card-badge">02</span>
+            <div class="service-icon-wrapper">
+              <i class="fa-solid fa-server" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="service.item2_title">Web Hosting</h3>
+            <p class="service-short-desc" data-i18n="service.item2_short">High Speed & 99.9% Uptime</p>
+            <div class="flip-hint">
+              <span data-i18n="service.flip_hint">Explore Details</span>
+              <i class="fa-solid fa-arrow-rotate-right" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="service-card-back">
+            <div class="back-header">
+              <div class="back-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+              <h3 data-i18n="service.item2_title">Web Hosting</h3>
+            </div>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item2_f1">99.9%
+                  Uptime guarantee</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span
+                  data-i18n="service.item2_f2">High-speed NVMe storage</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item2_f3">Free
+                  SSL & Firewall shield</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item2_f4">Daily
+                  backups & 24/7 support</span></li>
+            </ul>
+            <a href="#contact" class="service-btn" data-i18n="service.cta">Contact Now</a>
+          </div>
+        </div>
+      </div><!-- .service-card -->
+
+      <!-- CARD 3: DOMAIN -->
+      <div class="service-card" tabindex="0" role="region" aria-label="Domain Service">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="card-badge">03</span>
+            <div class="service-icon-wrapper">
+              <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="service.item3_title">Domain</h3>
+            <p class="service-short-desc" data-i18n="service.item3_short">Secure Digital Identity</p>
+            <div class="flip-hint">
+              <span data-i18n="service.flip_hint">Explore Details</span>
+              <i class="fa-solid fa-arrow-rotate-right" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="service-card-back">
+            <div class="back-header">
+              <div class="back-icon"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
+              <h3 data-i18n="service.item3_title">Domain</h3>
+            </div>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item3_f1">Full
+                  .VN & Global TLDs</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item3_f2">Instant
+                  5-min activation</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span
+                  data-i18n="service.item3_f3">Flexible DNS management</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item3_f4">Brand
+                  identity protection</span></li>
+            </ul>
+            <a href="#contact" class="service-btn" data-i18n="service.cta">Contact Now</a>
+          </div>
+        </div>
+      </div><!-- .service-card -->
+
+      <!-- CARD 4: EMAIL SERVER -->
+      <div class="service-card" tabindex="0" role="region" aria-label="Email Server Service">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="card-badge">04</span>
+            <div class="service-icon-wrapper">
+              <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="service.item4_title">Email Server</h3>
+            <p class="service-short-desc" data-i18n="service.item4_short">Enterprise Custom Email</p>
+            <div class="flip-hint">
+              <span data-i18n="service.flip_hint">Explore Details</span>
+              <i class="fa-solid fa-arrow-rotate-right" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="service-card-back">
+            <div class="back-header">
+              <div class="back-icon"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i></div>
+              <h3 data-i18n="service.item4_title">Email Server</h3>
+            </div>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item4_f1">Custom
+                  domain @yourcompany</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item4_f2">99.9%
+                  High inbox delivery</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item4_f3">Smart
+                  anti-spam & virus filter</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span
+                  data-i18n="service.item4_f4">Enterprise data encryption</span></li>
+            </ul>
+            <a href="#contact" class="service-btn" data-i18n="service.cta">Contact Now</a>
+          </div>
+        </div>
+      </div><!-- .service-card -->
+
+      <!-- CARD 5: SOFTWARE OUTSOURCING -->
+      <div class="service-card" tabindex="0" role="region" aria-label="Software Outsourcing Service">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="card-badge">05</span>
+            <div class="service-icon-wrapper">
+              <i class="fa-solid fa-code" aria-hidden="true"></i>
+            </div>
+            <h3 data-i18n="service.item5_title">Software Outsourcing</h3>
+            <p class="service-short-desc" data-i18n="service.item5_short">Custom Software & Dedicated Team</p>
+            <div class="flip-hint">
+              <span data-i18n="service.flip_hint">Explore Details</span>
+              <i class="fa-solid fa-arrow-rotate-right" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="service-card-back">
+            <div class="back-header">
+              <div class="back-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+              <h3 data-i18n="service.item5_title">Software Outsourcing</h3>
+            </div>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item5_f1">Custom
+                  Web App & Mobile App</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item5_f2">Agile
+                  process & dedicated engineers</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="service.item5_f3">High
+                  security & clean architecture</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span
+                  data-i18n="service.item5_f4">Long-term maintenance & 24/7 SLA</span></li>
+            </ul>
+            <a href="#contact" class="service-btn" data-i18n="service.cta">Contact Now</a>
+          </div>
+        </div>
+      </div><!-- .service-card -->
+
+    </div>
+  </section><!-- #service -->
+
+  <section id="portfolio">
+    <h2 class="center" data-i18n="portfolio.heading">Case Studies – Featured Projects</h2>
+    <div class="content portfolio--content">
+      <div class="item">
+        <!-- TODO: Thay project-one.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
+        <h3 data-i18n="portfolio.item1">Retail Industry Client</h3>
+        <img src="assets/images/project-one.jpg" alt="Retail industry management software solution">
+      </div><!-- item -->
+      <div class="item">
+        <!-- TODO: Thay project-two.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
+        <h3 data-i18n="portfolio.item2">F&amp;B Industry Client</h3>
+        <img src="assets/images/project-two.jpg" alt="F&B e-commerce website and Mail Server solution">
+      </div><!-- item -->
+      <div class="item">
+        <!-- TODO: Thay project-three.png bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
+        <h3 data-i18n="portfolio.item3">Education Industry Client</h3>
+        <img src="assets/images/project-three.png" alt="Student management system for education sector">
+      </div><!-- item -->
+      <div class="item">
+        <!-- TODO: Thay project-four.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
+        <h3 data-i18n="portfolio.item4">Logistics Industry Client</h3>
+        <img src="assets/images/project-four.jpg" alt="Warehouse and delivery management software for logistics">
+      </div><!-- item -->
+      <div class="item">
+        <!-- TODO: Thay project-five.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
+        <h3 data-i18n="portfolio.item5">Real Estate Industry Client</h3>
+        <img src="assets/images/project-five.jpg" alt="Integrated website and CRM for real estate">
+      </div><!-- item -->
+      <div class="item">
+        <!-- TODO: Thay project-six.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
+        <h3 data-i18n="portfolio.item6">Manufacturing Industry Client</h3>
+        <img src="assets/images/project-six.jpg" alt="Custom ERP solution for manufacturing sector">
+      </div><!-- item -->
+    </div>
+  </section><!-- portfolio -->
+
+  <section id="testimonial">
+    <h2 data-i18n="testimonial.heading">Testimonial – What clients &amp; colleagues say about me</h2>
+    <div class="content testimonial--content">
+      <div class="item">
+        <figure>
+          <blockquote cite="#">
+            <!-- TODO: Thay bằng trích dẫn thật sau khi xin phép người được trích dẫn -->
+            <p data-i18n="testimonial.item1_quote">[Testimonial quote from a client or colleague will be updated here.]
+            </p>
+          </blockquote>
+          <figcaption data-i18n-html="testimonial.item1_author">—[Name], <cite>[Title, Company]</cite></figcaption>
+        </figure>
+      </div><!-- item -->
+      <div class="item">
+        <figure>
+          <blockquote cite="#">
+            <!-- TODO: Thay bằng trích dẫn thật sau khi xin phép người được trích dẫn -->
+            <p data-i18n="testimonial.item2_quote">[Testimonial quote from a client or colleague will be updated here.]
+            </p>
+          </blockquote>
+          <figcaption data-i18n-html="testimonial.item2_author">—[Name], <cite>[Title, Company]</cite></figcaption>
+        </figure>
+      </div><!-- item -->
+      <div class="item">
+        <figure>
+          <blockquote cite="#">
+            <!-- TODO: Thay bằng trích dẫn thật sau khi xin phép người được trích dẫn -->
+            <p data-i18n="testimonial.item3_quote">[Testimonial quote from a client or colleague will be updated here.]
+            </p>
+          </blockquote>
+          <figcaption data-i18n-html="testimonial.item3_author">—[Name], <cite>[Title, Company]</cite></figcaption>
+        </figure>
+      </div><!-- item -->
+      <div class="item">
+        <figure>
+          <blockquote cite="#">
+            <!-- TODO: Thay bằng trích dẫn thật sau khi xin phép người được trích dẫn -->
+            <p data-i18n="testimonial.item4_quote">[Testimonial quote from a client or colleague will be updated here.]
+            </p>
+          </blockquote>
+          <figcaption data-i18n-html="testimonial.item4_author">—[Name], <cite>[Title, Company]</cite></figcaption>
+        </figure>
+      </div><!-- item -->
+    </div><!-- .testimonial--content -->
+  </section><!-- testimonial -->
+
+  <section id="pricing" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="50">
+    <h2 class="center" data-i18n="pricing.heading">Collaboration Options</h2>
+    <p class="center" data-i18n="pricing.sub">I support businesses from the need-discovery phase to real-world
+      implementation. Contact me so we can discuss together!</p>
+    <div class="pricing--content">
+      <div class="item">
+        <div class="feature-icon"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i></div>
+        <h3 data-i18n="pricing.item1_title">Quick 30-Minute Demo</h3>
+        <p class="price" data-i18n="pricing.item1_price">Free</p>
+        <p class="description" data-i18n="pricing.item1_desc">Overview of the solution, answering technical questions –
+          no commitment, no charge. Perfect for initial exploration.</p>
+        <a href="#contact" data-i18n="pricing.item1_cta">Contact</a>
+      </div><!-- item -->
+      <div class="item">
+        <div class="feature-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
+        <h3 data-i18n="pricing.item2_title">In-Depth Solution Consulting</h3>
+        <p class="price" data-i18n="pricing.item2_price">On Request</p>
+        <p class="description" data-i18n="pricing.item2_desc">Business problem analysis, suitable solution design,
+          proposal drafting, and option comparison – aligned with real business needs.</p>
+        <a href="#contact" data-i18n="pricing.item2_cta">Contact</a>
+      </div><!-- item -->
+      <div class="item">
+        <div class="feature-icon"><i class="fa-solid fa-vial-circle-check" aria-hidden="true"></i></div>
+        <h3 data-i18n="pricing.item3_title">Proof of Concept (POC)</h3>
+        <p class="price" data-i18n="pricing.item3_price">On Request</p>
+        <p class="description" data-i18n="pricing.item3_desc">Setting up a real test environment to validate the
+          solution before making a formal investment decision.</p>
+        <a href="#contact" data-i18n="pricing.item3_cta">Contact</a>
+      </div><!-- item -->
+    </div><!-- pricing--content -->
+  </section><!-- #pricing-->
+
+  <section id="contact">
+    <div class="content">
+      <h2 class="center" data-i18n="contact.heading">Get in Touch</h2>
+      <p class="center contact-detail" data-i18n="contact.detail">Looking for a technology solution for your business?
+        Let me listen to your problem and find the best path forward together. Based in Ho Chi Minh City, supporting
+        clients nationwide.</p>
+
+      <!-- ══════════════════════════════════════════════════════════
+           CONTACT LAYOUT: Info (left) + Form (right)
+           ══════════════════════════════════════════════════════════ -->
+      <div class="contact-layout">
+
+        <!-- Left: Info block -->
+        <address class="contact-info">
+          <div class="contact-info-item">
+            <i class="fa-solid fa-envelope contact-icon" aria-hidden="true"></i>
+            <div class="contact-info-text">
+              <span class="contact-label" data-i18n="contact.email_label">Email:</span>
+              <a href="mailto:phuctoan4906@gmail.com" class="contact-link">phuctoan4906@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa-solid fa-phone contact-icon" aria-hidden="true"></i>
+            <div class="contact-info-text">
+              <span class="contact-label" data-i18n="contact.phone_label">Phone / Zalo:</span>
+              <a href="tel:+84913365842" class="contact-link">0913.365.842</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa-brands fa-linkedin contact-icon" aria-hidden="true"></i>
+            <div class="contact-info-text">
+              <span class="contact-label" data-i18n="contact.linkedin_label">LinkedIn:</span>
+              <a href="https://www.linkedin.com/in/phuc-toan-0729732a2/" target="_blank" rel="noopener noreferrer"
+                class="contact-link">linkedin.com/in/phuc-toan-0729732a2</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa-solid fa-location-dot contact-icon" aria-hidden="true"></i>
+            <div class="contact-info-text">
+              <span class="contact-label-block" data-i18n="contact.address">Ho Chi Minh City, Vietnam</span>
+              <span class="contact-note" data-i18n="contact.address_note">(Nationwide support, priority in HCMC
+                area)</span>
+            </div>
+          </div>
+        </address>
+
+        <!-- Right: Formspree Contact Form — Multi-Step B2B Wizard -->
+        <div class="contact-form-wrap">
+          <!-- Success message (hidden by default) -->
+          <div class="form-success" id="formSuccess" aria-live="polite" hidden>
+            <div class="form-success-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></div>
+            <h3 class="form-success-title" data-i18n="contact.success_title">Yêu cầu tư vấn đã được ghi nhận thành công!
+            </h3>
+            <p class="form-success-desc" data-i18n="contact.form_success">Cảm ơn bạn đã kết nối! Kỹ sư Phúc Toàn sẽ liên
+              hệ lại qua điện thoại / Zalo trong vòng 30 phút làm việc.</p>
+
+            <div class="success-contact-card">
+              <div class="success-engineer-info">
+                <div class="engineer-avatar"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
+                <div class="engineer-meta">
+                  <strong>Nguyễn Phúc Toàn</strong>
+                  <span>Sales Engineer &amp; Solutions Consultant</span>
+                </div>
+              </div>
+              <div class="success-quick-links">
+                <a href="https://zalo.me/0913365842" target="_blank" rel="noopener noreferrer"
+                  class="success-link zalo">
+                  <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+                  <span>Nhắn Zalo ngay</span>
+                </a>
+                <a href="tel:0913365842" class="success-link phone">
+                  <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                  <span>0913.365.842</span>
+                </a>
+              </div>
+            </div>
+
+            <button type="button" class="btn-reset-form" id="btnResetForm">
+              <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+              <span data-i18n="contact.btn_reset_form">Gửi thêm yêu cầu khác</span>
+            </button>
+          </div>
+
+          <!-- The Multi-Step Wizard Form -->
+          <form id="contactForm" class="contact-form wizard-form" action="https://formspree.io/f/mwloleyy" method="POST"
+            novalidate>
+            <!-- Wizard Step Progress Bar -->
+            <div class="wizard-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3"
+              aria-label="Tiến trình hoàn thành form">
+              <div class="wizard-track">
+                <div class="wizard-progress-bar" id="wizardProgressBar" style="width: 33.33%;"></div>
+              </div>
+              <div class="wizard-steps">
+                <div class="wizard-step is-active" data-step="1">
+                  <span class="step-num"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+                  <span class="step-name" data-i18n="contact.step1_title">1. Chọn giải pháp</span>
+                </div>
+                <div class="wizard-step" data-step="2">
+                  <span class="step-num"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></span>
+                  <span class="step-name" data-i18n="contact.step2_title">2. Thông tin liên hệ</span>
+                </div>
+                <div class="wizard-step" data-step="3">
+                  <span class="step-num"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></span>
+                  <span class="step-name" data-i18n="contact.step3_title">3. Yêu cầu &amp; Gửi</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hidden input bound to Formspree -->
+            <input type="hidden" name="dich_vu_quan_tam" id="selectedService" value="">
+
+            <!-- ── STEP 1: CHỌN GIẢI PHÁP / DỊCH VỤ ── -->
+            <div class="wizard-panel is-active" data-panel="1">
+              <div class="panel-header">
+                <h3 class="panel-title" data-i18n="contact.step1_heading">Doanh nghiệp của bạn đang quan tâm đến giải
+                  pháp nào?</h3>
+                <p class="panel-desc" data-i18n="contact.step1_sub">Chọn một hoặc nhiều dịch vụ bên dưới để nhận tư vấn
+                  phù hợp nhất.</p>
+              </div>
+
+              <div class="service-chips-wrapper" role="group" aria-label="Danh sách giải pháp dịch vụ">
+                <button type="button" class="service-chip" data-value="Thiết kế Website" aria-pressed="false">
+                  <i class="fa-solid fa-globe chip-icon" aria-hidden="true"></i>
+                  <span class="chip-text" data-i18n="contact.form_service_chip1">Thiết kế Website</span>
+                  <i class="fa-solid fa-check chip-check" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="service-chip" data-value="Web Hosting" aria-pressed="false">
+                  <i class="fa-solid fa-bolt chip-icon" aria-hidden="true"></i>
+                  <span class="chip-text" data-i18n="contact.form_service_chip2">Web Hosting</span>
+                  <i class="fa-solid fa-check chip-check" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="service-chip" data-value="Domain & SSL" aria-pressed="false">
+                  <i class="fa-solid fa-shield-halved chip-icon" aria-hidden="true"></i>
+                  <span class="chip-text" data-i18n="contact.form_service_chip3">Domain & SSL</span>
+                  <i class="fa-solid fa-check chip-check" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="service-chip" data-value="Email Server Doanh nghiệp" aria-pressed="false">
+                  <i class="fa-solid fa-envelope-open-text chip-icon" aria-hidden="true"></i>
+                  <span class="chip-text" data-i18n="contact.form_service_chip4">Email Server Doanh nghiệp</span>
+                  <i class="fa-solid fa-check chip-check" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="service-chip" data-value="Phần mềm quản lý / Khác"
+                  id="chipSoftwareManagement" aria-pressed="false">
+                  <i class="fa-solid fa-gear chip-icon" aria-hidden="true"></i>
+                  <span class="chip-text" data-i18n="contact.form_service_chip5">Phần mềm quản lý / Khác</span>
+                  <i class="fa-solid fa-check chip-check" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="service-chip" data-value="Dịch vụ phát triển phần mềm"
+                  aria-pressed="false">
+                  <i class="fa-solid fa-code chip-icon" aria-hidden="true"></i>
+                  <span class="chip-text" data-i18n="contact.form_service_chip6">Dịch vụ phát triển phần mềm</span>
+                  <i class="fa-solid fa-check chip-check" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <!-- Tính năng động: Hiển thị khi người dùng chọn 'Phần mềm quản lý / Khác' -->
+              <div class="conditional-field" id="conditionalSoftwareField" hidden>
+                <div class="form-group form-group--full">
+                  <label for="cf-software-details" data-i18n="contact.software_details_label">Ngành nghề kinh doanh hoặc
+                    quy mô nhân sự</label>
+                  <input type="text" id="cf-software-details" name="nganh_nghe_quy_mo"
+                    placeholder="VD: Bán lẻ, F&B, Logistics, 10-30 nhân sự..."
+                    data-i18n-placeholder="contact.software_details_ph">
+                </div>
+              </div>
+
+              <div class="step-error" id="step1Error" hidden data-i18n="contact.step1_err">
+                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Vui lòng chọn ít nhất một giải pháp
+                / dịch vụ để tiếp tục.
+              </div>
+
+              <div class="wizard-nav wizard-nav--end">
+                <button type="button" class="wizard-btn wizard-btn--next" id="btnNext1" data-next="2">
+                  <span data-i18n="contact.btn_next">Tiếp tục</span>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ── STEP 2: THÔNG TIN DOANH NGHIỆP & LIÊN HỆ ── -->
+            <div class="wizard-panel" data-panel="2">
+              <div class="panel-header">
+                <h3 class="panel-title" data-i18n="contact.step2_heading">Thông tin người liên hệ &amp; Doanh nghiệp
+                </h3>
+                <p class="panel-desc" data-i18n="contact.step2_sub">Kỹ sư Phúc Toàn sẽ liên hệ trực tiếp để trao đổi kỹ
+                  thuật chuyên sâu và bảo mật thông tin.</p>
+              </div>
+
+              <!-- Row 1: Name + Company -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-name" data-i18n="contact.form_name_label">Họ và tên <span class="req"
+                      aria-hidden="true">*</span></label>
+                  <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Nguyễn Văn A"
+                    data-i18n-placeholder="contact.form_name_ph">
+                  <span class="field-error" data-i18n="contact.form_name_err">Vui lòng nhập họ và tên.</span>
+                </div>
+                <div class="form-group">
+                  <label for="cf-company" data-i18n="contact.form_company_label">Tên doanh nghiệp / Công ty</label>
+                  <input type="text" id="cf-company" name="company" autocomplete="organization"
+                    placeholder="ABC Company" data-i18n-placeholder="contact.form_company_ph">
+                </div>
+              </div>
+
+              <!-- Row 2: Phone + Email -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-phone" data-i18n="contact.form_phone_label">Số điện thoại / Zalo <span class="req"
+                      aria-hidden="true">*</span></label>
+                  <input type="tel" id="cf-phone" name="phone" autocomplete="tel" required placeholder="0912 345 678"
+                    data-i18n-placeholder="contact.form_phone_ph" pattern="(0[3-9][0-9]{8})">
+                  <span class="field-error" data-i18n="contact.form_phone_err">Số điện thoại VN không hợp lệ (VD:
+                    0912345678).</span>
+                </div>
+                <div class="form-group">
+                  <label for="cf-email" data-i18n="contact.form_email_label">Email <span class="req"
+                      aria-hidden="true">*</span></label>
+                  <input type="email" id="cf-email" name="email" autocomplete="email" required
+                    placeholder="email@company.com" data-i18n-placeholder="contact.form_email_ph">
+                  <span class="field-error" data-i18n="contact.form_email_err">Vui lòng nhập email hợp lệ.</span>
+                </div>
+              </div>
+
+              <div class="wizard-nav">
+                <button type="button" class="wizard-btn wizard-btn--back" data-back="1">
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  <span data-i18n="contact.btn_back">Quay lại</span>
+                </button>
+                <button type="button" class="wizard-btn wizard-btn--next" id="btnNext2" data-next="3">
+                  <span data-i18n="contact.btn_next">Tiếp tục</span>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ── STEP 3: MÔ TẢ YÊU CẦU & GỬI ── -->
+            <div class="wizard-panel" data-panel="3">
+              <div class="panel-header">
+                <h3 class="panel-title" data-i18n="contact.step3_heading">Mô tả chi tiết bài toán kỹ thuật của bạn</h3>
+                <p class="panel-desc" data-i18n="contact.step3_sub">Chia sẻ mục tiêu, ngân sách dự kiến hoặc thời gian
+                  bạn muốn triển khai để có giải pháp chính xác nhất.</p>
+              </div>
+
+              <!-- Recap: Tóm tắt dịch vụ đã chọn -->
+              <div class="selected-services-recap" id="servicesRecapBox">
+                <span class="recap-label"><i class="fa-solid fa-check-double" aria-hidden="true"></i> <span
+                    data-i18n="contact.recap_label">Giải pháp đã chọn:</span></span>
+                <span class="recap-list" id="servicesRecapList"></span>
+              </div>
+
+              <!-- Message textarea -->
+              <div class="form-group form-group--full">
+                <label for="cf-message" data-i18n="contact.form_msg_label">Nội dung trao đổi / Yêu cầu cụ thể <span
+                    class="req" aria-hidden="true">*</span></label>
+                <textarea id="cf-message" name="message" rows="4" required
+                  placeholder="Mô tả mục tiêu, yêu cầu công nghệ hoặc khó khăn kỹ thuật bạn đang gặp phải..."
+                  data-i18n-placeholder="contact.form_msg_ph"></textarea>
+                <span class="field-error" data-i18n="contact.form_msg_err">Vui lòng nhập nội dung cần trao đổi.</span>
+              </div>
+
+              <!-- Action buttons: Primary Submit + Secondary Zalo Direct Chat -->
+              <div class="form-actions-b2b">
+                <button type="submit" class="form-submit-btn" id="formSubmitBtn">
+                  <span class="btn-label" data-i18n="contact.form_submit">GỬI YÊU CẦU TƯ VẤN</span>
+                  <span class="btn-loading" aria-hidden="true">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                    <span data-i18n="contact.form_sending">Đang gửi...</span>
+                  </span>
+                  <i class="fa-solid fa-paper-plane btn-icon" aria-hidden="true"></i>
+                </button>
+
+                <a href="https://zalo.me/0913365842" target="_blank" rel="noopener noreferrer" class="btn-zalo-direct"
+                  aria-label="Chat Zalo trực tiếp ngay với Kỹ sư Phúc Toàn">
+                  <svg class="zalo-svg" viewBox="0 0 48 48" width="20" height="20" fill="currentColor"
+                    aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M24 4C12.954 4 4 12.059 4 22c0 5.86 3.167 11.048 8.167 14.398l-2.053 6.16a1 1 0 0 0 1.344 1.258l7.23-3.615C20.354 40.75 22.138 41 24 41c11.046 0 20-8.059 20-19S35.046 4 24 4zm-9 14h9.6l-8.6 10.8V30h11v-3.2h-7.6l8.6-10.8V15H15v3z" />
+                  </svg>
+                  <span data-i18n="contact.btn_zalo_quick">Chat Zalo trực tiếp ngay (0913.365.842)</span>
+                </a>
+              </div>
+
+              <!-- Trust commitment line -->
+              <div class="trust-commitment">
+                <i class="fa-solid fa-shield-halved trust-icon" aria-hidden="true"></i>
+                <span data-i18n="contact.trust_commitment">🛡️ Bảo mật thông tin tuyệt đối • Cam kết phản hồi tư vấn kỹ
+                  thuật trong vòng 30 phút làm việc.</span>
+              </div>
+
+              <!-- Navigation Back -->
+              <div class="wizard-nav">
+                <button type="button" class="wizard-btn wizard-btn--back" data-back="2">
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  <span data-i18n="contact.btn_back">Quay lại</span>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Audio notification for successful form submission -->
+          <audio id="formSuccessAudio" preload="auto">
+            <source src="assets/sounds/sucess_sound.m4a" type="audio/mp4">
+          </audio>
+        </div><!-- .contact-form-wrap -->
+
+      </div><!-- .contact-layout -->
+    </div>
+  </section>
+
+  <!-- Floating Social Dock -->
+  <nav class="floating-social-dock" aria-label="Social quick links">
+    <ul class="dock-list">
+      <!-- Phone / Hotline -->
+      <li class="dock-item">
+        <a href="tel:0913365842" class="dock-link phone" aria-label="Gọi điện – 0913.365.842">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span class="dock-label">Tap to call: 0913.365.842</span>
+        </a>
+      </li>
+
+      <!-- Zalo -->
+      <li class="dock-item">
+        <a href="https://zalo.me/0913365842" class="dock-link zalo" target="_blank" rel="noopener noreferrer"
+          aria-label="Nhắn tin Zalo – Phuc Toan">
+          <svg class="zalo-icon" viewBox="0 0 48 48" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M24 4C12.954 4 4 12.059 4 22c0 5.86 3.167 11.048 8.167 14.398l-2.053 6.16a1 1 0 0 0 1.344 1.258l7.23-3.615C20.354 40.75 22.138 41 24 41c11.046 0 20-8.059 20-19S35.046 4 24 4zm-9 14h9.6l-8.6 10.8V30h11v-3.2h-7.6l8.6-10.8V15H15v3z" />
+          </svg>
+          <span class="dock-label">Add zalo</span>
+        </a>
+      </li>
+
+      <!-- Facebook -->
+      <li class="dock-item">
+        <a href="https://www.facebook.com/phuctoansales" class="dock-link facebook" target="_blank"
+          rel="noopener noreferrer" aria-label="Facebook – Phuc Toan">
+          <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+          <span class="dock-label">Facebook</span>
+        </a>
+      </li>
+
+      <!-- Instagram -->
+      <li class="dock-item">
+        <a href="https://www.instagram.com/phuctoansales" class="dock-link instagram" target="_blank"
+          rel="noopener noreferrer" aria-label="Instagram – Phuc Toan">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          <span class="dock-label">Instagram</span>
+        </a>
+      </li>
+
+      <!-- LinkedIn -->
+      <li class="dock-item">
+        <a href="https://www.linkedin.com/in/phuc-toan-0729732a2/" class="dock-link linkedin" target="_blank"
+          rel="noopener noreferrer" aria-label="LinkedIn – Phuc Toan">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+          <span class="dock-label">LinkedIn</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="content site-footer--content">
+      <div class="footer-left">
+        <!-- TODO: Thay logo-footer.png bằng logo/ảnh thật của bạn -->
+        <img src="assets/images/logo-footer.png" alt="logo">
+        <p data-i18n="footer.desc">Sales Specialist representing a reputable tech company with 15+ years of experience
+          consulting and demoing technology
+          solutions for B2B enterprises in Ho Chi Minh City and nationwide. Specializing in: Custom Website Design,
+          Hosting, Domain, Mail Server, Multi-industry Management Software.</p>
+      </div>
+      <div class="footer-right">
+        <address>
+          <p><i class="fa-solid fa-envelope footer-icon" aria-hidden="true"></i> <span
+              data-i18n="contact.email_label">Email:</span> <a
+              href="mailto:phuctoan4906@gmail.com">phuctoan4906@gmail.com</a></p>
+          <p><i class="fa-solid fa-phone footer-icon" aria-hidden="true"></i> <span
+              data-i18n="contact.phone_label">Phone / Zalo:</span> <a href="tel:+84913365842">0913.365.842</a></p>
+          <p><i class="fa-solid fa-location-dot footer-icon" aria-hidden="true"></i> <span
+              data-i18n="contact.address">Ho Chi Minh City, Vietnam</span></p>
+        </address>
+      </div>
+    </div>
+    <div class="copyright-notice">
+      <p data-i18n-html="footer.copyright">
+        &copy; <time datetime="2026">2026,</time>
+        All rights reserved by
+        <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">
+          Phuc Toan
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/banner.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/i18n.js"></script>
+  <!-- aos -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+
+</html>
