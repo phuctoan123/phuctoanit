@@ -239,7 +239,7 @@
         tagline: 'Tư vấn & demo giải pháp công nghệ – cầu nối giữa đội kỹ thuật và khách hàng doanh nghiệp.'
       },
       promo: {
-        heading: 'Đại diện công ty uy tín có <span class="bold">15+ năm kinh nghiệm</span> giải pháp công nghệ<span class="orange">.</span>',
+        heading: 'Đại diện công ty uy tín có <span class="bold">15+ năm kinh nghiệm</span> trong lĩnh vực công nghệ thông tin<span class="black">.</span>',
         sub: 'Thiết kế Website, Hosting, Domain, Mail Server & Phần mềm quản lý cho hộ kinh doanh, doanh nghiệp.'
       },
       about: {

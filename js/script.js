@@ -102,6 +102,7 @@ if (hamburger && mobileNavs) {
   var emailInput = document.getElementById('cf-email');
   var msgInput   = document.getElementById('cf-message');
   var VN_PHONE_RE = /^(0[3-9][0-9]{8})$/;
+  var syncSelectedServices = function() {};
 
   // ── Audio notification for successful submission ──
   var audioEl = document.getElementById('formSuccessAudio');
@@ -152,7 +153,34 @@ if (hamburger && mobileNavs) {
 
       // Cập nhật recap list ở Bước 3
       if (recapList) {
-        recapList.textContent = selected.length > 0 ? selected.join(' • ') : '—';
+        recapList.innerHTML = '';
+        if (selected.length === 0) {
+          var emptySpan = document.createElement('span');
+          emptySpan.className = 'recap-empty';
+          emptySpan.textContent = '—';
+          recapList.appendChild(emptySpan);
+        } else {
+          var ul = document.createElement('ul');
+          ul.className = 'recap-items';
+          selected.forEach(function(item) {
+            var li = document.createElement('li');
+            li.className = 'recap-item';
+
+            var plus = document.createElement('span');
+            plus.className = 'recap-plus';
+            plus.setAttribute('aria-hidden', 'true');
+            plus.textContent = '+';
+
+            var text = document.createElement('span');
+            text.className = 'recap-text';
+            text.textContent = item;
+
+            li.appendChild(plus);
+            li.appendChild(text);
+            ul.appendChild(li);
+          });
+          recapList.appendChild(ul);
+        }
       }
 
       // Ẩn lỗi nếu đã chọn ít nhất 1 dịch vụ

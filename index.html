@@ -68,8 +68,8 @@
       <!-- Language Switcher for Mobile Drawer -->
       <div class="lang-switcher-mobile" role="group" aria-label="Mobile Language selector">
         <span class="lang-label"><i class="fa-solid fa-globe" aria-hidden="true"></i> Language:</span>
-        <button type="button" class="lang-btn lang-btn--active" data-lang="en" aria-pressed="true">English (EN)</button>
-        <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false">Tiếng Việt (VI)</button>
+        <button type="button" class="lang-btn lang-btn--active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false">VI</button>
       </div>
     </div>
   </nav><!-- .site-header -->
@@ -486,20 +486,20 @@
               <a href="tel:+84913365842" class="contact-link">0913.365.842</a>
             </div>
           </div>
-          <div class="contact-info-item">
+          <!-- <div class="contact-info-item">
             <i class="fa-brands fa-linkedin contact-icon" aria-hidden="true"></i>
             <div class="contact-info-text">
               <span class="contact-label" data-i18n="contact.linkedin_label">LinkedIn:</span>
               <a href="https://www.linkedin.com/in/phuc-toan-0729732a2/" target="_blank" rel="noopener noreferrer"
                 class="contact-link">linkedin.com/in/phuc-toan-0729732a2</a>
             </div>
-          </div>
+          </div> -->
           <div class="contact-info-item">
             <i class="fa-solid fa-briefcase contact-icon" aria-hidden="true"></i>
             <div class="contact-info-text">
               <span class="contact-label">Website:</span>
-              <a href="https://phuctoanit.vercel.app/" target="_blank" rel="noopener noreferrer"
-                class="contact-link">phuctoanit.vercel.app</a>
+              <a href="https://phuctoanit.id.vn/" target="_blank" rel="noopener noreferrer"
+                class="contact-link">phuctoanit.id.vn</a>
             </div>
           </div>
           <div class="contact-info-item">
@@ -716,9 +716,11 @@
 
               <!-- Recap: Tóm tắt dịch vụ đã chọn -->
               <div class="selected-services-recap" id="servicesRecapBox">
-                <span class="recap-label"><i class="fa-solid fa-check-double" aria-hidden="true"></i> <span
-                    data-i18n="contact.recap_label">Giải pháp đã chọn:</span></span>
-                <span class="recap-list" id="servicesRecapList"></span>
+                <div class="recap-header">
+                  <span class="recap-label"><i class="fa-solid fa-check-double" aria-hidden="true"></i> <span
+                      data-i18n="contact.recap_label">Giải pháp đã chọn:</span></span>
+                </div>
+                <div class="recap-list" id="servicesRecapList"></div>
               </div>
 
               <!-- Message textarea -->
