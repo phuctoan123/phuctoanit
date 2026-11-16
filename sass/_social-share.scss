@@ -1,15 +1,64 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   FLOATING SOCIAL DOCK — Minimalist Glassmorphism & Spring Hover
+   FLOATING SOCIAL DOCK — Collapse/Expand + FAB Mobile
    ═══════════════════════════════════════════════════════════════════════════ */
-.floating-social-dock {
-  position: fixed;
-  z-index: 9999;
 
-  /* Desktop: Fixed on right edge, vertically centered */
-  right: 22px;
+/* ── WRAPPER (positions the whole unit) ────────────────────────────────── */
+.floating-dock-wrapper {
+  position: fixed;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
+  /* Slide transition when collapsing/expanding */
+  transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Collapsed: shift everything right so only the toggle tab peeks out */
+  &.collapsed {
+    transform: translateY(-50%) translateX(calc(100% - 36px));
+
+    .dock-toggle-btn i {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+/* ── DESKTOP COLLAPSE TOGGLE BUTTON ────────────────────────────────────── */
+.dock-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 56px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px 0 0 10px;
+  background: rgba(18, 18, 24, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: none;
+  color: rgba(203, 213, 225, 0.75);
+  font-size: 12px;
+  transition: color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+
+  i {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover {
+    background: rgba(127, 83, 172, 0.5);
+    color: #ffffff;
+  }
+}
+
+/* ── GLASSMORPHISM NAV CAPSULE ──────────────────────────────────────────── */
+.floating-social-dock {
   /* Glassmorphism Capsule Container */
   background: rgba(18, 18, 24, 0.72);
   backdrop-filter: blur(16px);
@@ -18,7 +67,6 @@
   border-radius: 9999px;
   padding: 10px 8px;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
 
   .dock-list {
     list-style: none;
@@ -54,10 +102,10 @@
 
     /* Spring elastic hover transition */
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background-color 0.3s ease,
-                color 0.25s ease,
-                box-shadow 0.35s ease,
-                border-color 0.3s ease;
+      background-color 0.3s ease,
+      color 0.25s ease,
+      box-shadow 0.35s ease,
+      border-color 0.3s ease;
 
     .zalo-icon {
       width: 21px;
@@ -132,6 +180,16 @@
       transform: scale(1.15);
       box-shadow: 0 8px 24px rgba(10, 102, 194, 0.55);
     }
+
+    /* TikTok: #010101 / #EE1D52 glow */
+    &.tiktok:hover,
+    &.tiktok.pulse-glow {
+      background: #010101;
+      border-color: #EE1D52;
+      color: #ffffff;
+      transform: scale(1.15);
+      box-shadow: 0 8px 24px rgba(238, 29, 82, 0.55);
+    }
   }
 
   /* ── TOOLTIP / LABEL PILL ──────────────────────────────────────────────── */
@@ -158,7 +216,7 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease,
-                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 
     /* Little pointer triangle pointing towards the icon */
     &::after {
@@ -178,68 +236,212 @@
     pointer-events: auto;
     transform: translateY(-50%) translateX(0);
   }
+}
 
-  /* ═════════════════════════════════════════════════════════════════════════
-     MOBILE RESPONSIVE: Horizontal Bottom Dock
-     ═════════════════════════════════════════════════════════════════════════ */
-  @media screen and (max-width: 767px) {
+/* ── FAB TRIGGER (mobile only — hidden on desktop) ─────────────────────── */
+.fab-trigger {
+  display: none;
+}
+
+/* ── MOBILE FAB (≤767px) ────────────────────────────────────────────────── */
+@media screen and (max-width: 767px) {
+
+  /* Reposition wrapper to bottom-right corner, ignore desktop centering */
+  .floating-dock-wrapper {
     top: auto;
-    bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
-    padding: 8px 12px;
-    max-width: 96vw;
+    bottom: 24px;
+    right: 20px;
+    transform: none !important;
+    /* override desktop translateY */
+    flex-direction: column-reverse;
+    /* FAB on bottom, icons above */
+    align-items: flex-end;
 
-    .dock-list {
-      flex-direction: row;
-      gap: 8px;
-    }
+    /* No slide-out collapse on mobile — handled by FAB */
+    &.collapsed {
+      transform: none !important;
 
-    .dock-link {
-      width: 40px;
-      height: 40px;
-      font-size: 17px;
-    }
-
-    /* On mobile, tooltip floats above instead of left */
-    .dock-label {
-      right: auto;
-      left: 50%;
-      top: auto;
-      bottom: 100%;
-      margin-right: 0;
-      margin-bottom: 12px;
-      transform: translateX(-50%) translateY(8px);
-
-      &::after {
-        left: 50%;
-        top: 100%;
-        transform: translateX(-50%);
-        border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent;
+      .dock-toggle-btn i {
+        transform: none;
       }
-    }
-
-    .dock-link:hover .dock-label {
-      transform: translateX(-50%) translateY(0);
     }
   }
 
-  @media screen and (max-width: 380px) {
-    padding: 6px 10px;
+  /* Hide desktop toggle tab on mobile */
+  .dock-toggle-btn {
+    display: none;
+  }
+
+  /* Social dock: stacked vertically above FAB, hidden by default */
+  .floating-social-dock {
+    border-radius: 24px;
+    padding: 10px 8px;
+    margin-bottom: 12px;
+
+    /* Hidden by default */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px) scale(0.95);
+    transform-origin: bottom right;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease,
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 
     .dock-list {
-      gap: 6px;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .dock-link {
-      width: 36px;
-      height: 36px;
-      font-size: 15px;
+      width: 46px;
+      height: 46px;
+      font-size: 18px;
+    }
+
+    /* Tooltip appears to the LEFT on mobile */
+    .dock-label {
+      right: 100%;
+      left: auto;
+      top: 50%;
+      bottom: auto;
+      margin-right: 12px;
+      margin-bottom: 0;
+      transform: translateY(-50%) translateX(8px);
+
+      &::after {
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        border-color: transparent transparent transparent rgba(15, 23, 42, 0.95);
+      }
+    }
+
+    .dock-link:hover .dock-label,
+    .dock-link:focus .dock-label {
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  /* When FAB is open — reveal the icons */
+  .floating-dock-wrapper.fab-open .floating-social-dock {
+    max-height: 480px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  /* FAB trigger button */
+  .fab-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative; /* needed for ::before / ::after sonar rings */
+
+    background: linear-gradient(135deg, #7f53ac 0%, #647dee 100%);
+    color: #ffffff;
+    font-size: 22px;
+    box-shadow: 0 6px 24px rgba(127, 83, 172, 0.55), 0 2px 8px rgba(0, 0, 0, 0.25);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.3s ease;
+
+    /* ── Sonar pulse rings ── */
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(127, 83, 172, 0.75);
+      animation: fab-sonar 2.4s ease-out infinite;
+      pointer-events: none;
+    }
+    &::after {
+      animation-delay: 1.2s;  /* 2nd ring staggered */
+    }
+
+    &:hover,
+    &:focus {
+      transform: scale(1.1);
+      box-shadow: 0 10px 32px rgba(127, 83, 172, 0.7);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    /* Icon states */
+    .fab-open-icon {
+      display: block;
+    }
+
+    .fab-close-icon {
+      display: none;
+    }
+  }
+
+  /* When open: swap icons + stop sonar */
+  .floating-dock-wrapper.fab-open .fab-trigger {
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+
+    &::before,
+    &::after {
+      animation: none;
+      opacity: 0;
+    }
+
+    .fab-open-icon {
+      display: none;
+    }
+
+    .fab-close-icon {
+      display: block;
     }
   }
 }
 
+/* ── Very small screens ─────────────────────────────────────────────────── */
+@media screen and (max-width: 380px) {
+  .floating-dock-wrapper {
+    bottom: 16px;
+    right: 14px;
+  }
+
+  .fab-trigger {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .floating-social-dock .dock-link {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+}
+
+/* ── KEYFRAMES ──────────────────────────────────────────────────────────── */
 @keyframes phone-wiggle {
-  0% { transform: rotate(-14deg); }
-  100% { transform: rotate(14deg); }
+  0% {
+    transform: rotate(-14deg);
+  }
+
+  100% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes fab-sonar {
+  0%   { transform: scale(1);    opacity: 0.75; }
+  70%  { transform: scale(1.9);  opacity: 0;    }
+  100% { transform: scale(1.9);  opacity: 0;    }
 }

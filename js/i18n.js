@@ -119,31 +119,56 @@
         item6: 'Manufacturing Industry Client'
       },
       testimonial: {
-        heading: 'Testimonial – What clients & colleagues say about me',
-        item1_quote: '[Testimonial quote from a client or colleague will be updated here.]',
-        item1_author: '—[Name], <cite>[Title, Company]</cite>',
-        item2_quote: '[Testimonial quote from a client or colleague will be updated here.]',
-        item2_author: '—[Name], <cite>[Title, Company]</cite>',
-        item3_quote: '[Testimonial quote from a client or colleague will be updated here.]',
-        item3_author: '—[Name], <cite>[Title, Company]</cite>',
-        item4_quote: '[Testimonial quote from a client or colleague will be updated here.]',
-        item4_author: '—[Name], <cite>[Title, Company]</cite>'
+        heading: 'What Clients & Colleagues Say About Me',
+
+        item1_quote: 'Phuc Toan has a good ability to listen and understand customer needs. He takes the initiative to explore problems and propose solutions that align with real-world requirements.',
+        item1_author: '— Mrs.Minh, <cite>Colleague</cite>',
+
+        item2_quote: 'Throughout our collaboration, Toan has demonstrated a strong sense of responsibility, proactiveness, and the ability to bridge communication between clients and technical teams to keep projects on track.',
+        item2_author: '— Ms.Lan, <cite>Project Manager</cite>',
+
+        item3_quote: 'Toan is detail-oriented, knows how to ask the right questions to clarify requirements, and communicates solutions in an easy-to-understand way. These are valuable strengths in client consulting.',
+        item3_author: '— Ms.Diep, <cite>Business Client</cite>',
+
+        item4_quote: 'Toan is eager to learn, analytical, and always open to feedback. He demonstrates a growth mindset and adapts well to different working environments.',
+        item4_author: '— Ms.Hoa, <cite>Colleague</cite>'
       },
       pricing: {
         heading: 'Collaboration Options',
-        sub: 'I support businesses from the need-discovery phase to real-world implementation. Contact me so we can discuss together!',
-        item1_title: 'Quick 30-Minute Demo',
-        item1_price: 'Free',
-        item1_desc: 'Overview of the solution, answering technical questions – no commitment, no charge. Perfect for initial exploration.',
-        item1_cta: 'Contact',
-        item2_title: 'In-Depth Solution Consulting',
-        item2_price: 'On Request',
-        item2_desc: 'Business problem analysis, suitable solution design, proposal drafting, and option comparison – aligned with real business needs.',
-        item2_cta: 'Contact',
-        item3_title: 'Proof of Concept (POC)',
-        item3_price: 'On Request',
-        item3_desc: 'Setting up a real test environment to validate the solution before making a formal investment decision.',
-        item3_cta: 'Contact'
+        sub: 'Flexible to match your business needs and scale – from initial technical feasibility to complete delivery and long-term partnership.',
+        audience_label: 'Best suited for:',
+        benefits_label: 'Key benefits:',
+
+        // Model 1: End-to-End Turnkey Project
+        item1_badge: 'A - Z Delivery',
+        item1_title: 'End-to-End Project',
+        item1_tagline: 'Custom design & development for websites and web apps from initial concept to full operational handover.',
+        item1_audience: 'SMEs, business owners, and startups looking to build or revamp their website, sales portal, or service platform.',
+        item1_b1: 'Direct single point of contact: straightforward tech & business discussions without middle layers.',
+        item1_b2: 'Complete A-Z handover: custom UX/UI design, SEO-optimized, 100% source code ownership.',
+        item1_b3: 'Committed timeline & budget: transparent pricing from day one with zero hidden costs.',
+        item1_cta: 'Get Project Quote',
+
+        // Model 2: Solution Consulting & Demo / POC (Featured)
+        featured_ribbon: 'Most Popular',
+        item2_badge: 'Validate Before Investing',
+        item2_title: 'Solution Consulting & POC Demo',
+        item2_tagline: 'Technical problem analysis, architecture consulting, and building a live working prototype (POC) before major commitment.',
+        item2_audience: 'Enterprises with complex workflows (retail chains, F&B, logistics) or digital transformation projects testing feasibility and budget.',
+        item2_b1: 'Real-world experience before spending: test and interact with a prototype modeled on your actual operations.',
+        item2_b2: 'Budget optimization: objective build vs. buy analysis to prevent wasted capital on redundant features.',
+        item2_b3: 'Clear technology roadmap: detailed architecture and proposal documentation with concrete comparisons.',
+        item2_cta: 'Book Consulting & Demo',
+
+        // Model 3: Maintenance & Dedicated Partnership
+        item3_badge: 'Dedicated & Long-term',
+        item3_title: 'Maintenance & Partnership',
+        item3_tagline: 'Long-term technical support, system security, daily backups, and ongoing feature updates for your web infrastructure.',
+        item3_audience: 'Businesses that already own websites, hosting, or software but lack in-house IT, needing a reliable "in-house engineer".',
+        item3_b1: '24/7 continuous operation: uptime monitoring, malware scanning, SSL renewals, and automated backups.',
+        item3_b2: 'Priority incident resolution: fast emergency response via Hotline/Zalo within 30-60 minutes.',
+        item3_b3: 'Flexible scalability: regular speed optimization, security patching, and new feature additions as you grow.',
+        item3_cta: 'Join Maintenance Partnership'
       },
       contact: {
         heading: 'Get in Touch',
@@ -172,26 +197,27 @@
         form_service_chip4: 'Enterprise Email Server',
         form_service_chip5: 'Management Software / Other',
         form_service_chip6: 'Software Outsourcing',
+        form_service_chip7: 'New to Websites / Need Consultation',
         /* ── Multi-Step Wizard Keys ── */
-        step1_title:        '1. Solutions',
-        step2_title:        '2. Contact Info',
-        step3_title:        '3. Request & Send',
-        step1_heading:      'Which technology solutions is your business looking for?',
-        step1_sub:          'Select one or more services below to receive the most tailored consultation.',
-        step1_err:          'Please select at least one solution / service to proceed.',
+        step1_title: '1. Solutions',
+        step2_title: '2. Contact Info',
+        step3_title: '3. Request & Send',
+        step1_heading: 'Which technology solutions is your business looking for?',
+        step1_sub: 'Select one or more services below to receive the most tailored consultation.',
+        step1_err: 'Please select at least one solution / service to proceed.',
         software_details_label: 'Industry or Team Size',
-        software_details_ph:    'E.g. Retail, F&B, Logistics, 10-30 employees...',
-        step2_heading:      'Contact Person & Business Details',
-        step2_sub:          'Sales Engineer Phuc Toan will reach out directly for confidential technical discussion.',
-        step3_heading:      'Describe Your Technical Requirements',
-        step3_sub:          'Share your goals, estimated budget, or desired deployment timeline.',
-        recap_label:        'Selected Solutions:',
-        btn_next:           'Continue',
-        btn_back:           'Back',
-        btn_zalo_quick:     'Direct Zalo Chat (0913.365.842)',
-        trust_commitment:   'Absolute Data Privacy • Guaranteed Technical Response within 30 Working Minutes.',
-        success_title:      'Consultation Request Recorded Successfully!',
-        btn_reset_form:     'Submit Another Request',
+        software_details_ph: 'E.g. Retail, F&B, Logistics, 10-30 employees...',
+        step2_heading: 'Contact Person & Business Details',
+        step2_sub: 'Sales Engineer Phuc Toan will reach out directly for confidential technical discussion.',
+        step3_heading: 'Describe Your Technical Requirements',
+        step3_sub: 'Share your goals, estimated budget, or desired deployment timeline.',
+        recap_label: 'Selected Solutions:',
+        btn_next: 'Continue',
+        btn_back: 'Back',
+        btn_zalo_quick: 'Direct Zalo Chat (0913.365.842)',
+        trust_commitment: 'Absolute Data Privacy • Guaranteed Technical Response within 30 Working Minutes.',
+        success_title: 'Consultation Request Recorded Successfully!',
+        btn_reset_form: 'Submit Another Request',
         form_service_opt0: '-- Select a service --',
         form_service_opt1: 'Website Design',
         form_service_opt2: 'Web Hosting',
@@ -207,15 +233,15 @@
       },
       footer: {
         desc: 'Sales Specialist representing a reputable technology company with 15+ years of experience consulting and demoing technology solutions for B2B enterprises in Ho Chi Minh City and nationwide. Specializing in: Custom Website Design, Hosting, Domain, Mail Server, Multi-industry Management Software.',
-        copyright: '&copy; <time datetime="2026">2026,</time> All rights reserved by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
+        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
       }
     },
 
     // ── VIETNAMESE (TIẾNG VIỆT) ──────────────────────────────────────────────
     vi: {
       meta: {
-        title: 'Phúc Toàn – Website',
-        og_title: 'Phúc Toàn – Website',
+        title: 'Nguyễn Phúc Toàn – Kỹ sư Giải pháp',
+        og_title: 'Nguyễn Phúc Toàn – Kỹ sư Giải pháp',
         description: 'Sales Specialist đại diện công ty công nghệ uy tín có 15+ năm kinh nghiệm hỗ trợ demo, tư vấn giải pháp công nghệ – Website, Hosting, Domain, Mail Server, Phần mềm quản lý – cho doanh nghiệp B2B tại TP.HCM và toàn quốc.'
       },
       nav: {
@@ -239,7 +265,7 @@
         tagline: 'Tư vấn & demo giải pháp công nghệ – cầu nối giữa đội kỹ thuật và khách hàng doanh nghiệp.'
       },
       promo: {
-        heading: 'Đại diện công ty uy tín có <span class="bold">15+ năm kinh nghiệm</span> trong lĩnh vực công nghệ thông tin<span class="black">.</span>',
+        heading: 'Đại diện công ty uy tín có <span class="bold">15+ năm kinh nghiệm</span> giải pháp công nghệ<span class="orange">.</span>',
         sub: 'Thiết kế Website, Hosting, Domain, Mail Server & Phần mềm quản lý cho hộ kinh doanh, doanh nghiệp.'
       },
       about: {
@@ -314,31 +340,56 @@
         item6: 'Khách hàng ngành Sản xuất'
       },
       testimonial: {
-        heading: 'Testimonial – Khách hàng & đồng nghiệp nói gì về tôi',
-        item1_quote: '[Trích dẫn nhận xét từ khách hàng hoặc đồng nghiệp sẽ được cập nhật tại đây.]',
-        item1_author: '—[Tên người], <cite>[Chức danh, Công ty]</cite>',
-        item2_quote: '[Trích dẫn nhận xét từ khách hàng hoặc đồng nghiệp sẽ được cập nhật tại đây.]',
-        item2_author: '—[Tên người], <cite>[Chức danh, Công ty]</cite>',
-        item3_quote: '[Trích dẫn nhận xét từ khách hàng hoặc đồng nghiệp sẽ được cập nhật tại đây.]',
-        item3_author: '—[Tên người], <cite>[Chức danh, Công ty]</cite>',
-        item4_quote: '[Trích dẫn nhận xét từ khách hàng hoặc đồng nghiệp sẽ được cập nhật tại đây.]',
-        item4_author: '—[Tên người], <cite>[Chức danh, Công ty]</cite>'
+        heading: 'Khách hàng & đồng nghiệp nói gì về tôi',
+
+        item1_quote: 'Phúc Toàn có khả năng lắng nghe và nắm bắt nhu cầu khách hàng khá tốt. Luôn chủ động tìm hiểu vấn đề và đưa ra những đề xuất phù hợp với yêu cầu thực tế.',
+        item1_author: '— Anh Minh, <cite>Đồng nghiệp</cite>',
+
+        item2_quote: 'Trong quá trình làm việc, Toàn thể hiện sự trách nhiệm, chủ động và có khả năng kết nối giữa khách hàng với đội ngũ kỹ thuật để đảm bảo công việc được triển khai đúng hướng.',
+        item2_author: '— Chị Lan, <cite>Quản lý dự án</cite>',
+
+        item3_quote: 'Toàn làm việc khá chỉn chu, biết cách đặt câu hỏi để làm rõ nhu cầu và trình bày giải pháp một cách dễ hiểu. Đây là điểm mạnh trong quá trình tư vấn khách hàng.',
+        item3_author: '— Chị Điệp, <cite>Khách hàng doanh nghiệp</cite>',
+
+        item4_quote: 'Một người ham học hỏi, có tư duy phân tích và luôn sẵn sàng tiếp nhận những ý kiến đóng góp. Toàn có tinh thần cầu tiến và khả năng thích nghi tốt với môi trường làm việc.',
+        item4_author: '— Chú Hòa, <cite>Đồng nghiệp</cite>'
       },
       pricing: {
         heading: 'Hình thức hợp tác',
-        sub: 'Tôi hỗ trợ doanh nghiệp từ bước khám phá nhu cầu đến triển khai thực tế. Hãy liên hệ để chúng ta cùng trao đổi!',
-        item1_title: 'Demo nhanh 30 phút',
-        item1_price: 'Miễn phí',
-        item1_desc: 'Trình bày tổng quan giải pháp, trả lời câu hỏi kỹ thuật – không ràng buộc, không tốn phí. Phù hợp để khám phá ban đầu.',
-        item1_cta: 'Liên hệ',
-        item2_title: 'Tư vấn giải pháp chuyên sâu',
-        item2_price: 'Theo yêu cầu',
-        item2_desc: 'Phân tích bài toán nghiệp vụ, thiết kế giải pháp phù hợp, lập proposal và so sánh phương án – sát với thực tế doanh nghiệp.',
-        item2_cta: 'Liên hệ',
-        item3_title: 'Proof of Concept (POC)',
-        item3_price: 'Theo yêu cầu',
-        item3_desc: 'Dựng môi trường thử nghiệm thực tế, kiểm chứng giải pháp trước khi ra quyết định đầu tư chính thức.',
-        item3_cta: 'Liên hệ'
+        sub: 'Linh hoạt theo nhu cầu và quy mô thực tế của doanh nghiệp – từ khảo sát bài toán ban đầu đến triển khai và đồng hành dài hạn.',
+        audience_label: 'Phù hợp nhất với:',
+        benefits_label: 'Giá trị nhận được:',
+
+        // Model 1: Dự án trọn gói
+        item1_badge: 'Triển khai A - Z',
+        item1_title: 'Dự án trọn gói',
+        item1_tagline: 'Thiết kế & phát triển website, ứng dụng chuẩn chỉnh từ ý tưởng sơ khởi đến khi bàn giao vận hành thực tế.',
+        item1_audience: 'Doanh nghiệp SME, chủ kinh doanh, startup cần xây mới hoặc nâng cấp toàn diện website, phần mềm bán hàng hay cổng dịch vụ.',
+        item1_b1: 'Làm việc trực tiếp 1 đầu mối: trao đổi kỹ thuật & kinh doanh thẳng thắn, không qua trung gian.',
+        item1_b2: 'Bàn giao trọn gói A-Z: giao diện độc quyền chuẩn UX/UI, tối ưu SEO, bàn giao 100% mã nguồn.',
+        item1_b3: 'Cam kết tiến độ & ngân sách: báo giá minh bạch ngay từ đầu, không phát sinh chi phí ẩn.',
+        item1_cta: 'Nhận báo giá dự án',
+
+        // Model 2: Tư vấn giải pháp & Dựng Demo / POC (Nổi bật)
+        featured_ribbon: 'Được chọn nhiều nhất',
+        item2_badge: 'Kiểm chứng trước khi đầu tư',
+        item2_title: 'Tư vấn giải pháp & Dựng Demo / POC',
+        item2_tagline: 'Khảo sát bài toán kỹ thuật, tư vấn kiến trúc và dựng môi trường chạy thử nghiệm (POC) trước khi ra quyết định đầu tư lớn.',
+        item2_audience: 'Doanh nghiệp có bài toán quản lý, chuỗi bán lẻ, F&B, logistics hoặc chuyển đổi số cần kiểm chứng tính khả thi và chi phí.',
+        item2_b1: 'Trải nghiệm thực tế trước khi chi tiền: thao tác thử trên hệ thống mẫu sát với luồng vận hành thực.',
+        item2_b2: 'Tối ưu hóa ngân sách: tư vấn phương án nên tự xây hay mua sẵn, tránh lãng phí vào tính năng thừa.',
+        item2_b3: 'Lộ trình triển khai rõ ràng: tài liệu đề xuất giải pháp (Architecture & Proposal) chi tiết, minh bạch.',
+        item2_cta: 'Đặt lịch tư vấn giải pháp',
+
+        // Model 3: Hợp tác đồng hành & Bảo trì hệ thống
+        item3_badge: 'Dài hạn & Vững tâm',
+        item3_title: 'Đồng hành & Bảo trì hệ thống',
+        item3_tagline: 'Hỗ trợ kỹ thuật dài hạn, bảo mật, sao lưu định kỳ và nâng cấp tính năng liên tục cho website & hạ tầng của bạn.',
+        item3_audience: 'Doanh nghiệp đã có website, hosting, mail server hoặc phần mềm nhưng không có đội IT nội bộ, cần một "Kỹ sư công nghệ ruột".',
+        item3_b1: 'Vận hành liên tục 24/7: giám sát Uptime, quét mã độc, gia hạn tên miền/SSL và sao lưu dữ liệu tự động.',
+        item3_b2: 'Xử lý sự cố ưu tiên: hỗ trợ kỹ thuật trực tiếp qua Hotline/Zalo, cam kết phản hồi và xử lý nhanh chóng.',
+        item3_b3: 'Nâng cấp linh hoạt: tối ưu tốc độ tải trang, cập nhật bảo mật và bổ sung tính năng theo đà tăng trưởng.',
+        item3_cta: 'Đăng ký bảo trì & Đồng hành'
       },
       contact: {
         heading: 'Liên hệ trao đổi',
@@ -367,42 +418,43 @@
         form_service_chip4: 'Email Server Doanh nghiệp',
         form_service_chip5: 'Phần mềm quản lý / Khác',
         form_service_chip6: 'Dịch vụ phát triển phần mềm theo yêu cầu',
+        form_service_chip7: 'Tôi chưa biết gì về Website',
         /* ── Multi-Step Wizard Keys ── */
-        step1_title:        '1. Chọn giải pháp',
-        step2_title:        '2. Thông tin liên hệ',
-        step3_title:        '3. Yêu cầu & Gửi',
-        step1_heading:      'Doanh nghiệp của bạn đang quan tâm đến giải pháp nào?',
-        step1_sub:          'Chọn một hoặc nhiều dịch vụ bên dưới để nhận tư vấn phù hợp nhất.',
-        step1_err:          'Vui lòng chọn ít nhất một giải pháp / dịch vụ để tiếp tục.',
+        step1_title: '1. Chọn giải pháp',
+        step2_title: '2. Thông tin liên hệ',
+        step3_title: '3. Yêu cầu & Gửi',
+        step1_heading: 'Doanh nghiệp của bạn đang quan tâm đến giải pháp nào?',
+        step1_sub: 'Chọn một hoặc nhiều dịch vụ bên dưới để nhận tư vấn phù hợp nhất.',
+        step1_err: 'Vui lòng chọn ít nhất một giải pháp / dịch vụ để tiếp tục.',
         software_details_label: 'Ngành nghề kinh doanh hoặc quy mô nhân sự',
-        software_details_ph:    'VD: Bán lẻ, F&B, Logistics, 10-30 nhân sự...',
-        step2_heading:      'Thông tin người liên hệ & Doanh nghiệp',
-        step2_sub:          'Kỹ sư Phúc Toàn sẽ liên hệ trực tiếp để trao đổi kỹ thuật chuyên sâu và bảo mật thông tin.',
-        step3_heading:      'Mô tả chi tiết bài toán kỹ thuật của bạn',
-        step3_sub:          'Chia sẻ mục tiêu, ngân sách dự kiến hoặc thời gian bạn muốn triển khai để có giải pháp chính xác nhất.',
-        recap_label:        'Giải pháp đã chọn:',
-        btn_next:           'Tiếp tục',
-        btn_back:           'Quay lại',
-        btn_zalo_quick:     'Chat Zalo trực tiếp ngay (0913.365.842)',
-        trust_commitment:   'Bảo mật thông tin tuyệt đối • Cam kết phản hồi tư vấn kỹ thuật trong vòng 30 phút làm việc.',
-        success_title:      'Yêu cầu tư vấn đã được ghi nhận thành công!',
-        btn_reset_form:     'Gửi thêm yêu cầu khác',
-        form_service_opt0:  '-- Chọn dịch vụ --',
-        form_service_opt1:  'Thiết kế Website',
-        form_service_opt2:  'Web Hosting',
-        form_service_opt3:  'Domain',
-        form_service_opt4:  'Email Server',
-        form_service_opt5:  'Giải pháp phần mềm / Khác',
-        form_msg_label:     'Nội dung trao đổi / Yêu cầu cụ thể',
-        form_msg_ph:        'Mô tả nhu cầu, vấn đề bạn đang gặp phải hoặc để trống',
-        form_msg_err:       'Vui lòng nhập nội dung cần trao đổi.',
-        form_submit:        'GỬI YÊU CẦU',
-        form_sending:       'Đang gửi...',
-        form_success:       'Cảm ơn anh/chị đã gửi yêu cầu! Phúc Toàn sẽ liên hệ lại cho anh chị trong thời gian sớm nhất.'
+        software_details_ph: 'VD: Bán lẻ, F&B, Logistics, 10-30 nhân sự...',
+        step2_heading: 'Thông tin người liên hệ & Doanh nghiệp',
+        step2_sub: 'Kỹ sư Phúc Toàn sẽ liên hệ trực tiếp để trao đổi kỹ thuật chuyên sâu và bảo mật thông tin.',
+        step3_heading: 'Mô tả chi tiết bài toán kỹ thuật của bạn',
+        step3_sub: 'Chia sẻ mục tiêu, ngân sách dự kiến hoặc thời gian bạn muốn triển khai để có giải pháp chính xác nhất.',
+        recap_label: 'Giải pháp đã chọn:',
+        btn_next: 'Tiếp tục',
+        btn_back: 'Quay lại',
+        btn_zalo_quick: 'Chat Zalo trực tiếp ngay (0913.365.842)',
+        trust_commitment: 'Bảo mật thông tin tuyệt đối • Cam kết phản hồi tư vấn kỹ thuật trong vòng 30 phút làm việc.',
+        success_title: 'Yêu cầu tư vấn đã được ghi nhận thành công!',
+        btn_reset_form: 'Gửi thêm yêu cầu khác',
+        form_service_opt0: '-- Chọn dịch vụ --',
+        form_service_opt1: 'Thiết kế Website',
+        form_service_opt2: 'Web Hosting',
+        form_service_opt3: 'Domain',
+        form_service_opt4: 'Email Server',
+        form_service_opt5: 'Giải pháp phần mềm / Khác',
+        form_msg_label: 'Nội dung trao đổi / Yêu cầu cụ thể',
+        form_msg_ph: 'Mô tả nhu cầu, vấn đề bạn đang gặp phải hoặc để trống',
+        form_msg_err: 'Vui lòng nhập nội dung cần trao đổi.',
+        form_submit: 'GỬI YÊU CẦU',
+        form_sending: 'Đang gửi...',
+        form_success: 'Cảm ơn anh/chị đã yêu cầu! Phúc Toàn sẽ liên hệ lại trong thời gian sớm nhất.'
       },
       footer: {
         desc: 'Sales Specialist đại diện cho công ty công nghệ uy tín có hơn 15 năm kinh nghiệm tư vấn và demo giải pháp công nghệ cho doanh nghiệp B2B tại TP. Hồ Chí Minh và toàn quốc. Chuyên sâu: Thiết kế Website theo yêu cầu, Hosting, Domain, Mail Server, Phần mềm quản lý đa ngành nghề.',
-        copyright: '&copy; <time datetime="2026">2026,</time> All rights reserved by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
+        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
       }
     }
 

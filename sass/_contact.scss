@@ -527,6 +527,10 @@
     transition: color 0.2s ease, transform 0.2s ease;
   }
 
+  &--starter .chip-icon {
+    color: #ff5100;
+  }
+
   .chip-check {
     font-size: 0.78rem;
     max-width: 0;
@@ -608,14 +612,18 @@
 
 // ── Step 3 Recap Box
 .selected-services-recap {
-  padding: 12px 18px;
+  padding: 14px 18px;
   background: #faf5ff;
   border: 1px solid rgba(153, 33, 232, 0.2);
   border-radius: 12px;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 12px;
+  flex-direction: column;
+  gap: 10px;
+
+  .recap-header {
+    display: flex;
+    align-items: center;
+  }
 
   .recap-label {
     font-size: 0.82rem;
@@ -632,6 +640,52 @@
     font-size: 0.92rem;
     font-weight: 600;
     color: #1f2937;
+  }
+
+  .recap-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .recap-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: #2d3748;
+    line-height: 1.4;
+
+    .recap-plus {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(127, 83, 172, 0.12);
+      border: 1px solid rgba(127, 83, 172, 0.3);
+      color: #7f53ac;
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .recap-text {
+      flex: 1;
+    }
+  }
+
+  .recap-empty {
+    color: #9ca3af;
+    font-style: italic;
+    font-weight: 500;
   }
 }
 

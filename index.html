@@ -345,7 +345,7 @@
   </section><!-- #service -->
 
   <section id="portfolio">
-    <h2 class="center" data-i18n="portfolio.heading">Case Studies – Featured Projects</h2>
+    <h2 class="center" data-i18n="portfolio.heading">Featured Projects</h2>
     <div class="content portfolio--content">
       <div class="item">
         <!-- TODO: Thay project-one.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
@@ -427,35 +427,97 @@
   </section><!-- testimonial -->
 
   <section id="pricing" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="50">
-    <h2 class="center" data-i18n="pricing.heading">Collaboration Options</h2>
-    <p class="center" data-i18n="pricing.sub">I support businesses from the need-discovery phase to real-world
-      implementation. Contact me so we can discuss together!</p>
-    <div class="pricing--content">
-      <div class="item">
-        <div class="feature-icon"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i></div>
-        <h3 data-i18n="pricing.item1_title">Quick 30-Minute Demo</h3>
-        <p class="price" data-i18n="pricing.item1_price">Free</p>
-        <p class="description" data-i18n="pricing.item1_desc">Overview of the solution, answering technical questions –
-          no commitment, no charge. Perfect for initial exploration.</p>
-        <a href="#contact" data-i18n="pricing.item1_cta">Contact</a>
-      </div><!-- item -->
-      <div class="item">
-        <div class="feature-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
-        <h3 data-i18n="pricing.item2_title">In-Depth Solution Consulting</h3>
-        <p class="price" data-i18n="pricing.item2_price">On Request</p>
-        <p class="description" data-i18n="pricing.item2_desc">Business problem analysis, suitable solution design,
-          proposal drafting, and option comparison – aligned with real business needs.</p>
-        <a href="#contact" data-i18n="pricing.item2_cta">Contact</a>
-      </div><!-- item -->
-      <div class="item">
-        <div class="feature-icon"><i class="fa-solid fa-vial-circle-check" aria-hidden="true"></i></div>
-        <h3 data-i18n="pricing.item3_title">Proof of Concept (POC)</h3>
-        <p class="price" data-i18n="pricing.item3_price">On Request</p>
-        <p class="description" data-i18n="pricing.item3_desc">Setting up a real test environment to validate the
-          solution before making a formal investment decision.</p>
-        <a href="#contact" data-i18n="pricing.item3_cta">Contact</a>
-      </div><!-- item -->
-    </div><!-- pricing--content -->
+    <div class="content">
+      <h2 class="center" data-i18n="pricing.heading">Collaboration Options</h2>
+      <p class="center pricing-sub" data-i18n="pricing.sub">Flexible to match your business needs and scale – from initial technical feasibility to complete delivery and long-term partnership.</p>
+      
+      <div class="pricing--content">
+        <!-- ── Model 1: Dự án trọn gói ── -->
+        <div class="pricing-card item" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-badge" data-i18n="pricing.item1_badge">A - Z Delivery</div>
+          <div class="card-icon-wrap">
+            <i class="fa-solid fa-rocket feature-icon" aria-hidden="true"></i>
+          </div>
+          <h3 class="card-title" data-i18n="pricing.item1_title">End-to-End Project</h3>
+          <p class="card-tagline" data-i18n="pricing.item1_tagline">Custom design &amp; development for websites and web apps from initial concept to full operational handover.</p>
+          
+          <div class="card-section">
+            <h4 class="section-title"><i class="fa-solid fa-users-viewfinder" aria-hidden="true"></i> <span data-i18n="pricing.audience_label">Best suited for:</span></h4>
+            <p class="audience-desc" data-i18n="pricing.item1_audience">SMEs, business owners, and startups looking to build or revamp their website, sales portal, or service platform.</p>
+          </div>
+
+          <div class="card-section card-section--benefits">
+            <h4 class="section-title"><i class="fa-solid fa-star" aria-hidden="true"></i> <span data-i18n="pricing.benefits_label">Key benefits:</span></h4>
+            <ul class="benefits-list">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item1_b1">Direct single point of contact: straightforward tech &amp; business discussions without middle layers.</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item1_b2">Complete A-Z handover: custom UX/UI design, SEO-optimized, 100% source code ownership.</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item1_b3">Committed timeline &amp; budget: transparent pricing from day one with zero hidden costs.</span></li>
+            </ul>
+          </div>
+
+          <div class="card-footer">
+            <a href="#contact" class="pricing-cta-btn" data-i18n="pricing.item1_cta">Get Project Quote</a>
+          </div>
+        </div>
+
+        <!-- ── Model 2: Tư vấn giải pháp & Dựng Demo / POC (Nổi bật) ── -->
+        <div class="pricing-card pricing-card--featured item" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-ribbon" data-i18n="pricing.featured_ribbon">Most Popular</div>
+          <div class="card-badge" data-i18n="pricing.item2_badge">Validate Before Investing</div>
+          <div class="card-icon-wrap">
+            <i class="fa-solid fa-flask feature-icon" aria-hidden="true"></i>
+          </div>
+          <h3 class="card-title" data-i18n="pricing.item2_title">Solution Consulting &amp; POC Demo</h3>
+          <p class="card-tagline" data-i18n="pricing.item2_tagline">Technical problem analysis, architecture consulting, and building a live working prototype (POC) before major commitment.</p>
+          
+          <div class="card-section">
+            <h4 class="section-title"><i class="fa-solid fa-users-viewfinder" aria-hidden="true"></i> <span data-i18n="pricing.audience_label">Best suited for:</span></h4>
+            <p class="audience-desc" data-i18n="pricing.item2_audience">Enterprises with complex workflows (retail chains, F&amp;B, logistics) or digital transformation projects testing feasibility and budget.</p>
+          </div>
+
+          <div class="card-section card-section--benefits">
+            <h4 class="section-title"><i class="fa-solid fa-star" aria-hidden="true"></i> <span data-i18n="pricing.benefits_label">Key benefits:</span></h4>
+            <ul class="benefits-list">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item2_b1">Real-world experience before spending: test and interact with a prototype modeled on your actual operations.</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item2_b2">Budget optimization: objective build vs. buy analysis to prevent wasted capital on redundant features.</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item2_b3">Clear technology roadmap: detailed architecture and proposal documentation with concrete comparisons.</span></li>
+            </ul>
+          </div>
+
+          <div class="card-footer">
+            <a href="#contact" class="pricing-cta-btn pricing-cta-btn--primary" data-i18n="pricing.item2_cta">Book Consulting &amp; Demo</a>
+          </div>
+        </div>
+
+        <!-- ── Model 3: Hợp tác đồng hành & Bảo trì hệ thống ── -->
+        <div class="pricing-card item" data-aos="fade-up" data-aos-delay="300">
+          <div class="card-badge" data-i18n="pricing.item3_badge">Dedicated &amp; Long-term</div>
+          <div class="card-icon-wrap">
+            <i class="fa-solid fa-shield-halved feature-icon" aria-hidden="true"></i>
+          </div>
+          <h3 class="card-title" data-i18n="pricing.item3_title">Maintenance &amp; Partnership</h3>
+          <p class="card-tagline" data-i18n="pricing.item3_tagline">Long-term technical support, system security, daily backups, and ongoing feature updates for your web infrastructure.</p>
+          
+          <div class="card-section">
+            <h4 class="section-title"><i class="fa-solid fa-users-viewfinder" aria-hidden="true"></i> <span data-i18n="pricing.audience_label">Best suited for:</span></h4>
+            <p class="audience-desc" data-i18n="pricing.item3_audience">Businesses that already own websites, hosting, or software but lack in-house IT, needing a reliable &quot;in-house engineer&quot;.</p>
+          </div>
+
+          <div class="card-section card-section--benefits">
+            <h4 class="section-title"><i class="fa-solid fa-star" aria-hidden="true"></i> <span data-i18n="pricing.benefits_label">Key benefits:</span></h4>
+            <ul class="benefits-list">
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item3_b1">24/7 continuous operation: uptime monitoring, malware scanning, SSL renewals, and automated backups.</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item3_b2">Priority incident resolution: fast emergency response via Hotline/Zalo within 30-60 minutes.</span></li>
+              <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <span data-i18n="pricing.item3_b3">Flexible scalability: regular speed optimization, security patching, and new feature additions as you grow.</span></li>
+            </ul>
+          </div>
+
+          <div class="card-footer">
+            <a href="#contact" class="pricing-cta-btn" data-i18n="pricing.item3_cta">Join Maintenance Partnership</a>
+          </div>
+        </div>
+      </div><!-- pricing--content -->
+    </div>
   </section><!-- #pricing-->
 
   <section id="contact">
@@ -519,7 +581,7 @@
             <div class="form-success-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></div>
             <h3 class="form-success-title" data-i18n="contact.success_title">Yêu cầu tư vấn đã được ghi nhận thành công!
             </h3>
-            <p class="form-success-desc" data-i18n="contact.form_success">Cảm ơn bạn đã kết nối! Kỹ sư Phúc Toàn sẽ liên
+            <p class="form-success-desc" data-i18n="contact.form_success">Cảm ơn bạn đã kết nối! Phúc Toàn sẽ liên
               hệ lại qua điện thoại / Zalo trong vòng 30 phút làm việc.</p>
 
             <div class="success-contact-card">
@@ -624,6 +686,13 @@
                   <span class="chip-text" data-i18n="contact.form_service_chip6">Dịch vụ phát triển phần mềm</span>
                   <i class="fa-solid fa-check chip-check" aria-hidden="true"></i>
                 </button>
+
+                <button type="button" class="service-chip service-chip--starter" data-value="Tôi chưa biết gì về Website"
+                  aria-pressed="false">
+                  <i class="fa-solid fa-circle-question chip-icon" aria-hidden="true"></i>
+                  <span class="chip-text" data-i18n="contact.form_service_chip7">Tôi chưa biết gì về Website</span>
+                  <i class="fa-solid fa-check chip-check" aria-hidden="true"></i>
+                </button>
               </div>
 
               <!-- Tính năng động: Hiển thị khi người dùng chọn 'Phần mềm quản lý / Khác' -->
@@ -655,7 +724,7 @@
               <div class="panel-header">
                 <h3 class="panel-title" data-i18n="contact.step2_heading">Thông tin người liên hệ &amp; Doanh nghiệp
                 </h3>
-                <p class="panel-desc" data-i18n="contact.step2_sub">Kỹ sư Phúc Toàn sẽ liên hệ trực tiếp để trao đổi kỹ
+                <p class="panel-desc" data-i18n="contact.step2_sub">Phúc Toàn sẽ liên hệ trực tiếp để trao đổi kỹ
                   thuật chuyên sâu và bảo mật thông tin.</p>
               </div>
 
@@ -745,7 +814,7 @@
                 </button>
 
                 <a href="https://zalo.me/0913365842" target="_blank" rel="noopener noreferrer" class="btn-zalo-direct"
-                  aria-label="Chat Zalo trực tiếp ngay với Kỹ sư Phúc Toàn">
+                  aria-label="Chat Zalo trực tiếp ngay với Phúc Toàn">
                   <svg class="zalo-svg" viewBox="0 0 48 48" width="20" height="20" fill="currentColor"
                     aria-hidden="true">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -783,65 +852,89 @@
   </section>
 
   <!-- Floating Social Dock -->
-  <nav class="floating-social-dock" aria-label="Social quick links">
-    <ul class="dock-list">
-      <!-- Phone / Hotline -->
-      <li class="dock-item">
-        <a href="tel:0913365842" class="dock-link phone" aria-label="Gọi điện – 0913.365.842">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i>
-          <span class="dock-label">Tap to call: 0913.365.842</span>
-        </a>
-      </li>
+  <div class="floating-dock-wrapper" id="floatingDock">
 
-      <!-- Zalo -->
-      <li class="dock-item">
-        <a href="https://zalo.me/0913365842" class="dock-link zalo" target="_blank" rel="noopener noreferrer"
-          aria-label="Nhắn tin Zalo – Phuc Toan">
-          <svg class="zalo-icon" viewBox="0 0 48 48" width="22" height="22" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M24 4C12.954 4 4 12.059 4 22c0 5.86 3.167 11.048 8.167 14.398l-2.053 6.16a1 1 0 0 0 1.344 1.258l7.23-3.615C20.354 40.75 22.138 41 24 41c11.046 0 20-8.059 20-19S35.046 4 24 4zm-9 14h9.6l-8.6 10.8V30h11v-3.2h-7.6l8.6-10.8V15H15v3z" />
-          </svg>
-          <span class="dock-label">Add zalo</span>
-        </a>
-      </li>
+    <!-- Desktop: collapse/expand toggle tab -->
+    <button class="dock-toggle-btn" id="dockToggle" aria-label="Thu gọn thanh liên hệ" aria-expanded="true">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
 
-      <!-- Website Nasani -->
-      <li class="dock-item">
-        <a href="https://nasani.vn/" class="dock-link website nasani" target="_blank" rel="noopener noreferrer"
-          aria-label="Website Nasani – Công nghệ & Phần mềm">
-          <i class="fa-solid fa-globe" aria-hidden="true"></i>
-          <span class="dock-label">Website Nasani.vn</span>
-        </a>
-      </li>
+    <nav class="floating-social-dock" aria-label="Social quick links">
+      <ul class="dock-list">
+        <!-- Phone / Hotline -->
+        <li class="dock-item">
+          <a href="tel:0913365842" class="dock-link phone" aria-label="Gọi điện – 0913.365.842">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <span class="dock-label">Tap to call: 0913.365.842</span>
+          </a>
+        </li>
 
-      <!-- Facebook -->
-      <li class="dock-item">
-        <a href="https://www.facebook.com/phuctoansales" class="dock-link facebook" target="_blank"
-          rel="noopener noreferrer" aria-label="Facebook – Phuc Toan">
-          <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
-          <span class="dock-label">Facebook</span>
-        </a>
-      </li>
+        <!-- Zalo -->
+        <li class="dock-item">
+          <a href="https://zalo.me/0913365842" class="dock-link zalo" target="_blank" rel="noopener noreferrer"
+            aria-label="Nhắn tin Zalo – Phuc Toan">
+            <svg class="zalo-icon" viewBox="0 0 48 48" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M24 4C12.954 4 4 12.059 4 22c0 5.86 3.167 11.048 8.167 14.398l-2.053 6.16a1 1 0 0 0 1.344 1.258l7.23-3.615C20.354 40.75 22.138 41 24 41c11.046 0 20-8.059 20-19S35.046 4 24 4zm-9 14h9.6l-8.6 10.8V30h11v-3.2h-7.6l8.6-10.8V15H15v3z" />
+            </svg>
+            <span class="dock-label">Nhắn Zalo</span>
+          </a>
+        </li>
 
-      <!-- Instagram -->
-      <li class="dock-item">
-        <a href="https://www.instagram.com/phuctoansales" class="dock-link instagram" target="_blank"
-          rel="noopener noreferrer" aria-label="Instagram – Phuc Toan">
-          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-          <span class="dock-label">Instagram</span>
-        </a>
-      </li>
+        <!-- Website Nasani -->
+        <li class="dock-item">
+          <a href="https://nasani.vn/" class="dock-link website nasani" target="_blank" rel="noopener noreferrer"
+            aria-label="Website Nasani – Công nghệ & Phần mềm">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            <span class="dock-label">Nasani.vn</span>
+          </a>
+        </li>
 
-      <!-- LinkedIn -->
-      <li class="dock-item">
-        <a href="https://www.linkedin.com/in/phuc-toan-0729732a2/" class="dock-link linkedin" target="_blank"
-          rel="noopener noreferrer" aria-label="LinkedIn – Phuc Toan">
-          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-          <span class="dock-label">LinkedIn</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+        <!-- Facebook -->
+        <li class="dock-item">
+          <a href="https://www.facebook.com/phuctoansales" class="dock-link facebook" target="_blank"
+            rel="noopener noreferrer" aria-label="Facebook – Phuc Toan">
+            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            <span class="dock-label">Facebook</span>
+          </a>
+        </li>
+
+        <!-- Instagram -->
+        <li class="dock-item">
+          <a href="https://www.instagram.com/phuctoansales" class="dock-link instagram" target="_blank"
+            rel="noopener noreferrer" aria-label="Instagram – Phuc Toan">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            <span class="dock-label">Instagram</span>
+          </a>
+        </li>
+
+        <!-- LinkedIn -->
+        <li class="dock-item">
+          <a href="https://www.linkedin.com/in/phuc-toan-0729732a2/" class="dock-link linkedin" target="_blank"
+            rel="noopener noreferrer" aria-label="LinkedIn – Phuc Toan">
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            <span class="dock-label">LinkedIn</span>
+          </a>
+        </li>
+
+        <!-- TikTok -->
+        <li class="dock-item">
+          <a href="https://www.tiktok.com/@phuctoansales" class="dock-link tiktok" target="_blank"
+            rel="noopener noreferrer" aria-label="TikTok – Phuc Toan">
+            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+            <span class="dock-label">TikTok</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile FAB trigger (only visible on mobile ≤767px) -->
+    <button class="fab-trigger" id="fabTrigger" aria-label="Mở danh sách liên hệ" aria-expanded="false">
+      <i class="fa-solid fa-headset fab-open-icon" aria-hidden="true"></i>
+      <i class="fa-solid fa-xmark fab-close-icon" aria-hidden="true"></i>
+    </button>
+
+  </div><!-- /.floating-dock-wrapper -->
 
   <footer class="site-footer">
     <div class="content site-footer--content">
@@ -869,7 +962,7 @@
     </div>
     <div class="copyright-notice">
       <p data-i18n-html="footer.copyright">
-        &copy; <time datetime="2026">2026,</time>
+        Copyright &copy; <time datetime="2026">2026</time>
         All rights reserved by
         <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">
           Phuc Toan

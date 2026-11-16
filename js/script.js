@@ -140,7 +140,7 @@ if (hamburger && mobileNavs) {
   if (chipsWrapper && hiddenServiceInput) {
     var chips = chipsWrapper.querySelectorAll('.service-chip');
 
-    function syncSelectedServices() {
+    syncSelectedServices = function() {
       var selected = [];
       chips.forEach(function(chip) {
         if (chip.classList.contains('active')) {
@@ -414,6 +414,7 @@ if (hamburger && mobileNavs) {
       }
       if (hiddenServiceInput) hiddenServiceInput.value = '';
       if (step1Error) step1Error.hidden = true;
+      syncSelectedServices();
 
       submitBtn.disabled = false;
       submitBtn.classList.remove('is-loading');
@@ -433,7 +434,7 @@ if (hamburger && mobileNavs) {
 (function initSocialDockPulse() {
   const dock = document.querySelector('.floating-social-dock');
   if (!dock) return;
-  const links = dock.querySelectorAll('.dock-link');
+  const links = dock ? dock.querySelectorAll('.dock-link') : [];
   if (!links.length) return;
 
   let isHovered = false;
@@ -459,4 +460,54 @@ if (hamburger && mobileNavs) {
   // Chạy lần đầu sau 2.5 giây khi tải trang, sau đó lặp lại đều đặn mỗi 7 giây
   setTimeout(playSequentialGlow, 2500);
   setInterval(playSequentialGlow, 7000);
+})();
+
+/* ════════════════════════════════════════════════════════════════════════════
+   FLOATING DOCK — Collapse/Expand (desktop) + FAB toggle (mobile)
+   ════════════════════════════════════════════════════════════════════════════ */
+(function initFloatingDock() {
+  const wrapper    = document.getElementById('floatingDock');
+  const dockToggle = document.getElementById('dockToggle');   // desktop tab
+  const fabTrigger = document.getElementById('fabTrigger');   // mobile FAB
+  if (!wrapper) return;
+
+  /* ── DESKTOP: Collapse / Expand ── */
+  if (dockToggle) {
+    // Restore persisted state
+    if (localStorage.getItem('dockCollapsed') === '1') {
+      wrapper.classList.add('collapsed');
+      dockToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    dockToggle.addEventListener('click', function () {
+      var isCollapsed = wrapper.classList.toggle('collapsed');
+      dockToggle.setAttribute('aria-expanded', String(!isCollapsed));
+      localStorage.setItem('dockCollapsed', isCollapsed ? '1' : '0');
+    });
+  }
+
+  /* ── MOBILE: FAB toggle ── */
+  if (fabTrigger) {
+    fabTrigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = wrapper.classList.toggle('fab-open');
+      fabTrigger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!wrapper.contains(e.target) && wrapper.classList.contains('fab-open')) {
+        wrapper.classList.remove('fab-open');
+        fabTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && wrapper.classList.contains('fab-open')) {
+        wrapper.classList.remove('fab-open');
+        fabTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 })();
