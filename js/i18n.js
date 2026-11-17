@@ -28,10 +28,11 @@
         about: 'About Me',
         skills: 'Skills',
         services: 'Services',
-        portfolio: 'Case Studies',
+        portfolio: 'Projects',
         testimonial: 'Testimonial',
         pricing: 'Collaboration',
-        contact: 'Contact'
+        contact: 'Contact',
+        lang_label: '<i class="fa-solid fa-globe" aria-hidden="true"></i> Language:'
       },
       banner: {
         designation: 'Sales Engineer',
@@ -41,10 +42,12 @@
           'Pre-sales Specialist',
           'Tech Solutions Architect'
         ],
-        tagline: 'Consulting & demoing technology solutions – the bridge between tech teams and enterprise clients.'
+        tagline: 'Consulting & demoing technology solutions – the bridge between tech teams and enterprise clients.',
+        cta_portfolio: 'View Projects',
+        cta_contact: 'Send a Request'
       },
       promo: {
-        heading: 'Representing a reputable company with <span class="bold">15+ years of experience</span> in technology solutions<span class="orange">.</span>',
+        heading: 'Representing a reputable company with <span class="bold">15+ years of experience</span> in technology solutions<span class="black">.</span>',
         sub: 'Specializing in Custom Web Development, Hosting, Domain, Mail Server &amp; Enterprise Software for B2B.'
       },
       about: {
@@ -234,6 +237,11 @@
       footer: {
         desc: 'Sales Specialist representing a reputable technology company with 15+ years of experience consulting and demoing technology solutions for B2B enterprises in Ho Chi Minh City and nationwide. Specializing in: Custom Website Design, Hosting, Domain, Mail Server, Multi-industry Management Software.',
         copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
+      },
+      toast: {
+        title: 'Need a tech solution?',
+        sub: 'Response within 2 business hours.',
+        cta: 'Send now →'
       }
     },
 
@@ -252,20 +260,23 @@
         portfolio: 'Dự án',
         testimonial: 'Nhận xét',
         pricing: 'Hợp tác',
-        contact: 'Liên hệ'
+        contact: 'Liên hệ',
+        lang_label: '<i class="fa-solid fa-globe" aria-hidden="true"></i> Ngôn ngữ:'
       },
       banner: {
-        designation: 'Kỹ sư Giải pháp',
+        designation: 'Tư vấn Giải pháp',
         typed_strings: [
-          'Kỹ sư Giải pháp',
-          'Tư vấn Giải pháp CNTT',
-          'Chuyên gia Pre-sales',
-          'Kỹ sư Cầu nối Công nghệ'
+          'Tư vấn Giải pháp',
+          'Ứng dụng CNTT',
+          'Marketing online',
+          'Hỗ trợ chuyển đổi số'
         ],
-        tagline: 'Tư vấn & demo giải pháp công nghệ – cầu nối giữa đội kỹ thuật và khách hàng doanh nghiệp.'
+        tagline: 'Tư vấn & đề xuất giải pháp công nghệ – cầu nối giữa đội kỹ thuật và khách hàng doanh nghiệp.',
+        cta_portfolio: 'Xem dự án',
+        cta_contact: 'Gửi yêu cầu tư vấn'
       },
       promo: {
-        heading: 'Đại diện công ty uy tín có <span class="bold">15+ năm kinh nghiệm</span> giải pháp công nghệ<span class="orange">.</span>',
+        heading: 'Đại diện công ty uy tín có <span class="bold">15+ năm kinh nghiệm</span> giải pháp công nghệ<span class="black">.</span>',
         sub: 'Thiết kế Website, Hosting, Domain, Mail Server & Phần mềm quản lý cho hộ kinh doanh, doanh nghiệp.'
       },
       about: {
@@ -331,7 +342,7 @@
         item5_f4: 'Bảo hành & Hỗ trợ kỹ thuật 24/7'
       },
       portfolio: {
-        heading: 'Case Studies – Dự án tiêu biểu',
+        heading: 'Dự án tiêu biểu',
         item1: 'Khách hàng ngành Bán lẻ',
         item2: 'Khách hàng ngành F&B',
         item3: 'Khách hàng ngành Giáo dục',
@@ -455,6 +466,11 @@
       footer: {
         desc: 'Sales Specialist đại diện cho công ty công nghệ uy tín có hơn 15 năm kinh nghiệm tư vấn và demo giải pháp công nghệ cho doanh nghiệp B2B tại TP. Hồ Chí Minh và toàn quốc. Chuyên sâu: Thiết kế Website theo yêu cầu, Hosting, Domain, Mail Server, Phần mềm quản lý đa ngành nghề.',
         copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
+      },
+      toast: {
+        title: 'Bạn cần tư vấn giải pháp?',
+        sub: 'Phản hồi trong vòng 2 giờ làm việc.',
+        cta: 'Gửi ngay →'
       }
     }
 
@@ -584,15 +600,11 @@
   function init() {
     var supported = Object.keys(translations);
 
-    // Priority: localStorage → browser language → 'en'
+    // Priority: localStorage → 'vi' (mặc định website là Tiếng Việt)
     var saved = null;
     try { saved = localStorage.getItem('preferred-lang'); } catch (e) { }
 
-    var browser = ((navigator.language || navigator.userLanguage || '')).slice(0, 2).toLowerCase();
-
-    var initial = (saved && supported.indexOf(saved) !== -1)
-      ? saved
-      : (supported.indexOf(browser) !== -1 ? browser : 'en');
+    var initial = (saved && supported.indexOf(saved) !== -1) ? saved : 'vi';
 
     applyTranslations(initial);
 

@@ -511,3 +511,137 @@ if (hamburger && mobileNavs) {
     });
   }
 })();
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CTA TOAST — Smart notification (P2): shows once per session after 8s
+   ════════════════════════════════════════════════════════════════════════════ */
+(function initCtaToast() {
+  var STORAGE_KEY = 'ctaToastShown';
+  var DELAY_MS    = 8000;   // 8 seconds before showing
+  var AUTO_HIDE   = 12000;  // auto-dismiss after 12 seconds
+
+  // Only show once per session
+  if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+  var toast      = document.getElementById('ctaToast');
+  var closeBtn   = document.getElementById('ctaToastClose');
+  var ctaBtn     = document.getElementById('ctaToastBtn');
+  if (!toast) return;
+
+  var autoHideTimer = null;
+
+  function showToast() {
+    toast.hidden = false;
+    // Force reflow so transition triggers
+    toast.getBoundingClientRect();
+    toast.classList.add('is-visible');
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    autoHideTimer = setTimeout(hideToast, AUTO_HIDE);
+  }
+
+  function hideToast() {
+    clearTimeout(autoHideTimer);
+    toast.classList.add('is-hiding');
+    toast.classList.remove('is-visible');
+    setTimeout(function () {
+      toast.hidden = true;
+      toast.classList.remove('is-hiding');
+    }, 420);
+  }
+
+  // Show after delay
+  setTimeout(showToast, DELAY_MS);
+
+  // Close button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', hideToast);
+  }
+
+  // CTA button: hide toast after navigation
+  if (ctaBtn) {
+    ctaBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      hideToast();
+      var contactSection = document.getElementById('contact');
+      if (contactSection) {
+        if (typeof window.smoothScrollTo === 'function') {
+          window.smoothScrollTo(contactSection, -20, function () {
+            var firstInput = contactSection.querySelector('input:not([type=hidden]), textarea');
+            if (firstInput) firstInput.focus({ preventScroll: true });
+          });
+        } else {
+          contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  }
+})();
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SLOW SMOOTH SCROLL — Custom eased scroll for all #contact anchor links
+   Duration: 1200ms, easing: easeInOutCubic
+   ════════════════════════════════════════════════════════════════════════════ */
+(function initSlowSmoothScroll() {
+  var DURATION = 1200; // ms — điều chỉnh để cuộn nhanh/chậm hơn
+
+  /**
+   * Easing: easeInOutCubic
+   * t: 0→1, trả về giá trị 0→1 theo đường cong mượt
+   */
+  function easeInOutCubic(t) {
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  /**
+   * Scroll mượt chậm đến phần tử target
+   * @param {Element} target  - phần tử đích
+   * @param {number}  offset  - offset thêm (px, dương = cuộn thêm xuống)
+   * @param {Function} [onDone] - callback sau khi xong
+   */
+  function smoothScrollTo(target, offset, onDone) {
+    offset = offset || 0;
+    var startY  = window.pageYOffset;
+    var targetY = target.getBoundingClientRect().top + startY + offset;
+    var diff    = targetY - startY;
+    var startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var elapsed  = timestamp - startTime;
+      var progress = Math.min(elapsed / DURATION, 1);
+      var eased    = easeInOutCubic(progress);
+
+      window.scrollTo(0, startY + diff * eased);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else if (typeof onDone === 'function') {
+        onDone();
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  // Áp dụng cho tất cả anchor link trỏ đến #contact
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href="#contact"]');
+    if (!link) return;
+
+    var target = document.getElementById('contact');
+    if (!target) return;
+
+    e.preventDefault();
+    smoothScrollTo(target, -20, function () {
+      // Focus vào ô input đầu tiên sau khi scroll xong
+      var firstInput = target.querySelector('input:not([type=hidden]), textarea');
+      if (firstInput) firstInput.focus({ preventScroll: true });
+    });
+  });
+
+  // Expose để dùng ở nơi khác (toast CTA)
+  window.smoothScrollTo = smoothScrollTo;
+})();

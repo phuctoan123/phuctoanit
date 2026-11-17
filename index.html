@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8">
@@ -49,27 +49,27 @@
     <!-- Language Switcher — Header Topbar -->
     <div class="lang-switcher" role="group" aria-label="Language selector">
       <span class="lang-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
-      <button type="button" class="lang-btn lang-btn--active" data-lang="en" aria-pressed="true"
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false"
         title="English">EN</button>
       <span class="lang-sep" aria-hidden="true">|</span>
-      <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false" title="Tiếng Việt">VI</button>
+      <button type="button" class="lang-btn lang-btn--active" data-lang="vi" aria-pressed="true" title="Tiếng Việt">VI</button>
     </div>
     <div class="nav-links">
       <ul>
-        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-        <li><a href="#about" data-i18n="nav.about">About Me</a></li>
-        <li><a href="#skill" data-i18n="nav.skills">Skills</a></li>
-        <li><a href="#service" data-i18n="nav.services">Services</a></li>
-        <li><a href="#portfolio" data-i18n="nav.portfolio">Case Studies</a></li>
-        <li><a href="#testimonial" data-i18n="nav.testimonial">Testimonial</a></li>
-        <li><a href="#pricing" data-i18n="nav.pricing">Collaboration</a></li>
-        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="index.html" data-i18n="nav.home">Trang chủ</a></li>
+        <li><a href="#about" data-i18n="nav.about">Giới thiệu</a></li>
+        <li><a href="#skill" data-i18n="nav.skills">Kỹ năng</a></li>
+        <li><a href="#service" data-i18n="nav.services">Dịch vụ</a></li>
+        <li><a href="#portfolio" data-i18n="nav.portfolio">Dự án</a></li>
+        <li><a href="#testimonial" data-i18n="nav.testimonial">Nhận xét</a></li>
+        <li><a href="#pricing" data-i18n="nav.pricing">Hợp tác</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Liên hệ</a></li>
       </ul>
       <!-- Language Switcher for Mobile Drawer -->
       <div class="lang-switcher-mobile" role="group" aria-label="Mobile Language selector">
-        <span class="lang-label"><i class="fa-solid fa-globe" aria-hidden="true"></i> Language:</span>
-        <button type="button" class="lang-btn lang-btn--active" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false">VI</button>
+        <span class="lang-label" data-i18n-html="nav.lang_label"><i class="fa-solid fa-globe" aria-hidden="true"></i> Ngôn ngữ:</span>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang-btn lang-btn--active" data-lang="vi" aria-pressed="true">VI</button>
       </div>
     </div>
   </nav><!-- .site-header -->
@@ -85,6 +85,16 @@
           class="typed-cursor" aria-hidden="true">|</span></h1>
       <p class="tagline" data-i18n="banner.tagline">Consulting &amp; demoing technology solutions – the bridge between
         tech teams and enterprise clients.</p>
+        <div class="banner-cta-group">
+          <a href="#portfolio" class="banner-cta banner-cta--secondary" data-i18n="banner.cta_portfolio">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            Xem dự án
+          </a>
+          <a href="#contact" class="banner-cta banner-cta--primary" data-i18n="banner.cta_contact">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            Gửi yêu cầu tư vấn
+          </a>
+        </div>
     </div>
   </section><!-- .banner -->
 
@@ -980,6 +990,22 @@
   <script>
     AOS.init();
   </script>
+
+  <!-- Contact CTA Toast (P2) -->
+  <div class="cta-toast" id="ctaToast" role="dialog" aria-live="polite" aria-label="Gợi ý liên hệ" hidden>
+    <div class="cta-toast__icon">
+      <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+    </div>
+    <div class="cta-toast__body">
+      <p class="cta-toast__title" data-i18n="toast.title">Bạn cần tư vấn giải pháp?</p>
+      <p class="cta-toast__sub" data-i18n="toast.sub">Phản hồi trong vòng 2 giờ làm việc.</p>
+    </div>
+    <a href="#contact" class="cta-toast__btn" id="ctaToastBtn" data-i18n="toast.cta">Gửi ngay →</a>
+    <button class="cta-toast__close" id="ctaToastClose" aria-label="Đóng thông báo">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+
 </body>
 
 </html>
