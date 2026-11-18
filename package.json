@@ -1,0 +1,28 @@
+{
+  "name": "phuctoanit",
+  "version": "1.0.0",
+  "description": "Phuc Toan Nguyen - Sales Engineer Portfolio Website",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\"",
+    "dev": "python3 -m http.server 8000 || python -m SimpleHTTPServer 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phuctoan123/phuctoanit.git"
+  },
+  "keywords": [
+    "portfolio",
+    "sales-engineer",
+    "vercel-analytics"
+  ],
+  "author": "Phuc Toan Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phuctoan123/phuctoanit/issues"
+  },
+  "homepage": "https://github.com/phuctoan123/phuctoanit#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}

@@ -1,3 +1,9 @@
 utilites.txt
 
 ADMIN_IMPLEMENTATION_PLAN.md
+
+# Dependencies
+node_modules/
+
+# Lock files (keep package-lock.json in repo)
+# package-lock.json is tracked for consistency
