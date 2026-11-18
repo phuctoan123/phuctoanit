@@ -53,13 +53,13 @@
       about: {
         heading: 'About Me',
         p1: 'I am Phuc Toan – a Sales Specialist representing a reputable technology company with over 15 years of industry experience in Ho Chi Minh City. My role is to bridge the gap between the technical team and enterprise clients, translating business requirements into suitable and effective technology solutions.',
-        h3: 'Core Competencies',
-        li1: 'Product demo & building POC environments tailored to each client’s specific needs',
-        li2: 'Consulting on Website, Hosting, Mail Server, and multi-industry Management Software solutions',
-        li3: 'Analyzing business requirements, drafting proposals/RFPs, and supporting technical negotiations',
-        p2: 'I work directly with numerous B2B enterprises across retail, F&B, logistics, education, real estate, and manufacturing sectors – helping them find digital transformation solutions that align with their budget and growth roadmap.',
-        h4: 'Work Philosophy',
-        p3: 'Listen to the client’s problem, propose practical solutions – never sell what the client doesn’t need, only recommend what truly creates value for their business.'
+        // h3: 'Core Competencies',
+        // li1: 'Product demo & building POC environments tailored to each client’s specific needs',
+        // li2: 'Consulting on Website, Hosting, Mail Server, and multi-industry Management Software solutions',
+        // li3: 'Analyzing business requirements, drafting proposals/RFPs, and supporting technical negotiations',
+        // p2: 'I work directly with numerous B2B enterprises across retail, F&B, logistics, education, real estate, and manufacturing sectors – helping them find digital transformation solutions that align with their budget and growth roadmap.',
+        h4: 'Work Philosophy:',
+        p3: '"Listen to the client’s problem, propose practical solutions – never sell what the client doesn’t need, only recommend what truly creates value for their business."'
       },
       skill: {
         heading: 'My Skills & Expertise',
@@ -283,12 +283,12 @@
         heading: 'Giới thiệu',
         p1: 'Tôi là Phúc Toàn – chuyên viên Sales đại diện cho một công ty công nghệ uy tín có hơn 15 năm kinh nghiệm tại TP. Hồ Chí Minh. Vai trò của tôi là cầu nối giữa đội ngũ kỹ thuật và khách hàng doanh nghiệp, giúp chuyển hoá yêu cầu kinh doanh thành các giải pháp công nghệ phù hợp và hiệu quả.',
         h3: 'Thế mạnh chuyên môn',
-        li1: 'Demo sản phẩm & dựng môi trường POC theo yêu cầu riêng của từng khách hàng',
-        li2: 'Tư vấn giải pháp Website, Hosting, Mail Server, Phần mềm quản lý đa ngành',
-        li3: 'Phân tích bài toán nghiệp vụ, lập proposal/RFP và hỗ trợ đàm phán kỹ thuật',
-        p2: 'Tôi làm việc trực tiếp với nhiều doanh nghiệp B2B thuộc các ngành bán lẻ, F&B, logistics, giáo dục, bất động sản và sản xuất – giúp họ tìm ra giải pháp số hoá phù hợp với ngân sách và lộ trình phát triển thực tế.',
-        h4: 'Phương châm làm việc',
-        p3: 'Lắng nghe bài toán của khách hàng, đề xuất giải pháp thực tế – không bán những gì khách không cần, chỉ tư vấn những gì thực sự tạo ra giá trị cho doanh nghiệp.'
+        // li1: 'Demo sản phẩm & dựng môi trường POC theo yêu cầu riêng của từng khách hàng',
+        // li2: 'Tư vấn giải pháp Website, Hosting, Mail Server, Phần mềm quản lý đa ngành',
+        // li3: 'Phân tích bài toán nghiệp vụ, lập proposal/RFP và hỗ trợ đàm phán kỹ thuật',
+        // p2: 'Tôi làm việc trực tiếp với nhiều doanh nghiệp B2B thuộc các ngành bán lẻ, F&B, logistics, giáo dục, bất động sản và sản xuất – giúp họ tìm ra giải pháp số hoá phù hợp với ngân sách và lộ trình phát triển thực tế.',
+        h4: 'Phương châm làm việc:',
+        p3: '"Lắng nghe bài toán của khách hàng, đề xuất giải pháp thực tế – không bán những gì khách không cần, chỉ tư vấn những gì thực sự tạo ra giá trị cho doanh nghiệp."'
       },
       skill: {
         heading: 'Kỹ năng & chuyên môn',
@@ -464,7 +464,7 @@
         form_success: 'Cảm ơn anh/chị đã yêu cầu! Phúc Toàn sẽ liên hệ lại trong thời gian sớm nhất.'
       },
       footer: {
-        desc: 'Sales Specialist đại diện cho công ty công nghệ uy tín có hơn 15 năm kinh nghiệm tư vấn và demo giải pháp công nghệ cho doanh nghiệp B2B tại TP. Hồ Chí Minh và toàn quốc. Chuyên sâu: Thiết kế Website theo yêu cầu, Hosting, Domain, Mail Server, Phần mềm quản lý đa ngành nghề.',
+        desc: 'Sales Specialist đại diện cho công ty công nghệ uy tín có hơn 15 năm kinh nghiệm tư vấn và demo giải pháp công nghệ cho doanh nghiệp B2B tại TP. Hồ Chí Minh và toàn quốc. Thiết kế Website theo yêu cầu, Hosting, Domain, Mail Server, Phần mềm quản lý đa ngành nghề.',
         copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
       },
       toast: {
