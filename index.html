@@ -33,6 +33,8 @@
   <!-- Linkedin Card End -->
   <!-- aos -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Swiper.js 11 (3D Coverflow) CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <title>Phuc Toan Nguyen – Sales Engineer</title>
 </head>
 
@@ -358,41 +360,252 @@
     </div>
   </section><!-- #service -->
 
-  <section id="portfolio">
-    <h2 class="center" data-i18n="portfolio.heading">Featured Projects</h2>
-    <div class="content portfolio--content">
-      <div class="item">
-        <!-- TODO: Thay project-one.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
-        <h3 data-i18n="portfolio.item1">Retail Industry Client</h3>
-        <img src="assets/images/project-one.jpg" alt="Retail industry management software solution">
-      </div><!-- item -->
-      <div class="item">
-        <!-- TODO: Thay project-two.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
-        <h3 data-i18n="portfolio.item2">F&amp;B Industry Client</h3>
-        <img src="assets/images/project-two.jpg" alt="F&B e-commerce website and Mail Server solution">
-      </div><!-- item -->
-      <div class="item">
-        <!-- TODO: Thay project-three.png bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
-        <h3 data-i18n="portfolio.item3">Education Industry Client</h3>
-        <img src="assets/images/project-three.png" alt="Student management system for education sector">
-      </div><!-- item -->
-      <div class="item">
-        <!-- TODO: Thay project-four.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
-        <h3 data-i18n="portfolio.item4">Logistics Industry Client</h3>
-        <img src="assets/images/project-four.jpg" alt="Warehouse and delivery management software for logistics">
-      </div><!-- item -->
-      <div class="item">
-        <!-- TODO: Thay project-five.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
-        <h3 data-i18n="portfolio.item5">Real Estate Industry Client</h3>
-        <img src="assets/images/project-five.jpg" alt="Integrated website and CRM for real estate">
-      </div><!-- item -->
-      <div class="item">
-        <!-- TODO: Thay project-six.jpg bằng ảnh minh hoạ kiến trúc/giải pháp thật cho case này -->
-        <h3 data-i18n="portfolio.item6">Manufacturing Industry Client</h3>
-        <img src="assets/images/project-six.jpg" alt="Custom ERP solution for manufacturing sector">
-      </div><!-- item -->
-    </div>
-  </section><!-- portfolio -->
+  <!-- ══════════════════════════════════════════════════════════
+       PORTFOLIO — 3D Coverflow Case Studies Carousel (Swiper.js)
+       ══════════════════════════════════════════════════════════ -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="content portfolio-container">
+      <div class="portfolio-header center" data-aos="fade-up" data-aos-duration="800">
+        <span class="portfolio-eyebrow"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Case Studies &amp; Solutions</span>
+        <h2 data-i18n="portfolio.heading">Dự án tiêu biểu</h2>
+        <p class="portfolio-subtitle" data-i18n="portfolio.sub">Bài toán thực tế, kiến trúc giải pháp và hiệu quả kinh doanh đo lường được cho doanh nghiệp B2B.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="portfolio-filter-tabs" role="tablist" aria-label="Lọc dự án theo ngành">
+        <button type="button" class="portfolio-tab-btn active" data-filter="all" role="tab" aria-selected="true">
+          <i class="fa-solid fa-border-all" aria-hidden="true"></i>
+          <span data-i18n="portfolio.tab_all">Tất cả</span>
+        </button>
+        <button type="button" class="portfolio-tab-btn" data-filter="commerce" role="tab" aria-selected="false">
+          <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+          <span data-i18n="portfolio.tab_commerce">Bán lẻ &amp; F&amp;B</span>
+        </button>
+        <button type="button" class="portfolio-tab-btn" data-filter="operations" role="tab" aria-selected="false">
+          <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+          <span data-i18n="portfolio.tab_operations">Vận hành &amp; Logistics</span>
+        </button>
+        <button type="button" class="portfolio-tab-btn" data-filter="enterprise" role="tab" aria-selected="false">
+          <i class="fa-solid fa-industry" aria-hidden="true"></i>
+          <span data-i18n="portfolio.tab_enterprise">BĐS &amp; Sản xuất</span>
+        </button>
+      </div>
+
+      <!-- Swiper 3D Coverflow Carousel -->
+      <div class="projects-coverflow-wrapper">
+        <div class="swiper projects-coverflow-slider">
+          <div class="swiper-wrapper">
+
+            <!-- Slide 7: Nhíp Bạc (Live Website) -->
+            <div class="swiper-slide project-card-slide" data-category="commerce" data-project-id="7">
+              <article class="project-card">
+                <div class="project-card__header">
+                  <span class="project-badge project-badge--live">
+                    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    <span data-i18n="portfolio.item7_badge">DỊCH VỤ • Web Đặt Lịch &amp; Nhận Diện</span>
+                  </span>
+                  <a href="https://nhipbac.com/" target="_blank" rel="noopener noreferrer" class="project-status-tag project-status-tag--live" title="Mở trang web nhipbac.com">
+                    <span class="live-dot"></span> LIVE DEMO ↗
+                  </a>
+                </div>
+
+                <div class="project-card__media">
+                  <img src="assets/images/project-nhipbac.jpg" alt="Website Nhíp Bạc - grey hair plucking service" loading="lazy">
+                </div>
+
+                <div class="project-card__body">
+                  <h3 class="project-card__title" data-i18n="portfolio.item7_title">Nhíp Bạc – Website Dịch Vụ Thư Giãn &amp; Đặt Hẹn Tự Động</h3>
+                  <p class="project-card__desc" data-i18n="portfolio.item7_desc">Website giới thiệu dịch vụ chăm sóc &amp; thư giãn chuyên biệt tại Phú Mỹ Hưng, tối ưu SEO Local và tích hợp đặt lịch hẹn trực tuyến tiện lợi qua Zalo &amp; Hotline.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Slide 8: Hậu Tận Thế (Live Web App) -->
+            <div class="swiper-slide project-card-slide" data-category="operations" data-project-id="8">
+              <article class="project-card">
+                <div class="project-card__header">
+                  <span class="project-badge project-badge--live">
+                    <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+                    <span data-i18n="portfolio.item8_badge">WEB APP • Game Visual Novel Tương Tác</span>
+                  </span>
+                  <a href="https://hautanthe.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-status-tag project-status-tag--live" title="Mở web app hautanthe.vercel.app">
+                    <span class="live-dot"></span> LIVE DEMO ↗
+                  </a>
+                </div>
+
+                <div class="project-card__media">
+                  <img src="assets/images/project-hautanthe.jpg" alt="Web game Ánh Sáng Sau Màn Hình - Sinh Tồn Hậu Đại Dịch" loading="lazy">
+                </div>
+
+                <div class="project-card__body">
+                  <h3 class="project-card__title" data-i18n="portfolio.item8_title">Ánh Sáng Sau Màn Hình – Web App Tương Tác Kể Chuyện Sinh Tồn</h3>
+                  <p class="project-card__desc" data-i18n="portfolio.item8_desc">Web App tương tác thể loại Visual Novel sinh tồn hậu đại dịch chạy mượt mà 60fps trên trình duyệt, tối ưu âm thanh sống động và triển khai trên Vercel Edge CDN.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Slide 1: Bán lẻ (Retail) -->
+            <div class="swiper-slide project-card-slide" data-category="commerce" data-project-id="1">
+              <article class="project-card">
+                <div class="project-card__header">
+                  <span class="project-badge">
+                    <i class="fa-solid fa-shop" aria-hidden="true"></i>
+                    <span data-i18n="portfolio.item1_badge">BÁN LẺ • Phần mềm quản trị chuỗi</span>
+                  </span>
+                  <span class="project-status-tag" data-i18n="portfolio.status_deployed">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Đã triển khai thực tế
+                  </span>
+                </div>
+
+                <div class="project-card__media">
+                  <img src="assets/images/project-one.jpg" alt="Retail industry management software solution" loading="lazy">
+                </div>
+
+                <div class="project-card__body">
+                  <h3 class="project-card__title" data-i18n="portfolio.item1_title">Hệ Thống Quản Lý Bán Lẻ &amp; Đồng Bộ Tồn Kho Đa Chi Nhánh</h3>
+                  <p class="project-card__desc" data-i18n="portfolio.item1_desc">Giải pháp phần mềm POS quản trị tập trung, tự động đồng bộ tồn kho đa kênh theo thời gian thực và tối ưu quy trình đối soát cho chuỗi cửa hàng bán lẻ.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Slide 2: F&B (Food & Beverage) -->
+            <div class="swiper-slide project-card-slide" data-category="commerce" data-project-id="2">
+              <article class="project-card">
+                <div class="project-card__header">
+                  <span class="project-badge">
+                    <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+                    <span data-i18n="portfolio.item2_badge">F&amp;B • Web Đặt Món &amp; Mail Server</span>
+                  </span>
+                  <span class="project-status-tag" data-i18n="portfolio.status_deployed">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Đã triển khai thực tế
+                  </span>
+                </div>
+
+                <div class="project-card__media">
+                  <img src="assets/images/project-two.jpg" alt="F&B e-commerce website and Mail Server solution" loading="lazy">
+                </div>
+
+                <div class="project-card__body">
+                  <h3 class="project-card__title" data-i18n="portfolio.item2_title">Website Đặt Món Trực Tuyến &amp; Hạ Tầng Mail Server Doanh Nghiệp</h3>
+                  <p class="project-card__desc" data-i18n="portfolio.item2_desc">Website đặt món trực tiếp tối ưu tỷ lệ chuyển đổi, tích hợp menu điện tử QR tại bàn và hạ tầng Mail Server doanh nghiệp độc lập chuẩn SPF/DKIM.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Slide 3: Giáo dục (Education) -->
+            <div class="swiper-slide project-card-slide" data-category="operations" data-project-id="3">
+              <article class="project-card">
+                <div class="project-card__header">
+                  <span class="project-badge">
+                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                    <span data-i18n="portfolio.item3_badge">GIÁO DỤC • Hệ thống quản lý đào tạo</span>
+                  </span>
+                  <span class="project-status-tag" data-i18n="portfolio.status_deployed">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Đã triển khai thực tế
+                  </span>
+                </div>
+
+                <div class="project-card__media">
+                  <img src="assets/images/project-three.png" alt="Student management system for education sector" loading="lazy">
+                </div>
+
+                <div class="project-card__body">
+                  <h3 class="project-card__title" data-i18n="portfolio.item3_title">Nền Tảng Quản Lý Học Viên, Lịch Học &amp; Cổng Thông Tin Đào Tạo</h3>
+                  <p class="project-card__desc" data-i18n="portfolio.item3_desc">Nền tảng quản trị trung tâm đào tạo toàn diện: thuật toán xếp lịch thông minh chống trùng phòng, cổng thông tin học viên/phụ huynh và tự động nhắc học phí qua Zalo/Email.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Slide 4: Logistics -->
+            <div class="swiper-slide project-card-slide" data-category="operations" data-project-id="4">
+              <article class="project-card">
+                <div class="project-card__header">
+                  <span class="project-badge">
+                    <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
+                    <span data-i18n="portfolio.item4_badge">LOGISTICS • Phần mềm kho &amp; vận tải</span>
+                  </span>
+                  <span class="project-status-tag" data-i18n="portfolio.status_deployed">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Đã triển khai thực tế
+                  </span>
+                </div>
+
+                <div class="project-card__media">
+                  <img src="assets/images/project-four.jpg" alt="Warehouse and delivery management software for logistics" loading="lazy">
+                </div>
+
+                <div class="project-card__body">
+                  <h3 class="project-card__title" data-i18n="portfolio.item4_title">Hệ Thống Quản Lý Kho Bãi (WMS) &amp; Điều Phối Giao Nhận</h3>
+                  <p class="project-card__desc" data-i18n="portfolio.item4_desc">Hệ thống phần mềm WMS số hóa sơ đồ kho bãi 2D/3D, quét mã vạch kiểm soát xuất nhập chính xác và tự động tối ưu hóa tuyến đường điều phối đội xe giao hàng.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Slide 5: Bất động sản (Real Estate) -->
+            <div class="swiper-slide project-card-slide" data-category="enterprise" data-project-id="5">
+              <article class="project-card">
+                <div class="project-card__header">
+                  <span class="project-badge">
+                    <i class="fa-solid fa-building" aria-hidden="true"></i>
+                    <span data-i18n="portfolio.item5_badge">BẤT ĐỘNG SẢN • Web dự án &amp; CRM</span>
+                  </span>
+                  <span class="project-status-tag" data-i18n="portfolio.status_deployed">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Đã triển khai thực tế
+                  </span>
+                </div>
+
+                <div class="project-card__media">
+                  <img src="assets/images/project-five.jpg" alt="Integrated website and CRM for real estate" loading="lazy">
+                </div>
+
+                <div class="project-card__body">
+                  <h3 class="project-card__title" data-i18n="portfolio.item5_title">Cổng Dự Án Chuẩn SEO, Sa Bàn 360° &amp; CRM Quản Lý Giỏ Hàng</h3>
+                  <p class="project-card__desc" data-i18n="portfolio.item5_desc">Cổng thông tin dự án bất động sản tích hợp tour sa bàn ảo 360°, hệ thống CRM lock căn theo thời gian thực và phân bổ lead quảng cáo tự động trong 60 giây.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Slide 6: Sản xuất (Manufacturing) -->
+            <div class="swiper-slide project-card-slide" data-category="enterprise" data-project-id="6">
+              <article class="project-card">
+                <div class="project-card__header">
+                  <span class="project-badge">
+                    <i class="fa-solid fa-gears" aria-hidden="true"></i>
+                    <span data-i18n="portfolio.item6_badge">SẢN XUẤT • ERP may đo &amp; BOM</span>
+                  </span>
+                  <span class="project-status-tag" data-i18n="portfolio.status_deployed">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Đã triển khai thực tế
+                  </span>
+                </div>
+
+                <div class="project-card__media">
+                  <img src="assets/images/project-six.jpg" alt="Custom ERP solution for manufacturing sector" loading="lazy">
+                </div>
+
+                <div class="project-card__body">
+                  <h3 class="project-card__title" data-i18n="portfolio.item6_title">Giải Pháp ERP Quản Trị Sản Xuất, Định Mức Vật Tư &amp; Giám Sát Chuyền</h3>
+                  <p class="project-card__desc" data-i18n="portfolio.item6_desc">Hệ thống ERP may đo chuyên sâu cho nhà máy: quản lý cây định mức nguyên vật liệu (BOM) đa cấp, kiosk barcode giám sát xưởng và tính toán giá thành tự động sau mỗi ca.</p>
+                </div>
+              </article>
+            </div>
+
+          </div><!-- .swiper-wrapper -->
+
+          <!-- Navigation Controls -->
+          <button type="button" class="projects-swiper-btn swiper-button-prev" aria-label="Dự án trước">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="projects-swiper-btn swiper-button-next" aria-label="Dự án tiếp theo">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+
+          <!-- Pagination Indicator -->
+          <div class="swiper-pagination projects-swiper-pagination"></div>
+        </div><!-- .projects-coverflow-slider -->
+
+        
+      </div><!-- .projects-coverflow-wrapper -->
+    </div><!-- .portfolio-container -->
+  </section><!-- #portfolio -->
 
   <section id="testimonial">
     <h2 data-i18n="testimonial.heading">Testimonial – What clients &amp; colleagues say about me</h2>
@@ -560,6 +773,7 @@
             <div class="contact-info-text">
               <span class="contact-label" data-i18n="contact.phone_label">Phone / Zalo:</span>
               <a href="tel:+84913365842" class="contact-link">0913.365.842</a>
+              <span class="contact-note" style="display: block; font-size: 0.95rem; color: #666; margin-top: 2px;">(Ưu tiên hỗ trợ nhanh khi gọi qua điện thoại)</span>
             </div>
           </div>
           <!-- <div class="contact-info-item">
@@ -986,6 +1200,7 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/banner.js"></script>
   <script src="js/script.js"></script>
   <script src="js/i18n.js"></script>

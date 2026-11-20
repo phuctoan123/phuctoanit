@@ -645,3 +645,136 @@ if (hamburger && mobileNavs) {
   // Expose để dùng ở nơi khác (toast CTA)
   window.smoothScrollTo = smoothScrollTo;
 })();
+
+/* ════════════════════════════════════════════════════════════════════════════
+   PROJECTS 3D COVERFLOW CAROUSEL (Swiper.js)
+   ════════════════════════════════════════════════════════════════════════════ */
+(function initProjectsCoverflow() {
+  var projectsSwiper = null;
+
+  // 1. Initialize Swiper 3D Coverflow
+  function initSwiper() {
+    var sliderEl = document.querySelector('.projects-coverflow-slider');
+    if (!sliderEl) return;
+
+    if (typeof Swiper === 'undefined') {
+      setTimeout(initSwiper, 150);
+      return;
+    }
+
+    try {
+      projectsSwiper = new Swiper(sliderEl, {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+        speed: 550,
+        touchAngle: 45,
+        preventInteractionOnTransition: false,
+        touchStartPreventDefault: false,
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+        coverflowEffect: {
+          rotate: 22,
+          stretch: 0,
+          depth: 160,
+          modifier: 1,
+          slideShadows: true,
+        },
+        pagination: {
+          el: '.projects-swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.projects-swiper-btn.swiper-button-next',
+          prevEl: '.projects-swiper-btn.swiper-button-prev',
+        },
+        breakpoints: {
+          320: {
+            coverflowEffect: {
+              rotate: 0,
+              stretch: 0,
+              depth: 50,
+              modifier: 1,
+              slideShadows: false,
+            }
+          },
+          768: {
+            coverflowEffect: {
+              rotate: 15,
+              stretch: 0,
+              depth: 110,
+              modifier: 1,
+              slideShadows: true,
+            }
+          },
+          1024: {
+            coverflowEffect: {
+              rotate: 22,
+              stretch: 0,
+              depth: 160,
+              modifier: 1,
+              slideShadows: true,
+            }
+          }
+        }
+      });
+    } catch (e) {
+      console.warn('Swiper init error:', e);
+    }
+  }
+
+  // 3. Category Filter Tabs
+  function initFilterTabs() {
+    var tabBtns = document.querySelectorAll('.portfolio-tab-btn');
+    var slides = document.querySelectorAll('.project-card-slide');
+    if (!tabBtns.length || !slides.length) return;
+
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+
+        tabBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        var firstVisibleIndex = -1;
+        var visibleCount = 0;
+        slides.forEach(function (slide) {
+          var cat = slide.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            slide.classList.remove('is-filtered-out');
+            if (firstVisibleIndex === -1) firstVisibleIndex = visibleCount;
+            visibleCount++;
+          } else {
+            slide.classList.add('is-filtered-out');
+          }
+        });
+
+        if (projectsSwiper) {
+          projectsSwiper.update();
+          if (firstVisibleIndex !== -1) {
+            projectsSwiper.slideTo(firstVisibleIndex, 400);
+          }
+        }
+      });
+    });
+  }
+
+  // 4. Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      initSwiper();
+      initFilterTabs();
+    });
+  } else {
+    initSwiper();
+    initFilterTabs();
+  }
+})();
