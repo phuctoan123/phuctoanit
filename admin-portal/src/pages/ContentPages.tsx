@@ -8,6 +8,7 @@ import { CONTENT_NAV } from '../constants/admin'
 import { cn } from '../lib/utils'
 import { useSiteAbout } from '../hooks/useCms'
 import { useToast } from '../hooks/useToast'
+import { CaseStudiesManager } from '../components/admin/cms/CaseStudiesManager'
 
 function ContentSidebar() {
   const location = useLocation()
@@ -294,13 +295,20 @@ export function ServicesContentPage() {
 }
 
 export function CaseStudiesContentPage() {
-  return <SimpleListContent title="Case Studies" fields={[
-    { label: 'Ngành / Nhóm', placeholder: 'Bán lẻ / F&B / Giáo dục...' },
-    { label: 'Vấn đề (Problem)', placeholder: 'Vấn đề khách hàng gặp phải...', type: 'textarea' },
-    { label: 'Giải pháp (Solution)', placeholder: 'Giải pháp được đề xuất...', type: 'textarea' },
-    { label: 'Kết quả (Result)', placeholder: 'Kết quả đạt được...', type: 'textarea' },
-    { label: 'URL Demo', placeholder: 'https://...' },
-  ]} />
+  return (
+    <div className="space-y-5">
+      <div>
+        <h1 className="text-xl font-bold text-[#1F1F1F]">Dự án tiêu biểu (Case Studies)</h1>
+        <p className="text-sm text-[#6A6A6A] mt-0.5">Quản lý danh sách các bài toán và giải pháp thực tế cho khách hàng B2B</p>
+      </div>
+      <div className="flex flex-col lg:flex-row gap-5">
+        <ContentSidebar />
+        <div className="flex-1 bg-white rounded-xl border border-[#EDEDED] p-5">
+          <CaseStudiesManager />
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export function TestimonialsContentPage() {

@@ -2,6 +2,7 @@
  * CMS + Settings query functions — kết nối Supabase thật
  */
 import { supabase } from './supabase'
+import type { CaseStudy } from '../types/admin'
 
 // ── SITE SETTINGS ──────────────────────────────────────────
 
@@ -67,7 +68,6 @@ export async function getSiteAbout() {
     .eq('id', 1)
     .single()
   if (error && error.code === 'PGRST116') {
-    // No row yet — return empty
     return { data: null, error: null }
   }
   if (error) return { data: null, error: error.message }
@@ -82,4 +82,34 @@ export async function upsertSiteAbout(updates: Partial<Omit<SiteAbout, 'id' | 'u
     .single()
   if (error) return { data: null, error: error.message }
   return { data: data as SiteAbout, error: null }
+}
+
+// ── CASE STUDIES ───────────────────────────────────────────
+
+export async function getCaseStudies() {
+  const { data, error } = await supabase
+    .from('case_studies')
+    .select('*')
+    .order('sort_order', { ascending: true })
+  if (error) return { data: null, error: error.message }
+  return { data: data as CaseStudy[], error: null }
+}
+
+export async function upsertCaseStudy(study: Partial<CaseStudy>) {
+  const { data, error } = await supabase
+    .from('case_studies')
+    .upsert(study)
+    .select()
+    .single()
+  if (error) return { data: null, error: error.message }
+  return { data: data as CaseStudy, error: null }
+}
+
+export async function deleteCaseStudy(id: string) {
+  const { error } = await supabase
+    .from('case_studies')
+    .delete()
+    .eq('id', id)
+  if (error) return { success: false, error: error.message }
+  return { success: true, error: null }
 }

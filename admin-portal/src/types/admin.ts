@@ -62,3 +62,21 @@ export interface ToastData {
   message: string
   type: 'success' | 'error' | 'info' | 'warning'
 }
+
+export interface CaseStudy {
+  id: string
+  title_vi?: string | null
+  title_en?: string | null
+  industry_vi: string
+  industry_en: string
+  image_url?: string | null
+  problem_vi?: string | null
+  problem_en?: string | null
+  solution_vi?: string | null
+  solution_en?: string | null
+  result_vi?: string | null
+  result_en?: string | null
+  demo_url?: string | null
+  sort_order: number
+  is_active: boolean
+}

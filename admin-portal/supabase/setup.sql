@@ -155,6 +155,8 @@ create index if not exists idx_service_features_service_id on public.service_fea
 -- ════════════════════════════════════════════════════════════
 create table if not exists public.case_studies (
   id            uuid primary key default gen_random_uuid(),
+  title_vi      text,
+  title_en      text,
   industry_vi   text not null,
   industry_en   text not null,
   image_url     text,

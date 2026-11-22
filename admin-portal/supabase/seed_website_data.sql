@@ -289,3 +289,71 @@ insert into public.testimonials (name, role_vi, role_en, quote_vi, quote_en, sor
   'An eager learner with sharp analytical thinking who always embraces feedback. Toan exhibits great drive and high adaptability in any technical environment.',
   4
 );
+
+
+-- 7. DỰ ÁN TIÊU BIỂU (case_studies)
+alter table public.case_studies add column if not exists title_vi text;
+alter table public.case_studies add column if not exists title_en text;
+
+delete from public.case_studies;
+insert into public.case_studies (
+  sort_order, is_active,
+  industry_vi, industry_en,
+  title_vi, title_en,
+  demo_url,
+  problem_vi, problem_en,
+  solution_vi, solution_en,
+  result_vi, result_en
+) values
+(
+  1, true,
+  'DỊCH VỤ • Bán lẻ & F&B', 'SERVICE • Retail & F&B',
+  'Nhíp Bạc – Website Dịch Vụ Thư Giãn & Đặt Hẹn Tự Động',
+  'Nhip Bac – Relaxing Service & Auto Booking Website',
+  'https://nhipbac.com',
+  'Dịch vụ nhổ tóc bạc thư giãn chuyên biệt tại Phú Mỹ Hưng cần kênh tiếp thị số tinh tế, giúp khách hàng dễ tìm kiếm và chủ động đặt lịch.',
+  'A specialized hair care service in Phu My Hung needed a discrete digital presence to reach high-end clientele and automate appointments.',
+  'Thiết kế giao diện thanh lịch chuẩn nhận diện thương hiệu, tối ưu SEO từ khóa địa phương và tích hợp kênh tương tác nhanh qua Zalo & Hotline.',
+  'Designed a Zen Minimalist mobile-first website, optimized local SEO schema, and integrated seamless 1-tap booking via Zalo & Hotline.',
+  'Tăng 25% tỷ lệ khách hàng đặt hẹn trực tuyến, định vị thương hiệu chỉn chu và lên top tìm kiếm Google tại khu vực Quận 7.',
+  'Boosted online appointment rate by 25%, elevated brand positioning, and achieved top Google search ranking in District 7.'
+),
+(
+  2, true,
+  'WEB APP • Game Visual Novel', 'WEB APP • Interactive Visual Novel',
+  'Ánh Sáng Sau Màn Hình – Web App Tương Tác Kể Chuyện Sinh Tồn',
+  'Light Behind The Screen – Interactive Survival Web App',
+  'https://light-behind-the-screen.vercel.app',
+  'Phát triển trò chơi thể loại Visual Novel sinh tồn hậu đại dịch chạy trực tiếp mượt mà trên mọi trình duyệt web mà không bắt người chơi tải app nặng.',
+  'Developing a post-pandemic survival interactive visual novel that runs at 60fps on web browsers without requiring heavy downloads.',
+  'Xây dựng kiến trúc Single Page Application (SPA), xử lý phân nhánh cốt truyện linh hoạt, nén asset tối ưu và tích hợp Web Audio API cho âm thanh sống động.',
+  'Architected an SPA with flexible branching narrative state machine, hardware-accelerated transitions, and Web Audio API integration.',
+  'Thời gian tải trang ban đầu dưới 1.2s, khung hình ổn định 60fps trên cả mobile và PC, triển khai CI/CD tự động trên Vercel Edge.',
+  'Initial load time under 1.2s, rock-solid 60fps frame rate across mobile and desktop, automated CI/CD deployed globally on Vercel Edge.'
+),
+(
+  3, true,
+  'BÁN LẺ • Quản trị chuỗi', 'RETAIL • POS & Inventory',
+  'Hệ Thống Quản Lý Bán Lẻ & Đồng Bộ Tồn Kho Đa Chi Nhánh',
+  'Multi-Branch Retail Management & Real-time Inventory POS',
+  null,
+  'Dữ liệu tồn kho bị trễ giữa các cửa hàng và kênh online, dẫn đến quá tải đối soát và sót đơn hàng.',
+  'Severe inventory latency between physical chain stores and online channels causing overselling and reconciliation bottlenecks.',
+  'Xây dựng phần mềm POS bán hàng tập trung, tích hợp quản lý kho và đối soát thanh toán đa cổng tự động.',
+  'Engineered a centralized cloud POS software integrating warehouse management, real-time webhooks, and barcode scanner APIs.',
+  'Giảm 90% thất thoát và chênh lệch kho, xử lý đơn nhanh gấp 3 lần tại 15 điểm bán.',
+  'Reduced inventory discrepancies by 90% and accelerated checkout throughput 3x across 15 retail outlets.'
+),
+(
+  4, true,
+  'F&B • Web Đặt Món & Mail Server', 'F&B • Online Ordering & Mail Server',
+  'Website Đặt Món Trực Tuyến & Hạ Tầng Mail Server Doanh Nghiệp',
+  'Direct Online Food Ordering & Corporate Mail Infrastructure',
+  null,
+  'Phụ thuộc phí chiết khấu cao từ app giao hàng bên thứ ba và hệ thống email tên miền hay rơi vào hộp thư rác (spam).',
+  'High commission fees from 3rd-party delivery apps and company domain emails frequently flagged as spam by Gmail/Outlook.',
+  'Thiết kế web đặt món online trực tiếp, menu quét mã QR tại bàn kết hợp cấu hình hạ tầng Mail Server doanh nghiệp chuẩn SPF/DKIM.',
+  'Built a direct online food ordering web app with QR digital table menu, coupled with a dedicated clean-IP Mail Server with SPF/DKIM/DMARC.',
+  'Tự chủ 45% lượng đơn giao tận nơi, tăng tỷ lệ gửi email tiếp thị và xác nhận hóa đơn vào Inbox đạt 99.8%.',
+  'Shifted 45% regular orders directly to the website, saving significant monthly commission; achieved 99.8% Inbox delivery rate.'
+);
