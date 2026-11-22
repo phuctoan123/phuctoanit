@@ -319,7 +319,7 @@
         heading: 'Get in Touch',
         detail: 'Looking for a technology solution for your business? Let me listen to your problem and find the best path forward together. Based in Ho Chi Minh City, supporting clients nationwide.',
         email_label: 'Email:',
-        phone_label: 'Phone / Zalo:',
+        phone_label: 'Phone / Zalo / WhatsApp:',
         linkedin_label: 'LinkedIn:',
         address: 'Ho Chi Minh City, Vietnam',
         address_note: '(Nationwide support, priority in HCMC area)',
@@ -329,7 +329,7 @@
         form_name_err: 'Please enter your full name.',
         form_company_label: 'Business / Company Name',
         form_company_ph: 'ABC Company',
-        form_phone_label: 'Phone / Zalo',
+        form_phone_label: 'Phone / Zalo / WhatsApp',
         form_phone_ph: '0912 345 678',
         form_phone_err: 'Invalid VN phone number (e.g. 0912345678).',
         form_email_label: 'Email',
@@ -360,6 +360,8 @@
         btn_next: 'Continue',
         btn_back: 'Back',
         btn_zalo_quick: 'Direct Zalo Chat (0913.365.842)',
+        btn_whatsapp_quick: 'Direct WhatsApp Chat (+84 0913.365.842)',
+        success_whatsapp: 'Direct WhatsApp',
         trust_commitment: 'Absolute Data Privacy • Guaranteed Technical Response within 30 Working Minutes.',
         success_title: 'Consultation Request Recorded Successfully!',
         btn_reset_form: 'Submit Another Request',
@@ -378,7 +380,9 @@
       },
       footer: {
         desc: 'Sales Specialist representing a reputable technology company with 15+ years of experience consulting and demoing technology solutions for B2B enterprises in Ho Chi Minh City and nationwide. Specializing in: Custom Website Design, Hosting, Domain, Mail Server, Multi-industry Management Software.',
-        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
+        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>',
+        online_label: 'online',
+        views_label: 'total visits'
       },
       toast: {
         title: 'Need a tech solution?',
@@ -455,16 +459,16 @@
         item1_f3: 'Tương thích 100% mọi thiết bị',
         item1_f4: 'Dễ dàng mở rộng & kết nối API',
 
-        item2_title: 'Web hosting',
-        item2_short: 'Tốc độ cao & Uptime 99.9%',
-        item2_f1: 'Cam kết Uptime ổn định 99.9%',
+        item2_title: 'Hosting',
+        item2_short: 'Tốc độ cao & Vận hành ổn định',
+        item2_f1: 'Đảm bảo Uptime ổn định 99.9%',
         item2_f2: 'Ổ cứng NVMe siêu tốc độ',
         item2_f3: 'Tặng chứng chỉ SSL & Firewall',
-        item2_f4: 'Sao lưu mỗi ngày & Hỗ trợ 24/7',
+        item2_f4: 'Sao lưu mỗi tuần & Hỗ trợ 24/7',
 
-        item3_title: 'Domain',
+        item3_title: 'Tên miền',
         item3_short: 'Khẳng định thương hiệu số',
-        item3_f1: 'Đầy đủ tên miền .VN & Quốc tế',
+        item3_f1: 'Đầy đủ tên miền .vn & Quốc tế',
         item3_f2: 'Kích hoạt nhanh trong 5 phút',
         item3_f3: 'Hệ thống quản lý DNS bảo mật',
         item3_f4: 'Bảo hộ nhận diện thương hiệu',
@@ -481,7 +485,7 @@
         item5_f1: 'Phát triển Web App & Mobile App',
         item5_f2: 'Đội ngũ chuyên nghiệp, chuẩn Agile',
         item5_f3: 'Bảo mật cao & Mã nguồn tối ưu',
-        item5_f4: 'Bảo hành & Hỗ trợ kỹ thuật 24/7'
+        item5_f4: 'Bảo hành & Hỗ trợ kỹ thuật lâu dài'
       },
       portfolio: {
         heading: 'Dự án tiêu biểu',
@@ -690,7 +694,7 @@
         heading: 'Liên hệ trao đổi',
         detail: 'Bạn đang tìm giải pháp công nghệ cho doanh nghiệp? Hãy để tôi lắng nghe bài toán của bạn và cùng tìm ra hướng đi phù hợp nhất. Hỗ trợ toàn quốc, ưu tiên hơn một chút ở TP.HCM.',
         email_label: 'Email:',
-        phone_label: 'Điện thoại / Zalo:',
+        phone_label: 'Điện thoại / Zalo / WhatsApp:',
         linkedin_label: 'LinkedIn:',
         address: 'TP. Hồ Chí Minh, Việt Nam',
         address_note: '(Hỗ trợ toàn quốc, ưu tiên khu vực TP.HCM)',
@@ -700,7 +704,7 @@
         form_name_err: 'Anh/Chị chưa điền họ và tên',
         form_company_label: 'Tên Hộ kinh doanh / Công ty',
         form_company_ph: 'Tiệm, quán ăn, Công ty ABC',
-        form_phone_label: 'Số điện thoại / Zalo',
+        form_phone_label: 'Số điện thoại / Zalo / WhatsApp',
         form_phone_ph: '0912 345 678',
         form_phone_err: 'Số điện thoại VN không hợp lệ (VD: 0912345678).',
         form_email_label: 'Email',
@@ -708,8 +712,8 @@
         form_email_err: 'Vui lòng nhập email hợp lệ.',
         form_service_label: 'Dịch vụ quan tâm',
         form_service_chip1: 'Thiết kế Website',
-        form_service_chip2: 'Web Hosting',
-        form_service_chip3: 'Domain & SSL',
+        form_service_chip2: 'Hosting',
+        form_service_chip3: 'Domain',
         form_service_chip4: 'Email Server Doanh nghiệp',
         form_service_chip5: 'Phần mềm quản lý / Khác',
         form_service_chip6: 'Dịch vụ phát triển phần mềm theo yêu cầu',
@@ -731,6 +735,8 @@
         btn_next: 'Tiếp tục',
         btn_back: 'Quay lại',
         btn_zalo_quick: 'Chat Zalo trực tiếp ngay (0913.365.842)',
+        btn_whatsapp_quick: 'Chat WhatsApp trực tiếp ngay (+84 0913.365.842)',
+        success_whatsapp: 'Nhắn WhatsApp ngay',
         trust_commitment: 'Bảo mật thông tin tuyệt đối • Cam kết phản hồi tư vấn kỹ thuật trong vòng 30 phút làm việc.',
         success_title: 'Yêu cầu tư vấn đã được ghi nhận thành công!',
         btn_reset_form: 'Gửi thêm yêu cầu khác',
@@ -749,7 +755,9 @@
       },
       footer: {
         desc: 'Sales Specialist đại diện cho công ty công nghệ uy tín có hơn 15 năm kinh nghiệm tư vấn và demo giải pháp công nghệ cho doanh nghiệp B2B tại TP. Hồ Chí Minh và toàn quốc. Thiết kế Website theo yêu cầu, Hosting, Domain, Mail Server, Phần mềm quản lý đa ngành nghề.',
-        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>'
+        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>',
+        online_label: 'đang xem',
+        views_label: 'lượt truy cập'
       },
       toast: {
         title: 'Bạn cần tư vấn giải pháp?',

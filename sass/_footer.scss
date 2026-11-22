@@ -41,6 +41,107 @@
       text-decoration: none;
     } 
   }
+
+  /* ── REAL-TIME STATUS PILL (Online & Total Visits) ───────────────────────── */
+  .footer-status-pill-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 15px 12px;
+  }
+
+  .footer-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    font-size: 13px;
+    color: #cbd5e1;
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .status-pill__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1;
+    }
+
+    .status-pill__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseOnlineDot 2s infinite ease-out;
+      flex-shrink: 0;
+    }
+
+    .status-pill__icon {
+      font-size: 12px;
+      color: #94a3b8;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .status-pill__num {
+      font-weight: 700;
+      color: #ffffff;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.2px;
+    }
+
+    .status-pill__label {
+      font-size: 12.5px;
+      color: #94a3b8;
+    }
+
+    .status-pill__sep {
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 11px;
+      user-select: none;
+    }
+  }
+
+  @keyframes pulseOnlineDot {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.75);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .footer-status-pill {
+      padding: 5px 12px;
+      font-size: 12px;
+      gap: 7px;
+
+      .status-pill__label {
+        font-size: 11.5px;
+      }
+    }
+  }
+
   .copyright-notice {
   padding-top: 20px;
   text-align: center;

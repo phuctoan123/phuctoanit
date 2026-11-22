@@ -139,6 +139,16 @@
       box-shadow: 0 8px 24px rgba(0, 104, 255, 0.55);
     }
 
+    /* WhatsApp: #25D366 */
+    &.whatsapp:hover,
+    &.whatsapp.pulse-glow {
+      background: #25D366;
+      border-color: #25D366;
+      color: #ffffff;
+      transform: scale(1.15);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.55);
+    }
+
     /* Website Nasani: #FF5100 */
     &.nasani:hover,
     &.nasani.pulse-glow,
