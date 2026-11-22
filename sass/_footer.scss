@@ -44,10 +44,13 @@
 
   /* ── REAL-TIME STATUS PILL (Online & Total Visits) ───────────────────────── */
   .footer-status-pill-wrap {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding: 24px 15px 12px;
+    padding: 22px 0 14px;
   }
 
   .footer-status-pill {

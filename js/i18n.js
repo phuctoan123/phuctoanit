@@ -382,7 +382,7 @@
         desc: 'Sales Specialist representing a reputable technology company with 15+ years of experience consulting and demoing technology solutions for B2B enterprises in Ho Chi Minh City and nationwide. Specializing in: Custom Website Design, Hosting, Domain, Mail Server, Multi-industry Management Software.',
         copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>',
         online_label: 'online',
-        views_label: 'total visits'
+        views_label: 'total accesses'
       },
       toast: {
         title: 'Need a tech solution?',
