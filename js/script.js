@@ -839,14 +839,122 @@ if (hamburger && mobileNavs) {
     });
   }
 
-  // 4. Initialize when DOM is ready
+  // 4. Fetch dynamic projects from Supabase CMS
+  var cachedStudies = null;
+
+  function renderDynamicProjects(studies) {
+    if (!Array.isArray(studies) || studies.length === 0) return;
+    var wrapper = document.querySelector('.projects-coverflow-slider .swiper-wrapper');
+    if (!wrapper) return;
+
+    var currentLang = document.documentElement.getAttribute('lang') || 'vi';
+
+    var fallbackImages = [
+      'assets/images/project-nhipbac.jpg',
+      'assets/images/project-hautanthe.jpg',
+      'assets/images/project-one.jpg',
+      'assets/images/project-two.jpg',
+      'assets/images/project-four.jpg',
+      'assets/images/project-five.jpg',
+      'assets/images/project-six.jpg'
+    ];
+
+    var html = studies.map(function (item, index) {
+      var title = (currentLang === 'vi' ? item.title_vi : item.title_en) || item.title_vi || item.industry_vi || 'Dự án';
+      var industry = (currentLang === 'vi' ? item.industry_vi : item.industry_en) || item.industry_vi || 'Giải pháp';
+      var desc = (currentLang === 'vi' ? item.problem_vi : item.problem_en) || item.problem_vi || item.solution_vi || '';
+      var img = item.image_url || fallbackImages[index % fallbackImages.length];
+
+      var cat = 'commerce';
+      var lower = (industry + ' ' + title).toLowerCase();
+      if (lower.includes('logistics') || lower.includes('vận hành') || lower.includes('game') || lower.includes('web app') || lower.includes('giáo dục')) {
+        cat = 'operations';
+      } else if (lower.includes('bđs') || lower.includes('bất động sản') || lower.includes('sản xuất') || lower.includes('doanh nghiệp') || lower.includes('luật')) {
+        cat = 'enterprise';
+      }
+
+      var statusTag = item.demo_url
+        ? '<a href="' + item.demo_url + '" target="_blank" rel="noopener noreferrer" class="project-status-tag project-status-tag--live" title="Xem demo">' +
+            '<span class="live-dot"></span> LIVE DEMO ↗' +
+          '</a>'
+        : '<span class="project-status-tag">' +
+            '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Đã triển khai thực tế' +
+          '</span>';
+
+      return (
+        '<div class="swiper-slide project-card-slide" data-category="' + cat + '" data-project-id="' + item.id + '">' +
+          '<article class="project-card">' +
+            '<div class="project-card__header">' +
+              '<span class="project-badge project-badge--live">' +
+                '<i class="fa-solid fa-layer-group" aria-hidden="true"></i> ' +
+                '<span>' + industry + '</span>' +
+              '</span>' +
+              statusTag +
+            '</div>' +
+            '<div class="project-card__media">' +
+              '<img src="' + img + '" alt="' + title + '" loading="lazy" onerror="this.src=\'assets/images/project-one.jpg\'">' +
+            '</div>' +
+            '<div class="project-card__body">' +
+              '<h3 class="project-card__title">' + title + '</h3>' +
+              '<p class="project-card__desc">' + desc + '</p>' +
+            '</div>' +
+          '</article>' +
+        '</div>'
+      );
+    }).join('');
+
+    wrapper.innerHTML = html;
+
+    if (projectsSwiper) {
+      try {
+        projectsSwiper.update();
+        projectsSwiper.slideTo(0, 0);
+      } catch (e) {}
+    }
+    initFilterTabs();
+  }
+
+  function loadDynamicProjects() {
+    var supabaseUrl = 'https://zsyiznoqbxyezejllqos.supabase.co';
+    var supabaseAnonKey = 'sb_publishable_BJVKtPhE6IbpEf5fdyGhUQ_NgjIH9fA';
+
+    fetch(supabaseUrl + '/rest/v1/case_studies?is_active=eq.true&order=sort_order.asc', {
+      headers: {
+        'apikey': supabaseAnonKey,
+        'Authorization': 'Bearer ' + supabaseAnonKey
+      }
+    })
+    .then(function (res) {
+      if (!res.ok) throw new Error('Supabase fetch failed');
+      return res.json();
+    })
+    .then(function (data) {
+      if (Array.isArray(data) && data.length > 0) {
+        cachedStudies = data;
+        renderDynamicProjects(data);
+      }
+    })
+    .catch(function (err) {
+      console.warn('[Portfolio Sync] Using fallback static projects:', err);
+    });
+  }
+
+  document.addEventListener('languageChanged', function () {
+    if (cachedStudies) {
+      renderDynamicProjects(cachedStudies);
+    }
+  });
+
+  // 5. Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initSwiper();
       initFilterTabs();
+      loadDynamicProjects();
     });
   } else {
     initSwiper();
     initFilterTabs();
+    loadDynamicProjects();
   }
 })();
