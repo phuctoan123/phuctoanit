@@ -357,43 +357,115 @@ if (hamburger && mobileNavs) {
     submitBtn.disabled = true;
     submitBtn.classList.add('is-loading');
 
-    var data = new FormData(form);
+    var payload = {
+      name: (form.querySelector('[name="name"]') || {}).value || '',
+      company: (form.querySelector('[name="company"]') || {}).value || '',
+      phone: (form.querySelector('[name="phone"]') || {}).value || '',
+      email: (form.querySelector('[name="email"]') || {}).value || '',
+      message: (form.querySelector('[name="message"]') || {}).value || '',
+      dich_vu_quan_tam: (form.querySelector('#selectedService') || {}).value || '',
+      nganh_nghe_quy_mo: (form.querySelector('[name="nganh_nghe_quy_mo"]') || {}).value || ''
+    };
 
-    fetch(form.action, {
+    var supabaseUrl = 'https://zsyiznoqbxyezejllqos.supabase.co';
+    var supabaseAnonKey = 'sb_publishable_BJVKtPhE6IbpEf5fdyGhUQ_NgjIH9fA';
+
+    var servicesList = payload.dich_vu_quan_tam
+      ? payload.dich_vu_quan_tam.split(',').map(function(s) { return s.trim(); }).filter(Boolean)
+      : ['Chung / Khác'];
+
+    var supabasePayload = {
+      name: payload.name.trim(),
+      phone: payload.phone.trim(),
+      email: payload.email.trim(),
+      company: payload.company.trim() || null,
+      services: servicesList,
+      other_industry: payload.nganh_nghe_quy_mo.trim() || null,
+      message: payload.message.trim(),
+      source: 'website',
+      status: 'new'
+    };
+
+    function sendDirectToSupabase() {
+      return fetch(supabaseUrl + '/rest/v1/leads', {
+        method: 'POST',
+        headers: {
+          'apikey': supabaseAnonKey,
+          'Authorization': 'Bearer ' + supabaseAnonKey,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(supabasePayload)
+      }).then(function(sRes) {
+        if (!sRes.ok) throw new Error('Supabase direct insert failed');
+        return sRes.json();
+      });
+    }
+
+    // Gửi qua /api/lead trước, nếu không được thì gọi thẳng Supabase REST API
+    fetch('/api/lead', {
       method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     })
     .then(function(res) {
-      if (res.ok) {
-        form.hidden = true;
-        successBox.hidden = false;
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (res.ok) return res.json();
+      return sendDirectToSupabase();
+    })
+    .then(function() {
+      // Gửi Formspree chạy ngầm làm kênh dự phòng email
+      try {
+        var formData = new FormData(form);
+        fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }).catch(function(){});
+      } catch (err) {}
 
-        // Play celebration / success sound
-        playSuccessSound();
+      form.hidden = true;
+      successBox.hidden = false;
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        var lang = document.documentElement.lang || 'vi';
-        var msg = (lang === 'vi')
-          ? 'Cảm ơn bạn đã kết nối! Kỹ sư Phúc Toàn sẽ phản hồi trong 30 phút làm việc.'
-          : 'Thank you for reaching out! Sales Engineer Phuc Toan will respond within 30 working minutes.';
-        showToast(msg);
-      } else {
-        return res.json().then(function(json) {
-          throw new Error(json.error || 'Server error');
-        });
-      }
+      // Play celebration / success sound
+      playSuccessSound();
+
+      var lang = document.documentElement.lang || 'vi';
+      var msg = (lang === 'vi')
+        ? 'Cảm ơn bạn đã kết nối! Kỹ sư Phúc Toàn sẽ phản hồi trong 30 phút làm việc.'
+        : 'Thank you for reaching out! Sales Engineer Phuc Toan will respond within 30 working minutes.';
+      showToast(msg);
     })
     .catch(function(err) {
-      console.error('[ContactForm] Submit error:', err);
-      var lang = document.documentElement.lang || 'vi';
-      var errMsg = (lang === 'vi')
-        ? 'Gửi thất bại. Bạn có thể chat Zalo trực tiếp ngay qua nút bên dưới.'
-        : 'Submission failed. You can chat directly via Zalo using the button below.';
-      showToast(errMsg);
+      console.warn('[ContactForm] Supabase/API failed, attempting Formspree fallback:', err);
+      // Fallback cuối cùng: gửi qua Formspree nếu cả 2 phương thức trên gặp sự cố mạng
+      var formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(fRes) {
+        if (fRes.ok) {
+          form.hidden = true;
+          successBox.hidden = false;
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          playSuccessSound();
+          var lang = document.documentElement.lang || 'vi';
+          showToast((lang === 'vi')
+            ? 'Cảm ơn bạn đã kết nối! Kỹ sư Phúc Toàn sẽ phản hồi trong 30 phút làm việc.'
+            : 'Thank you for reaching out! Sales Engineer Phuc Toan will respond within 30 working minutes.');
+        } else {
+          throw new Error('All submission channels failed');
+        }
+      })
+      .catch(function(finalErr) {
+        console.error('[ContactForm] Final error:', finalErr);
+        var lang = document.documentElement.lang || 'vi';
+        var errMsg = (lang === 'vi')
+          ? 'Gửi thất bại. Bạn có thể chat Zalo trực tiếp ngay qua nút bên dưới.'
+          : 'Submission failed. You can chat directly via Zalo using the button below.';
+        showToast(errMsg);
 
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('is-loading');
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+      });
     });
   });
 
