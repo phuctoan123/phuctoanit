@@ -393,12 +393,12 @@ if (hamburger && mobileNavs) {
           'apikey': supabaseAnonKey,
           'Authorization': 'Bearer ' + supabaseAnonKey,
           'Content-Type': 'application/json',
-          'Prefer': 'return=representation'
+          'Prefer': 'return=minimal'
         },
         body: JSON.stringify(supabasePayload)
       }).then(function(sRes) {
-        if (!sRes.ok) throw new Error('Supabase direct insert failed');
-        return sRes.json();
+        if (!sRes.ok && sRes.status !== 201) throw new Error('Supabase direct insert failed');
+        return { success: true };
       });
     }
 

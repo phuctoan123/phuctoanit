@@ -62,12 +62,12 @@ export default async function handler(req, res) {
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         'Content-Type': 'application/json',
-        'Prefer': 'return=representation'
+        'Prefer': 'return=minimal'
       },
       body: JSON.stringify(insertPayload)
     });
 
-    if (!supabaseRes.ok) {
+    if (!supabaseRes.ok && supabaseRes.status !== 201) {
       const errText = await supabaseRes.text();
       console.error('[API Lead] Supabase insert failed:', errText);
       return res.status(500).json({
@@ -76,12 +76,8 @@ export default async function handler(req, res) {
       });
     }
 
-    const createdRows = await supabaseRes.json();
-    const createdLead = createdRows[0];
-
     return res.status(200).json({
       success: true,
-      lead_id: createdLead ? createdLead.id : null,
       message: 'Gửi yêu cầu thành công!'
     });
   } catch (error) {
