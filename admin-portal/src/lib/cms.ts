@@ -236,7 +236,41 @@ export const STATIC_SEED_POSTS: Post[] = [
       "SPF specifies authorized sender IPs, DKIM signs messages cryptographically, and DMARC enforces handling policies for failed checks.",
       "Accurate DNS configuration takes roughly 30 minutes but guarantees up to 98% deliverability straight to client inboxes."
     ],
-    content_vi: `<p class="lead">Một trong những sự cố phổ biến nhất mà các doanh nghiệp B2B phản ánh với đội ngũ kỹ thuật của chúng tôi là: <em>"Bên em gửi email báo giá và hợp đồng qua đối tác lớn nhưng toàn bị báo vào hòm Spam / Rác, thậm chí thư bị trả về (Bounced) ngay lập tức."</em></p><h2>1. Vì sao bộ lọc của Google, Microsoft ngày càng khắt khe?</h2><p>Trước làn sóng lừa đảo giả mạo danh tính, Google và Microsoft đã siết chặt chính sách nhận thư kể từ quý 1/2024.</p><h2>2. Bộ ba hộ pháp: SPF, DKIM và DMARC</h2><p>DNS của tên miền bắt buộc phải thiết lập chuẩn xác 3 bản ghi này.</p>`,
+    content_vi: `<p class="lead">Một trong những sự cố phổ biến nhất mà các doanh nghiệp B2B phản ánh với đội ngũ kỹ thuật của chúng tôi là: <em>"Bên em gửi email báo giá và hợp đồng qua đối tác lớn nhưng toàn bị báo vào hòm Spam / Rác, thậm chí thư bị trả về (Bounced) ngay lập tức."</em></p>
+<p>Sự cố này không đơn thuần làm chậm trễ thương vụ triệu USD, mà còn âm thầm hủy hoại điểm tín nhiệm (Domain Reputation) của doanh nghiệp trên toàn cầu. Vậy đâu là gốc rễ vấn đề và cách khắc phục triệt để như thế nào?</p>
+<h2>1. Vì sao bộ lọc của Google, Microsoft ngày càng khắt khe?</h2>
+<p>Trước làn sóng lừa đảo giả mạo danh tính (Phishing & Spoofing), các nhà cung cấp dịch vụ thư điện tử hàng đầu thế giới như Google (Gmail, Google Workspace), Microsoft (Outlook, Office 365) và Yahoo đã siết chặt chính sách nhận thư kể từ quý 1/2024. Bất kỳ email nào gửi từ một tên miền không chứng minh được danh tính hợp lệ đều bị nghi ngờ là thư rác.</p>
+<div class="callout callout-warning">
+  <div class="callout-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+  <div class="callout-body">
+    <strong>Cảnh báo quan trọng:</strong> Nếu tỷ lệ thư bị người nhận bấm nút "Báo cáo Spam" vượt quá ngưỡng <strong>0.3%</strong>, tên miền của bạn có nguy cơ bị đưa vào danh sách đen (Blacklist) toàn cầu trong nhiều tuần.
+  </div>
+</div>
+<h2>2. "Bộ ba hộ pháp" bảo vệ email doanh nghiệp: SPF, DKIM và DMARC</h2>
+<p>Để đảm bảo thư của bạn luôn vào Inbox của đối tác, hệ thống DNS của tên miền công ty bắt buộc phải sở hữu đủ 3 bản ghi sau:</p>
+<h3>A. Bản ghi SPF (Sender Policy Framework)</h3>
+<p>SPF hoạt động như một danh sách khách mời VIP được niêm yết công khai trên DNS. Khi một máy chủ nhận thư từ tên miền <code>@congtyban.vn</code>, nó sẽ tra cứu SPF để xem IP gửi thư có nằm trong danh sách cho phép hay không.</p>
+<pre><code>v=spf1 include:_spf.google.com include:mail.nasani.vn ip4:103.x.x.x ~all</code></pre>
+<p><em>Lưu ý:</em> Tránh sử dụng quá 10 lần tra cứu DNS (DNS Lookups limit) trong một bản ghi SPF, vì vượt quá giới hạn này sẽ gây lỗi <code>PermError</code> khiến thư bị đánh rớt.</p>
+<h3>B. Chữ ký số DKIM (DomainKeys Identified Mail)</h3>
+<p>DKIM sử dụng mật mã khóa công khai (Public Key Cryptography). Mail server của bạn dùng Khóa bí mật (Private Key) để đóng dấu niêm phong lên tiêu đề email. Mail server người nhận sẽ dùng Khóa công khai trên bản ghi TXT DNS của bạn để giải mã và kiểm tra.</p>
+<p>Nếu email bị bất kỳ kẻ trung gian nào can thiệp hay sửa đổi nội dung trên đường truyền, chữ ký DKIM sẽ không khớp và thư bị coi là giả mạo.</p>
+<h3>C. Chính sách DMARC (Domain-based Message Authentication)</h3>
+<p>Nếu SPF và DKIM là giấy chứng minh danh tính, thì DMARC là chỉ thị bằng văn bản cho người nhận: <em>"Nếu một email tự xưng là từ công ty tôi nhưng trượt cả SPF lẫn DKIM, bạn hãy từ chối nhận (reject) hoặc cách ly (quarantine) ngay lập tức!"</em></p>
+<pre><code>v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@congtyban.vn; pct=100</code></pre>
+<h2>3. Checklist 4 bước tự kiểm tra sức khỏe Email doanh nghiệp</h2>
+<ol class="step-list">
+  <li><strong>Kiểm tra Blacklist:</strong> Nhập tên miền vào công cụ MXToolbox hoặc Mail-Tester để xem IP mail có dính danh sách đen của Spamhaus, Barracuda không.</li>
+  <li><strong>Xác thực bản ghi DNS:</strong> Đảm bảo chỉ có DUY NHẤT một bản ghi SPF cho một tên miền chính (nhiều bản ghi SPF sẽ làm vô hiệu hóa toàn bộ).</li>
+  <li><strong>Kiểm tra Reverse DNS (PTR Record):</strong> IP của Mail Server chuyên dụng cần phải phân giải ngược về đúng hostname tên miền.</li>
+  <li><strong>Theo dõi báo cáo DMARC hàng tuần:</strong> Rà soát xem có ai đang giả mạo thương hiệu công ty để gửi thư lừa đảo hay không.</li>
+</ol>
+<div class="callout callout-tip">
+  <div class="callout-icon"><i class="fa-solid fa-lightbulb"></i></div>
+  <div class="callout-body">
+    <strong>Lời khuyên từ Sales Engineer:</strong> Các dịch vụ Email miễn phí (như <code>@gmail.com</code>) hoặc Email dùng chung trên hosting giá rẻ (Shared Hosting) không thể đáp ứng tiêu chuẩn gửi thư B2B số lượng lớn. Doanh nghiệp cần trang bị giải pháp <strong>Mail Server Doanh Nghiệp riêng với IP tĩnh sạch</strong> để bảo vệ thương hiệu bền vững.
+  </div>
+</div>`,
     content_en: `<p class="lead">One of the most persistent issues enterprise clients bring to our consulting table is deliverability failure.</p>`
   },
   {
@@ -267,7 +301,63 @@ export const STATIC_SEED_POSTS: Post[] = [
       "Owning a direct ordering website empowers F&B brands with 100% Customer Data Platform ownership.",
       "The break-even point: Once monthly direct sales exceed $6,000, private platform operations cost only 3-5% of revenue."
     ],
-    content_vi: `<p class="lead">Trong hơn 3 năm tư vấn chuyển đổi số cho các chuỗi nhà hàng, bài toán hoa hồng 25% luôn là vấn đề lớn.</p><h2>1. Sự thật về mức phí 20% - 30%</h2><p>Sau khi trả phí bạn không sở hữu thông tin khách hàng.</p>`,
+    content_vi: `<p class="lead">Trong hơn 3 năm tư vấn chuyển đổi số cho các chuỗi nhà hàng, quán cà phê và xưởng bánh tại TP.HCM, câu hỏi tôi nhận được nhiều nhất từ các chủ thương hiệu là: <em>"Bây giờ khách quen cứ lên ShopeeFood / Grab đặt món, tháng nào bên anh cũng mất 25% chiết khấu. Có nên tự làm Web đặt món riêng không?"</em></p>
+<p>Đây không phải là quyết định "chọn một bỏ một", mà là bài toán chiến lược phân bổ nguồn lực giữa <strong>Kênh thu hút khách mới (Customer Acquisition)</strong> và <strong>Kênh giữ chân khách hàng (Customer Retention)</strong>.</p>
+<h2>1. Sự thật về mức phí chiết khấu 20% - 30% trên App giao hàng</h2>
+<p>Thử làm một phép tính nhanh với một thương hiệu F&B có 2 cơ sở:</p>
+<ul>
+  <li>Doanh thu bán mang đi qua App: <strong>300.000.000 VNĐ / tháng</strong>.</li>
+  <li>Phí hoa hồng cho bên thứ ba (bình quân 25%): <strong>75.000.000 VNĐ / tháng</strong>.</li>
+  <li>Sau 1 năm, tổng số tiền phí phải trả: <strong>900.000.000 VNĐ</strong>!</li>
+</ul>
+<p>Điều đau lòng nhất là sau khi chi 900 triệu tiền hoa hồng, bạn <strong>không sở hữu bất kỳ thông tin nào</strong> của khách hàng: không số điện thoại, không lịch sử khẩu vị, không địa chỉ cá nhân để remarketing.</p>
+<h2>2. So sánh mô hình App giao hàng vs. Website đặt món riêng (Direct Ordering)</h2>
+<div class="table-responsive">
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Tiêu chí</th>
+        <th>App giao hàng (Grab / ShopeeFood)</th>
+        <th>Website đặt món riêng (Nasani Web)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mục đích chính</strong></td>
+        <td>Tiếp cận khách hàng mới, vãng lai</td>
+        <td>Chăm sóc & giữ chân khách hàng quen</td>
+      </tr>
+      <tr>
+        <td><strong>Chi phí trên mỗi đơn</strong></td>
+        <td>20% – 28% hoa hồng cố định</td>
+        <td>0% hoa hồng (chỉ tốn phí cổng thanh toán ~1%)</td>
+      </tr>
+      <tr>
+        <td><strong>Quyền sở hữu dữ liệu</strong></td>
+        <td>Nền tảng nắm giữ 100%</td>
+        <td>Doanh nghiệp sở hữu 100% (Số điện thoại, sinh nhật, lịch sử đơn)</td>
+      </tr>
+      <tr>
+        <td><strong>Tùy biến thương hiệu</strong></td>
+        <td>Rập khuôn giao diện chung</td>
+        <td>Tùy chỉnh nhận diện thương hiệu, chương trình tích điểm đổi quà</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2>3. Chiến lược kết hợp "Con Ngựa Thành Troy" hiệu quả</h2>
+<p>Mô hình thành công nhất mà tôi đã tư vấn cho hơn 15 chuỗi F&B gồm 3 bước:</p>
+<ol class="step-list">
+  <li><strong>Dùng App làm phễu đón khách mới:</strong> Vẫn duy trì các món cơ bản trên App giao hàng để tận dụng lượng truy cập khổng lồ của nền tảng.</li>
+  <li><strong>Kèm Voucher chuyển đổi trong gói hàng:</strong> Mỗi đơn hàng ship đi đều kèm một card cảm ơn lịch sự với mã QR: <em>"Quét mã đặt đơn lần sau trên Website riêng để giảm ngay 15% và tích điểm đổi nước miễn phí"</em>.</li>
+  <li><strong>Đơn hàng lặp lại chuyển về Website riêng:</strong> Khách quen được hưởng giá tốt hơn 10-15%, nhà hàng vẫn giữ lại được 10-15% biên lợi nhuận so với khi bị trừ chiết khấu qua app.</li>
+</ol>
+<div class="callout callout-tip">
+  <div class="callout-icon"><i class="fa-solid fa-calculator"></i></div>
+  <div class="callout-body">
+    <strong>Điểm mấu chốt:</strong> Chi phí xây dựng một Website đặt món chuyên nghiệp chuẩn UI/UX, tích hợp cổng thanh toán VietQR và tự động gọi tài xế Ahamove / GrabExpress chỉ dao động từ 15 - 25 triệu VNĐ trọn gói một lần. Số tiền này chỉ tương đương 1/3 chi phí hoa hồng mà một quán vừa và nhỏ chi trả cho app trong một tháng!
+  </div>
+</div>`,
     content_en: `<p class="lead">Balancing delivery apps and direct ordering web platforms.</p>`
   },
   {
@@ -298,7 +388,62 @@ export const STATIC_SEED_POSTS: Post[] = [
       "A strict 7-day timeframe forces both teams to focus strictly on realistic data samples.",
       "Enterprises eliminate 80% of post-deployment risks."
     ],
-    content_vi: `<p class="lead">Trong các dự án phần mềm B2B, nỗi sợ lớn nhất là phần mềm không chạy được trên dữ liệu thực tế.</p><h2>1. Bản chất của POC</h2><p>Giải quyết hòn đá cản đường lớn nhất.</p>`,
+    content_vi: `<p class="lead">Trong các dự án phần mềm B2B trị giá từ vài trăm triệu đến hàng tỷ đồng, nỗi sợ lớn nhất của Giám đốc điều hành (CEO) và Giám đốc công nghệ (CTO) luôn là: <em>"Nhà cung cấp trình chiếu slide thuyết trình và demo mẫu rất mượt, nhưng khi áp dụng vào quy trình phức tạp và dữ liệu đặc thù của công ty tôi thì liệu có chạy được không?"</em></p>
+<p>Là một Sales Engineer, vũ khí thuyết phục khách hàng mạnh mẽ nhất của tôi không phải là những lời hứa hẹn hoa mỹ, mà là <strong>Quy trình dựng POC (Proof of Concept) thực chiến trong 7 ngày</strong>.</p>
+<h2>1. Bản chất của POC: Giải quyết "Hòn đá cản đường" lớn nhất</h2>
+<p>Nhiều doanh nghiệp nhầm lẫn giữa <strong>POC (Bản chứng minh khái niệm)</strong>, <strong>Prototype (Bản mẫu giao diện)</strong> và <strong>MVP (Sản phẩm khả dụng tối thiểu)</strong>:</p>
+<ul>
+  <li><strong>Prototype:</strong> Trả lời câu hỏi <em>"Sản phẩm trông như thế nào?"</em> (UI/UX, bản vẽ Figma).</li>
+  <li><strong>MVP:</strong> Trả lời câu hỏi <em>"Thị trường có sẵn sàng trả tiền cho sản phẩm này không?"</em> (Có thể bán được ra ngoài).</li>
+  <li><strong>POC:</strong> Trả lời câu hỏi sống còn <em>"Ý tưởng công nghệ này có khả thi về mặt kỹ thuật và tích hợp được với dữ liệu của công ty tôi không?"</em></li>
+</ul>
+<div class="callout callout-info">
+  <div class="callout-icon"><i class="fa-solid fa-compass"></i></div>
+  <div class="callout-body">
+    <strong>Nguyên tắc vàng của POC:</strong> Chỉ tập trung vào <strong>20% tính năng</strong> mang lại <strong>80% giá trị</strong> hoặc <strong>chứa đựng 90% rủi ro kỹ thuật</strong> (như tích hợp API phần mềm kế toán cũ, đồng bộ tồn kho thời gian thực).
+  </div>
+</div>
+<h2>2. Khung lộ trình 7 ngày triển khai POC mẫu</h2>
+<div class="timeline-box">
+  <div class="timeline-step">
+    <div class="step-badge">Ngày 1 - 2</div>
+    <div class="step-content">
+      <h4>Xác định tiêu chí thành công (Success Criteria) & Tiếp nhận dữ liệu mẫu</h4>
+      <p>Họp 90 phút với các bên liên quan để thống nhất đúng 2 kịch bản cần kiểm chứng. Khách hàng cung cấp 100 dòng dữ liệu mẫu ẩn danh (Anonymized data).</p>
+    </div>
+  </div>
+  <div class="timeline-step">
+    <div class="step-badge">Ngày 3 - 5</div>
+    <div class="step-content">
+      <h4>Dựng môi trường Sandbox & Lập trình logic cốt lõi</h4>
+      <p>Khởi tạo máy chủ thử nghiệm (Staging Server), kết nối webhook hoặc API dữ liệu thực tế, kiểm tra độ trễ và khả năng xử lý bất đồng bộ.</p>
+    </div>
+  </div>
+  <div class="timeline-step">
+    <div class="step-badge">Ngày 6</div>
+    <div class="step-content">
+      <h4>Chạy thử nội bộ & Xử lý tình huống biên (Edge Cases)</h4>
+      <p>Kiểm tra tải với các kịch bản bất thường (mất mạng, dữ liệu thiếu trường, xung đột cập nhật cùng lúc).</p>
+    </div>
+  </div>
+  <div class="timeline-step">
+    <div class="step-badge">Ngày 7</div>
+    <div class="step-content">
+      <h4>Thuyết trình trực tiếp kết quả (Live Demo on Real Data)</h4>
+      <p>Mời trực tiếp người dùng cuối (End-users) và ban lãnh đạo thao tác trên màn hình thực tế. Ký biên bản xác nhận tính khả thi.</p>
+    </div>
+  </div>
+</div>
+<h2>3. Bài học thực tế: Tiết kiệm 400 triệu đồng nhờ 1 tuần làm POC</h2>
+<p>Một công ty phân phối thiết bị y tế tại TP.HCM dự định chi 450 triệu đồng để đặt hàng một phần mềm quản lý kho từ đơn vị bên ngoài với lời cam kết kết nối tự động với máy quét mã vạch 2D cầm tay cũ trong kho.</p>
+<p>Thay vì ký hợp đồng ngay, chúng tôi đề xuất dựng một bản POC kết nối máy quét với cơ sở dữ liệu thử nghiệm trong 5 ngày. Kết quả: Thiết bị quét của khách hàng sử dụng chuẩn giao thức truyền tin cũ qua cổng COM không tương thích với hạ tầng WebSockets trên nền tảng đám mây nếu không có bộ chuyển đổi phần cứng trung gian.</p>
+<p>Nếu không làm POC, khách hàng sẽ phải dừng hoạt động kho trong nhiều tuần và chịu chi phí phát sinh sửa đổi phần mềm hàng trăm triệu đồng sau khi hợp đồng đã ký kết.</p>
+<div class="callout callout-tip">
+  <div class="callout-icon"><i class="fa-solid fa-handshake"></i></div>
+  <div class="callout-body">
+    <strong>Cam kết từ Phúc Toàn:</strong> Đối với các yêu cầu dự án tùy biến phức tạp, tôi luôn đồng hành cùng quý doanh nghiệp xây dựng môi trường Sandbox và POC kiểm chứng trước khi đề xuất bất kỳ gói ngân sách chính thức nào.
+  </div>
+</div>`,
     content_en: `<p class="lead">De-risking enterprise software implementations via 7-day POCs.</p>`
   }
 ]

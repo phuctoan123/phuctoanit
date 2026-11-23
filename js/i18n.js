@@ -29,7 +29,7 @@
         skills: 'Skills',
         services: 'Services',
         portfolio: 'Projects',
-        blog: 'Insights',
+        blog: 'News',
         testimonial: 'Testimonial',
         pricing: 'Collaboration',
         contact: 'Contact',
@@ -265,8 +265,8 @@
         item6_modal_tech: 'Python Django, PostgreSQL, Docker, Vue.js Industrial Dashboard, Redis, MQTT IoT'
       },
       blog: {
-        eyebrow: '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Insights &amp; Solutions',
-        heading: 'Insights &amp; Solutions',
+        eyebrow: '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Insights & Solutions',
+        heading: 'Articles & Knowledge Sharing',
         sub: 'Actionable technology insights, infrastructure optimization guides, and real-world architectural blueprints from a Sales Engineer.',
         view_all: 'View All Articles',
         read_more: 'Read More',
@@ -425,7 +425,7 @@
         skills: 'Kỹ năng',
         services: 'Dịch vụ',
         portfolio: 'Dự án',
-        blog: 'Góc tư vấn',
+        blog: 'Bài viết',
         testimonial: 'Nhận xét',
         pricing: 'Hợp tác',
         contact: 'Liên hệ',
@@ -661,8 +661,8 @@
         item6_modal_tech: 'Python Django, PostgreSQL, Docker, Vue.js Industrial Dashboard, Redis, MQTT IoT'
       },
       blog: {
-        eyebrow: '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Góc Tư Vấn &amp; Giải Pháp',
-        heading: 'Góc Tư Vấn &amp; Giải Pháp',
+        eyebrow: '<i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Góc Tư Vấn & Giải Pháp',
+        heading: 'Bài viết & chia sẻ kiến thức',
         sub: 'Chia sẻ kiến thức giải pháp công nghệ, tối ưu chi phí hạ tầng và bài học thực chiến cho doanh nghiệp B2B từ Sales Engineer.',
         view_all: 'Xem tất cả bài viết',
         read_more: 'Đọc tiếp',
