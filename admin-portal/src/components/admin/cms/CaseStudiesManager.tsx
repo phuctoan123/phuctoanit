@@ -1,12 +1,12 @@
-import { useState, useEffect, useCallback } from 'react'
-import { Plus, Pencil, Trash2, ExternalLink, Eye, EyeOff, FolderOpen } from 'lucide-react'
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { Plus, Pencil, Trash2, ExternalLink, Eye, EyeOff, FolderOpen, Upload, ImageIcon, X, Loader2 } from 'lucide-react'
 import { Button } from '../ui/Button'
 import { Input, Textarea } from '../ui/Input'
 import { Modal, ConfirmDialog } from '../ui/Modal'
 import { Badge } from '../ui/Badge'
 import { Tabs } from '../ui/Tabs'
 import { EmptyState, Skeleton } from '../ui/EmptyState'
-import { getCaseStudies, upsertCaseStudy, deleteCaseStudy } from '../../../lib/cms'
+import { getCaseStudies, upsertCaseStudy, deleteCaseStudy, uploadToCloudinary, uploadMedia } from '../../../lib/cms'
 import type { CaseStudy } from '../../../types/admin'
 import { useToast } from '../../../hooks/useToast'
 
@@ -21,6 +21,8 @@ export function CaseStudiesManager() {
   const [editingItem, setEditingItem] = useState<Partial<CaseStudy> | null>(null)
   const [saving, setSaving] = useState(false)
   const [formLang, setFormLang] = useState<'vi' | 'en'>('vi')
+  const [uploadingImage, setUploadingImage] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   // Delete dialog state
   const [deletingItem, setDeletingItem] = useState<CaseStudy | null>(null)
@@ -67,6 +69,52 @@ export function CaseStudiesManager() {
     setEditingItem({ ...item })
     setFormLang('vi')
     setModalOpen(true)
+  }
+
+  // Handle image upload from file picker
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    if (!file.type.startsWith('image/')) {
+      showToast('Vui lòng chọn file hình ảnh (JPG, PNG, WebP...)', 'error')
+      return
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('Dung lượng ảnh tối đa là 5MB', 'error')
+      return
+    }
+
+    setUploadingImage(true)
+    // Ưu tiên tải lên Cloudinary với Signed Upload
+    let { url, error: err } = await uploadToCloudinary(file, 'phuctoanit/case-studies')
+    if (err) {
+      console.warn('Cloudinary upload error, attempting fallback to Supabase Storage:', err)
+      const fallback = await uploadMedia(file, 'case-studies')
+      if (fallback.url) {
+        url = fallback.url
+        err = null
+      }
+    }
+    setUploadingImage(false)
+
+    if (err) {
+      showToast('Không thể upload ảnh: ' + err, 'error')
+    } else if (url) {
+      setEditingItem((prev) => (prev ? { ...prev, image_url: url } : null))
+      showToast('Tải ảnh dự án lên Cloudinary thành công!', 'success')
+    }
+
+    // Reset file input value so same file can be re-selected if needed
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
+  // Remove current image
+  const handleRemoveImage = () => {
+    setEditingItem((prev) => (prev ? { ...prev, image_url: '' } : null))
   }
 
   // Save (create or update)
@@ -183,9 +231,25 @@ export function CaseStudiesManager() {
                   item.is_active ? 'border-[#EDEDED]' : 'border-gray-200 bg-gray-50/50 opacity-75'
                 }`}
               >
-                <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-4">
+                  {/* Thumbnail Preview */}
+                  <div className="w-24 h-18 rounded-lg overflow-hidden bg-gray-100 border border-[#EDEDED] flex-shrink-0 flex items-center justify-center relative">
+                    {item.image_url ? (
+                      <img
+                        src={item.image_url}
+                        alt={displayTitle}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          ;(e.target as HTMLElement).style.display = 'none'
+                        }}
+                      />
+                    ) : (
+                      <ImageIcon size={22} className="text-gray-400" />
+                    )}
+                  </div>
+
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap mb-1.5">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
                       <Badge variant="default">{item.industry_vi}</Badge>
                       {item.is_active ? (
                         <Badge variant="success">Đang hiển thị</Badge>
@@ -269,6 +333,93 @@ export function CaseStudiesManager() {
               onChange={(id) => setFormLang(id as 'vi' | 'en')}
               variant="pill"
             />
+
+            {/* Image Upload Section */}
+            <div>
+              <label className="block text-xs font-medium text-[#4A4A4A] mb-1.5">
+                Hình ảnh minh họa dự án
+              </label>
+
+              {editingItem.image_url ? (
+                <div className="relative rounded-xl border border-[#EDEDED] overflow-hidden bg-gray-50 flex items-center justify-between p-3">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={editingItem.image_url}
+                      alt="Project Preview"
+                      className="w-16 h-12 object-cover rounded-lg border border-gray-200"
+                    />
+                    <div className="text-xs text-[#6A6A6A] truncate max-w-xs">
+                      <span className="font-medium text-[#1F1F1F] block">Ảnh đã chọn</span>
+                      <span className="text-[11px] text-[#A8A8A8] truncate block">{editingItem.image_url}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={uploadingImage}
+                    >
+                      Đổi ảnh
+                    </Button>
+                    <button
+                      type="button"
+                      onClick={handleRemoveImage}
+                      className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 hover:text-red-600 transition-colors"
+                      title="Xóa ảnh"
+                    >
+                      <X size={16} />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  className={`border-2 border-dashed border-[#EDEDED] hover:border-[#FA520F]/50 rounded-xl p-5 text-center cursor-pointer transition-colors bg-gray-50/50 hover:bg-[#FFF0E8]/10 ${
+                    uploadingImage ? 'pointer-events-none opacity-60' : ''
+                  }`}
+                >
+                  {uploadingImage ? (
+                    <div className="flex flex-col items-center justify-center gap-2 py-2">
+                      <Loader2 size={24} className="text-[#FA520F] animate-spin" />
+                      <span className="text-xs text-[#FA520F] font-medium">Đang tải và tối ưu ảnh trên Cloudinary...</span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center gap-1.5">
+                      <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-[#FA520F]">
+                        <Upload size={18} />
+                      </div>
+                      <div className="text-xs font-semibold text-[#1F1F1F]">
+                        Bấm để chọn ảnh từ máy tính
+                      </div>
+                      <div className="text-[11px] text-[#A8A8A8]">
+                        PNG, JPG, WebP tối đa 5MB (Lưu trữ và tối ưu tốc độ trên Cloudinary CDN)
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Hidden file input */}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+
+              {/* Or manual URL input */}
+              <div className="mt-2">
+                <input
+                  type="text"
+                  placeholder="Hoặc dán URL ảnh trực tiếp (https://... hoặc assets/images/...)"
+                  value={editingItem.image_url ?? ''}
+                  onChange={(e) => setEditingItem((prev) => ({ ...prev, image_url: e.target.value }))}
+                  className="w-full text-xs px-3 py-1.5 rounded-lg border border-[#EDEDED] text-[#4A4A4A] focus:border-[#FA520F] focus:outline-none"
+                />
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
@@ -364,10 +515,10 @@ export function CaseStudiesManager() {
             </div>
 
             <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#EDEDED]">
-              <Button variant="secondary" onClick={() => setModalOpen(false)} disabled={saving}>
+              <Button variant="secondary" onClick={() => setModalOpen(false)} disabled={saving || uploadingImage}>
                 Huỷ
               </Button>
-              <Button variant="primary" onClick={handleSave} loading={saving}>
+              <Button variant="primary" onClick={handleSave} loading={saving} disabled={uploadingImage}>
                 Lưu dự án
               </Button>
             </div>
