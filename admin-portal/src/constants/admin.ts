@@ -65,6 +65,7 @@ export const NAV_GROUPS = [
     group: 'WEBSITE',
     items: [
       { label: 'Nội dung website', href: '/admin/content', icon: 'FileText' },
+      { label: 'Bài viết & Tin tức', href: '/admin/posts', icon: 'BookOpen' },
       { label: 'Cài đặt website', href: '/admin/settings', icon: 'Settings' },
     ],
   },
@@ -82,6 +83,7 @@ export const CONTENT_NAV = [
   { label: 'Năng lực', href: '/admin/content/skills', icon: 'Zap' },
   { label: 'Dịch vụ', href: '/admin/content/services', icon: 'Briefcase' },
   { label: 'Case Studies', href: '/admin/content/case-studies', icon: 'FolderOpen' },
+  { label: 'Bài viết / Blog', href: '/admin/content/posts', icon: 'FileText' },
   { label: 'Đánh giá', href: '/admin/content/testimonials', icon: 'MessageSquare' },
   { label: 'Gói hợp tác', href: '/admin/content/pricing', icon: 'Tag' },
 ]

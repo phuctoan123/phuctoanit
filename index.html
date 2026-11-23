@@ -65,6 +65,7 @@
         <li><a href="#skill" data-i18n="nav.skills">Kỹ năng</a></li>
         <li><a href="#service" data-i18n="nav.services">Dịch vụ</a></li>
         <li><a href="#portfolio" data-i18n="nav.portfolio">Dự án</a></li>
+        <li><a href="#blog" data-i18n="nav.blog">Góc tư vấn</a></li>
         <li><a href="#testimonial" data-i18n="nav.testimonial">Nhận xét</a></li>
         <li><a href="#pricing" data-i18n="nav.pricing">Hợp tác</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Liên hệ</a></li>
@@ -608,6 +609,32 @@
       </div><!-- .projects-coverflow-wrapper -->
     </div><!-- .portfolio-container -->
   </section><!-- #portfolio -->
+
+  <!-- ══════════════════════════════════════════════════════════════
+       INSIGHTS & SOLUTIONS — Chuyên mục Góc Tư Vấn & Giải Pháp B2B
+       ══════════════════════════════════════════════════════════════ -->
+  <section id="blog" class="blog-section">
+    <div class="blog-container">
+      <div class="blog-header" data-aos="fade-up" data-aos-duration="800">
+        <span class="blog-eyebrow" data-i18n-html="blog.eyebrow">
+          <i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Insights &amp; Solutions
+        </span>
+        <h2 class="blog-title" data-i18n="blog.heading">Góc Tư Vấn &amp; Giải Pháp</h2>
+        <p class="blog-subtitle" data-i18n="blog.sub">Chia sẻ kiến thức giải pháp công nghệ, tối ưu chi phí hạ tầng và bài học thực chiến cho doanh nghiệp B2B từ Sales Engineer.</p>
+      </div>
+
+      <div class="blog-grid" id="homepage-blog-grid">
+        <!-- Rendered dynamically via js/script.js from js/posts-data.js / Supabase -->
+      </div>
+
+      <div class="blog-footer-cta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+        <a href="blog.html" class="btn-view-all-posts" data-i18n="blog.view_all">
+          <span>Xem tất cả bài viết</span>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section><!-- #blog -->
 
   <section id="testimonial">
     <h2 data-i18n="testimonial.heading">Testimonial – What clients &amp; colleagues say about me</h2>
@@ -1243,6 +1270,7 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/banner.js"></script>
+  <script src="js/posts-data.js"></script>
   <script src="js/script.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/site-stats.js"></script>

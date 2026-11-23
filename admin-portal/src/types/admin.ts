@@ -80,3 +80,33 @@ export interface CaseStudy {
   sort_order: number
   is_active: boolean
 }
+
+export interface Post {
+  id: string
+  slug: string
+  title_vi: string
+  title_en?: string | null
+  excerpt_vi: string
+  excerpt_en?: string | null
+  category: 'tu-van-giai-phap' | 'ha-tang-bao-mat' | 'case-study' | 'chuyen-doi-so'
+  thumbnail: string
+  thumbnail_alt?: string | null
+  read_time_vi?: string | null
+  read_time_en?: string | null
+  published_at: string
+  key_takeaways_vi?: string[] | null
+  key_takeaways_en?: string[] | null
+  content_vi: string
+  content_en?: string | null
+  related_service: string
+  author_name?: string | null
+  author_role_vi?: string | null
+  author_role_en?: string | null
+  author_avatar?: string | null
+  is_featured?: boolean
+  featured?: boolean
+  status: 'draft' | 'published' | 'archived'
+  views_count?: number
+  created_at?: string
+  updated_at?: string
+}

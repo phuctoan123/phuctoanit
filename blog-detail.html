@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" id="metaDescription"
+    content="Chi tiết bài viết giải pháp công nghệ từ Sales Engineer Nguyễn Phúc Toàn – Phân tích kiến trúc, tối ưu hạ tầng và kinh nghiệm thực chiến B2B.">
+  <meta property="og:title" id="ogTitle" content="Chi tiết giải pháp – Nguyễn Phúc Toàn">
+  <meta property="og:description" id="ogDesc"
+    content="Phân tích kỹ thuật chuyên sâu và hướng dẫn từng bước dành cho chủ doanh nghiệp và quản lý công nghệ.">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-preview.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="sass/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <title id="pageTitle">Chi tiết bài viết – Nguyễn Phúc Toàn</title>
+</head>
+
+<body>
+  <!-- ══════════════════════════════════════════════════════════════
+       SITE HEADER
+       ══════════════════════════════════════════════════════════════ -->
+  <nav class="site-header">
+    <div class="nav-logo">
+      <a href="index.html">
+        <span class="logo-shine">
+          <img src="assets/images/toan-logo.png" alt="Nguyễn Phúc Toàn Logo" width="314" height="60">
+        </span>
+      </a>
+    </div>
+    <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <img src="assets/images/menu.png" alt="menu toggle icon">
+    </button>
+    <!-- Language Switcher — Header Topbar -->
+    <div class="lang-switcher" role="group" aria-label="Language selector">
+      <span class="lang-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" title="English">EN</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button type="button" class="lang-btn lang-btn--active" data-lang="vi" aria-pressed="true" title="Tiếng Việt">VI</button>
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html" data-i18n="nav.home">Trang chủ</a></li>
+        <li><a href="index.html#about" data-i18n="nav.about">Giới thiệu</a></li>
+        <li><a href="index.html#skill" data-i18n="nav.skills">Kỹ năng</a></li>
+        <li><a href="index.html#service" data-i18n="nav.services">Dịch vụ</a></li>
+        <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Dự án</a></li>
+        <li><a href="blog.html" class="active" style="color: #FA520F; font-weight: 700;" data-i18n="nav.blog">Góc tư vấn</a></li>
+        <li><a href="index.html#testimonial" data-i18n="nav.testimonial">Nhận xét</a></li>
+        <li><a href="index.html#pricing" data-i18n="nav.pricing">Hợp tác</a></li>
+        <li><a href="index.html#contact" data-i18n="nav.contact">Liên hệ</a></li>
+      </ul>
+      <!-- Language Switcher for Mobile Drawer -->
+      <div class="lang-switcher-mobile" role="group" aria-label="Mobile Language selector">
+        <span class="lang-label" data-i18n-html="nav.lang_label"><i class="fa-solid fa-globe" aria-hidden="true"></i> Ngôn ngữ:</span>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang-btn lang-btn--active" data-lang="vi" aria-pressed="true">VI</button>
+      </div>
+    </div>
+  </nav><!-- .site-header -->
+
+  <!-- ══════════════════════════════════════════════════════════════
+       BLOG DETAIL CONTENT WRAPPER
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="blog-detail-wrapper">
+    <div class="detail-container">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" id="breadcrumbNav">
+        <a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Trang chủ</a>
+        <span class="sep">/</span>
+        <a href="blog.html">Góc tư vấn</a>
+        <span class="sep">/</span>
+        <span class="current" id="breadcrumbCategory">Hạ tầng &amp; Bảo mật</span>
+      </nav>
+
+      <!-- 2-Column Responsive Layout (70% Main - 30% Sticky Sidebar) -->
+      <div class="detail-layout">
+        
+        <!-- MAIN CONTENT (Left 70%) -->
+        <main class="detail-main" id="articleMainContent">
+          <!-- Article Category & Date Meta -->
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <span class="blog-badge" id="articleBadge" style="position: static;">Danh mục</span>
+            <span id="articleDate" style="font-size: 13.5px; color: #64748B;"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 20/11/2026</span>
+            <span style="color: #CBD5E1;">•</span>
+            <span id="articleReadTime" style="font-size: 13.5px; color: #64748B;"><i class="fa-regular fa-clock" aria-hidden="true"></i> 6 phút đọc</span>
+          </div>
+
+          <!-- Article H1 Heading -->
+          <h1 class="article-title" id="articleTitle">Tiêu đề bài viết</h1>
+
+          <!-- Author Meta Bar -->
+          <div class="article-meta-bar">
+            <div class="author-chip">
+              <img src="assets/images/user1.png" alt="Nguyễn Phúc Toàn" id="articleAuthorAvatar">
+              <div>
+                <span id="articleAuthorName">Nguyễn Phúc Toàn</span>
+                <span style="display: block; font-size: 12px; font-weight: normal; color: #64748B;">Sales Engineer &amp; Solution Consultant</span>
+              </div>
+            </div>
+            <div style="margin-left: auto; display: flex; gap: 10px;">
+              <a href="blog.html" class="btn-read-more" style="font-size: 13px;" data-i18n="blog.back_to_blog">← Về trang bài viết</a>
+            </div>
+          </div>
+
+          <!-- Featured Thumbnail -->
+          <div style="border-radius: 14px; overflow: hidden; margin-bottom: 30px; aspect-ratio: 16/9; background: #0F172A;">
+            <img id="articleCoverImg" src="" alt="Thumbnail" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+
+          <!-- Key Takeaways Box (Điểm cốt lõi cho Lãnh đạo) -->
+          <section class="key-takeaways-box" aria-labelledby="takeawaysHeading">
+            <h2 class="takeaways-title" id="takeawaysHeading" style="font-size: 17px; margin: 0 0 14px; border: 0; padding: 0;">
+              <i class="fa-solid fa-bolt-lightning" aria-hidden="true" style="color: #4F46E5;"></i>
+              <span data-i18n="blog.key_takeaways">Điểm Cốt Lõi Cho Lãnh Đạo (Key Takeaways)</span>
+            </h2>
+            <ul id="articleTakeawaysList">
+              <!-- Rendered dynamically -->
+            </ul>
+          </section>
+
+          <!-- Rich Content Body -->
+          <article class="article-body" id="articleBody">
+            <!-- Rendered dynamically -->
+          </article>
+
+          <!-- Contextual CTA Box linked to relatedService -->
+          <div class="contextual-cta-box" id="articleContextualCTA">
+            <span class="cta-badge" id="ctaBadge">Tư Vấn Chuyên Sâu</span>
+            <h3 id="ctaHeading">Doanh nghiệp của bạn đang cần tối ưu giải pháp này?</h3>
+            <p id="ctaDesc">Đặt lịch trao đổi 30 phút cùng Sales Engineer Phúc Toàn để kiểm tra kỹ thuật và nhận bản thiết kế kiến trúc giải pháp phù hợp nhất.</p>
+            <a href="index.html#contact" class="btn-cta-action" id="ctaBtn">
+              <span id="ctaBtnText">Gửi Yêu Cầu Tư Vấn Ngay</span>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <!-- Author Bio Card -->
+          <div class="author-bio-card">
+            <img src="assets/images/user1.png" alt="Nguyễn Phúc Toàn" class="author-bio-avatar">
+            <div class="author-bio-info">
+              <h4>Nguyễn Phúc Toàn</h4>
+              <div class="author-bio-role">Sales Engineer &amp; Pre-sales Specialist – Nasani</div>
+              <p>Chuyên gia tư vấn giải pháp và demo công nghệ với hơn 15 năm kinh nghiệm đại diện doanh nghiệp. Cầu nối tin cậy giữa đội ngũ kỹ sư phát triển và khách hàng doanh nghiệp B2B trong các bài toán Website, Cloud Hosting, Mail Server và Phần mềm quản lý tùy biến.</p>
+              <div class="author-socials">
+                <a href="https://zalo.me/0913365842" target="_blank" rel="noopener noreferrer" title="Zalo"><i class="fa-solid fa-comment-dots"></i></a>
+                <a href="tel:+84913365842" title="Gọi điện"><i class="fa-solid fa-phone"></i></a>
+                <a href="mailto:phuctoan4906@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://nasani.vn/" target="_blank" rel="noopener noreferrer" title="Nasani Website"><i class="fa-solid fa-globe"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </main>
+
+        <!-- STICKY SIDEBAR (Right 30%) -->
+        <aside class="detail-sidebar">
+          <div class="sidebar-sticky-wrap">
+            
+            <!-- Table of Contents (TOC) -->
+            <div class="toc-card" id="articleTocCard">
+              <h4 class="toc-title">
+                <i class="fa-solid fa-list-ul" aria-hidden="true" style="color: #4F46E5;"></i>
+                <span data-i18n="blog.toc_title">Mục Lục Nội Dung</span>
+              </h4>
+              <nav aria-label="Table of Contents">
+                <ul class="toc-list" id="articleTocList">
+                  <!-- Dynamically generated from article H2/H3 tags -->
+                </ul>
+              </nav>
+            </div>
+
+            <!-- Sticky Quick Consultation CTA Card -->
+            <div class="sidebar-consult-card">
+              <div class="consult-icon">
+                <i class="fa-solid fa-headset" aria-hidden="true"></i>
+              </div>
+              <h4 data-i18n="blog.need_consult">Cần tư vấn giải pháp?</h4>
+              <p data-i18n="blog.consult_sub">Kết nối trực tiếp cùng Kỹ sư Phúc Toàn để nhận giải pháp kỹ thuật tối ưu chi phí cho bài toán doanh nghiệp của bạn.</p>
+              
+              <div class="sidebar-btn-group">
+                <a href="index.html#contact" class="btn-quote" data-i18n="blog.request_quote">
+                  <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Gửi yêu cầu ngay
+                </a>
+                <a href="https://zalo.me/0913365842" target="_blank" rel="noopener noreferrer" class="btn-zalo" data-i18n="blog.chat_zalo">
+                  <i class="fa-solid fa-comment-dots" aria-hidden="true"></i> Chat Zalo trực tiếp
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FLOATING SOCIAL DOCK
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="floating-dock-wrapper" id="floatingDock">
+    <button class="dock-toggle-btn" id="dockToggle" aria-label="Thu gọn thanh liên hệ" aria-expanded="true">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <nav class="floating-social-dock" aria-label="Social quick links">
+      <ul class="dock-list">
+        <li class="dock-item dock-item--phone">
+          <a href="tel:+84913365842" class="dock-btn dock-btn--phone" aria-label="Gọi điện">
+            <span class="dock-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+            <span class="dock-label">0913.365.842</span>
+          </a>
+        </li>
+        <li class="dock-item dock-item--zalo">
+          <a href="https://zalo.me/0913365842" target="_blank" rel="noopener noreferrer" class="dock-btn dock-btn--zalo" aria-label="Chat Zalo">
+            <span class="dock-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.03 2 11c0 2.87 1.48 5.43 3.79 7.08L5 22l4.16-1.39C10.1 20.85 11.03 21 12 21c5.523 0 10-4.03 10-9s-4.477-9-10-9z" fill="#0068FF" />
+                <path d="M7 14.5l3.5-5 2.5 3 4-5-3.5 5-2.5-3-4 5z" fill="#fff" />
+              </svg>
+            </span>
+            <span class="dock-label">Chat Zalo</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SITE FOOTER
+       ══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="content site-footer--content">
+      <div class="footer-left">
+        <img src="assets/images/logo-footer.png" alt="logo" class="footer-logo" width="240">
+        <p data-i18n="footer.desc">Sales Specialist đại diện công ty công nghệ uy tín có 15+ năm kinh nghiệm tư vấn và đề xuất giải pháp công nghệ cho doanh nghiệp B2B tại TP.HCM và toàn quốc.</p>
+      </div>
+      <div class="footer-right">
+        <address>
+          <p><i class="fa-solid fa-globe footer-icon" aria-hidden="true"></i> <span>Website:</span> <a href="https://nasani.vn/" target="_blank" rel="noopener noreferrer">nasani.vn</a></p>
+          <p><i class="fa-solid fa-envelope footer-icon" aria-hidden="true"></i> <span data-i18n="contact.email_label">Email:</span> <a href="mailto:phuctoan4906@gmail.com">phuctoan4906@gmail.com</a></p>
+          <p><i class="fa-solid fa-phone footer-icon" aria-hidden="true"></i> <span data-i18n="contact.phone_label">Phone / Zalo:</span> <a href="tel:+84913365842">+84 0913.365.842</a></p>
+          <p><i class="fa-solid fa-location-dot footer-icon" aria-hidden="true"></i> <span data-i18n="contact.address">Ho Chi Minh City, Vietnam</span></p>
+        </address>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/posts-data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/blog-detail.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    // Hamburger menu toggle for mobile
+    var hamburger = document.querySelector('.hamburger');
+    var navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.toggle('nav-links--open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+</body>
+</html>

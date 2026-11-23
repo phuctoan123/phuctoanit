@@ -7,6 +7,8 @@ import { DashboardPage } from './pages/DashboardPage'
 import { LeadsPage } from './pages/LeadsPage'
 import { LeadDetailPage } from './pages/LeadDetailPage'
 import { FollowUpsPage } from './pages/FollowUpsPage'
+import { PostsPage } from './pages/PostsPage'
+import { PostEditorPage } from './pages/PostEditorPage'
 import {
   ContentPage,
   HeroContentPage,
@@ -14,6 +16,7 @@ import {
   SkillsContentPage,
   ServicesContentPage,
   CaseStudiesContentPage,
+  PostsContentPage,
   TestimonialsContentPage,
   PricingContentPage,
 } from './pages/ContentPages'
@@ -39,12 +42,16 @@ function App() {
             <Route path="leads" element={<LeadsPage />} />
             <Route path="leads/:id" element={<LeadDetailPage />} />
             <Route path="follow-ups" element={<FollowUpsPage />} />
+            <Route path="posts" element={<PostsPage />} />
+            <Route path="posts/new" element={<PostEditorPage />} />
+            <Route path="posts/:id/edit" element={<PostEditorPage />} />
             <Route path="content" element={<ContentPage />} />
             <Route path="content/hero" element={<HeroContentPage />} />
             <Route path="content/about" element={<AboutContentPage />} />
             <Route path="content/skills" element={<SkillsContentPage />} />
             <Route path="content/services" element={<ServicesContentPage />} />
             <Route path="content/case-studies" element={<CaseStudiesContentPage />} />
+            <Route path="content/posts" element={<PostsContentPage />} />
             <Route path="content/testimonials" element={<TestimonialsContentPage />} />
             <Route path="content/pricing" element={<PricingContentPage />} />
             <Route path="settings" element={<SettingsPage />} />

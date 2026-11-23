@@ -1,10 +1,10 @@
-import { X, LayoutDashboard, Users, CalendarCheck, FileText, Settings, UserCircle } from 'lucide-react'
+import { X, LayoutDashboard, Users, CalendarCheck, FileText, Settings, UserCircle, BookOpen } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '../../../lib/utils'
 import { NAV_GROUPS } from '../../../constants/admin'
 
 const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
-  LayoutDashboard, Users, CalendarCheck, FileText, Settings, UserCircle,
+  LayoutDashboard, Users, CalendarCheck, FileText, BookOpen, Settings, UserCircle,
 }
 
 interface MobileSidebarProps {

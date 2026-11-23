@@ -958,3 +958,145 @@ if (hamburger && mobileNavs) {
     loadDynamicProjects();
   }
 })();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HOMEPAGE BLOG / INSIGHTS RENDERER
+   ═══════════════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  var cachedPosts = null;
+
+  function renderHomepageBlog(posts) {
+    var container = document.getElementById('homepage-blog-grid');
+    if (!container) return;
+
+    var currentLang = document.documentElement.getAttribute('lang') || 'vi';
+    var topPosts = posts.slice(0, 3);
+
+    var html = topPosts.map(function (post) {
+      var title = (currentLang === 'vi' ? post.title_vi : post.title_en) || post.title_vi;
+      var excerpt = (currentLang === 'vi' ? post.excerpt_vi : post.excerpt_en) || post.excerpt_vi;
+      var readTime = (currentLang === 'vi' ? post.readTime_vi : post.readTime_en) || post.readTime_vi || '5 phút đọc';
+      
+      var catInfo = (window.BLOG_CATEGORIES && window.BLOG_CATEGORIES[post.category]) || {};
+      var catName = (currentLang === 'vi' ? catInfo.vi : catInfo.en) || post.category;
+
+      var serviceInfo = (window.BLOG_SERVICES_MAP && window.BLOG_SERVICES_MAP[post.relatedService]) || {};
+      var serviceName = (currentLang === 'vi' ? serviceInfo.name_vi : serviceInfo.name_en) || '';
+
+      var dateObj = new Date(post.publishedAt || Date.now());
+      var formattedDate = dateObj.toLocaleDateString(currentLang === 'vi' ? 'vi-VN' : 'en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+
+      var readMoreText = currentLang === 'vi' ? 'Đọc tiếp' : 'Read more';
+
+      return [
+        '<article class="blog-card" data-aos="fade-up" data-aos-duration="700">',
+        '  <div class="blog-card-thumb">',
+        '    <a href="blog-detail.html?slug=' + encodeURIComponent(post.slug) + '" tabindex="-1" aria-hidden="true">',
+        '      <img src="' + post.thumbnail + '" alt="' + title.replace(/"/g, '&quot;') + '" loading="lazy" />',
+        '    </a>',
+        '    <span class="blog-badge badge-' + post.category + '">' + catName + '</span>',
+        '  </div>',
+        '  <div class="blog-card-body">',
+        '    <div class="blog-card-meta">',
+        '      <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> ' + formattedDate + '</span>',
+        '      <span class="meta-sep">•</span>',
+        '      <span><i class="fa-regular fa-clock" aria-hidden="true"></i> ' + readTime + '</span>',
+        '    </div>',
+        '    <h3 class="blog-card-title">',
+        '      <a href="blog-detail.html?slug=' + encodeURIComponent(post.slug) + '">' + title + '</a>',
+        '    </h3>',
+        '    <p class="blog-card-excerpt">' + excerpt + '</p>',
+        '    <div class="blog-card-footer">',
+        '      <a href="blog-detail.html?slug=' + encodeURIComponent(post.slug) + '" class="btn-read-more">',
+        '        <span>' + readMoreText + '</span>',
+        '        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>',
+        '      </a>',
+        serviceName ? '      <span class="blog-service-tag"><i class="fa-solid fa-tag" aria-hidden="true"></i> ' + serviceName + '</span>' : '',
+        '    </div>',
+        '  </div>',
+        '</article>'
+      ].join('\n');
+    }).join('\n');
+
+    container.innerHTML = html;
+  }
+
+  function initBlog() {
+    var container = document.getElementById('homepage-blog-grid');
+    if (!container) return;
+
+    if (window.BLOG_POSTS && Array.isArray(window.BLOG_POSTS)) {
+      cachedPosts = window.BLOG_POSTS;
+      renderHomepageBlog(cachedPosts);
+    }
+
+    // Try fetching live posts from Supabase if configured
+    var supabaseUrl = window.SUPABASE_URL || 'https://zsyiznoqbxyezejllqos.supabase.co';
+    var supabaseAnonKey = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpzeWl6bm9xYnh5ZXplamxscW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzIxNTg1NjQsImV4cCI6MjA0NzczNDU2NH0.74hKj7lUa-fP8L_l-y6P2Yx-rV4y6T1sU8q0l-3d1kM';
+
+    if (window.fetch && supabaseUrl && supabaseAnonKey) {
+      fetch(supabaseUrl + '/rest/v1/posts?status=eq.published&order=published_at.desc&limit=3', {
+        headers: {
+          'apikey': supabaseAnonKey,
+          'Authorization': 'Bearer ' + supabaseAnonKey
+        }
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Supabase posts fetch failed');
+        return res.json();
+      })
+      .then(function (data) {
+        if (Array.isArray(data) && data.length > 0) {
+          // Normalize Supabase fields to match client format
+          var mapped = data.map(function(item) {
+            return {
+              id: item.id,
+              slug: item.slug,
+              category: item.category,
+              thumbnail: item.thumbnail,
+              readTime_vi: item.read_time_vi,
+              readTime_en: item.read_time_en,
+              publishedAt: item.published_at,
+              relatedService: item.related_service,
+              title_vi: item.title_vi,
+              title_en: item.title_en,
+              excerpt_vi: item.excerpt_vi,
+              excerpt_en: item.excerpt_en,
+              keyTakeaways_vi: item.key_takeaways_vi,
+              keyTakeaways_en: item.key_takeaways_en,
+              content_vi: item.content_vi,
+              content_en: item.content_en
+            };
+          });
+          cachedPosts = mapped;
+          renderHomepageBlog(cachedPosts);
+        }
+      })
+      .catch(function () {
+        // Fallback to static seed data
+        if (window.BLOG_POSTS) {
+          cachedPosts = window.BLOG_POSTS;
+          renderHomepageBlog(cachedPosts);
+        }
+      });
+    }
+  }
+
+  document.addEventListener('languageChanged', function () {
+    if (cachedPosts) {
+      renderHomepageBlog(cachedPosts);
+    }
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBlog);
+  } else {
+    initBlog();
+  }
+})();

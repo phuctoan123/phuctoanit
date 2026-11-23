@@ -1,6 +1,6 @@
 import {
   LayoutDashboard, Users, CalendarCheck, FileText, Settings, UserCircle,
-  ChevronLeft, ChevronRight, ExternalLink,
+  ChevronLeft, ChevronRight, ExternalLink, BookOpen,
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '../../../lib/utils'
@@ -12,6 +12,7 @@ const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
   Users,
   CalendarCheck,
   FileText,
+  BookOpen,
   Settings,
   UserCircle,
 }
