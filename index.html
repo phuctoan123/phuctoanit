@@ -84,7 +84,7 @@
       <source src="assets/videos/chip.mp4" type="video/mp4">
     </video>
     <div class="banner--content" data-aos="fade-in" data-aos-duration="2000">
-      <h3 class="name"><a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc
+      <h3 class="name"><a href="https://www.facebook.com/phuctoanit.id.vn" target="_blank" rel="noopener noreferrer">Phuc
           Toan Nguyen</a></h3>
       <h1 class="designation"><span id="typed-designation" data-i18n="banner.designation">Sales Engineer</span><span
           class="typed-cursor" aria-hidden="true">|</span></h1>
@@ -1169,7 +1169,7 @@
 
         <!-- Facebook -->
         <li class="dock-item">
-          <a href="https://www.facebook.com/phuctoansales" class="dock-link facebook" target="_blank"
+          <a href="https://www.facebook.com/phuctoanit.id.vn" class="dock-link facebook" target="_blank"
             rel="noopener noreferrer" aria-label="Facebook – Phuc Toan">
             <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
             <span class="dock-label">Facebook</span>
@@ -1178,7 +1178,7 @@
 
         <!-- Instagram -->
         <li class="dock-item">
-          <a href="https://www.instagram.com/phuctoansales" class="dock-link instagram" target="_blank"
+          <a href="https://www.facebook.com/phuctoanit.id.vn" class="dock-link instagram" target="_blank"
             rel="noopener noreferrer" aria-label="Instagram – Phuc Toan">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
             <span class="dock-label">Instagram</span>
@@ -1246,7 +1246,7 @@
           <span class="status-pill__num" id="onlineCount">1</span>
           <span class="status-pill__label" data-i18n="footer.online_label">đang xem</span>
         </span>
-        <span class="status-pill__sep" aria-hidden="true">•</span>
+        <span class="status-pill__sep" aria-hidden="true">|</span>
         <span class="status-pill__item status-pill__item--views">
           <i class="fa-solid fa-chart-simple status-pill__icon" aria-hidden="true"></i>
           <span class="status-pill__num" id="totalViewsCount">--</span>
@@ -1259,12 +1259,58 @@
       <p data-i18n-html="footer.copyright">
         Copyright &copy; <time datetime="2026">2026</time>
         All rights reserved by
-        <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/phuctoanit.id.vn" target="_blank" rel="noopener noreferrer">
           Phuc Toan
         </a>
       </p>
     </div>
   </footer>
+
+  <!-- Contact CTA Toast (P2) -->
+  
+<!-- Contact CTA Toast -->
+<div
+  class="cta-toast"
+  id="ctaToast"
+  role="region"
+  aria-label="Gợi ý liên hệ"
+  aria-describedby="ctaToastDescription"
+  hidden
+>
+  <!-- Icon -->
+  <div class="cta-toast__icon" aria-hidden="true">
+    <i class="fa-regular fa-comments"></i>
+  </div>
+
+  <!-- Content -->
+  <div class="cta-toast__body">
+    <p
+      class="cta-toast__title"
+      data-i18n="toast.title"
+    >
+      Bạn cần tư vấn giải pháp?
+    </p>
+
+    <p
+      class="cta-toast__sub"
+      id="ctaToastDescription"
+      data-i18n="toast.sub"
+    >
+      Đội ngũ của chúng tôi sẵn sàng hỗ trợ bạn.
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <a href="#contact" class="cta-toast__btn" id="ctaToastBtn">
+    <span data-i18n="toast.cta">Kết nối</span>
+  </a>
+
+  <!-- Close -->
+  <button type="button" class="cta-toast__close" id="ctaToastClose" aria-label="Đóng thông báo">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+</div>
+
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -1279,22 +1325,6 @@
   <script>
     AOS.init();
   </script>
-
-  <!-- Contact CTA Toast (P2) -->
-  <div class="cta-toast" id="ctaToast" role="dialog" aria-live="polite" aria-label="Gợi ý liên hệ" hidden>
-    <div class="cta-toast__icon">
-      <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
-    </div>
-    <div class="cta-toast__body">
-      <p class="cta-toast__title" data-i18n="toast.title">Bạn cần tư vấn giải pháp?</p>
-      <p class="cta-toast__sub" data-i18n="toast.sub">Phản hồi trong vòng 2 giờ làm việc.</p>
-    </div>
-    <a href="#contact" class="cta-toast__btn" id="ctaToastBtn" data-i18n="toast.cta">Gửi ngay →</a>
-    <button class="cta-toast__close" id="ctaToastClose" aria-label="Đóng thông báo">
-      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-    </button>
-  </div>
-
 </body>
 
 </html>

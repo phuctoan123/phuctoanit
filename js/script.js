@@ -586,15 +586,16 @@ if (hamburger && mobileNavs) {
 
 
 /* ════════════════════════════════════════════════════════════════════════════
-   CTA TOAST — Smart notification (P2): shows once per session after 8s
+   CTA TOAST — Smart notification: xuất hiện lặp lại cứ 7 giây 1 lần
    ════════════════════════════════════════════════════════════════════════════ */
-(function initCtaToast() {
-  var STORAGE_KEY = 'ctaToastShown';
-  var DELAY_MS    = 8000;   // 8 seconds before showing
-  var AUTO_HIDE   = 12000;  // auto-dismiss after 12 seconds
+function initCtaToast() {
+  var INTERVAL_MS = 7000;  // 7 giây lặp lại 1 lần
+  var DISPLAY_MS  = 4500;  // Hiển thị trong 4.5 giây rồi tự động ẩn
 
-  // Only show once per session
-  if (sessionStorage.getItem(STORAGE_KEY)) return;
+  // Dọn dẹp key session cũ nếu có
+  try {
+    sessionStorage.removeItem('ctaToastShown');
+  } catch (err) {}
 
   var toast      = document.getElementById('ctaToast');
   var closeBtn   = document.getElementById('ctaToastClose');
@@ -602,32 +603,55 @@ if (hamburger && mobileNavs) {
   if (!toast) return;
 
   var autoHideTimer = null;
+  var nextShowTimer = null;
 
   function showToast() {
+    clearTimeout(nextShowTimer);
+    clearTimeout(autoHideTimer);
+
     toast.hidden = false;
     // Force reflow so transition triggers
     toast.getBoundingClientRect();
+    toast.classList.remove('is-hiding');
     toast.classList.add('is-visible');
-    sessionStorage.setItem(STORAGE_KEY, '1');
-    autoHideTimer = setTimeout(hideToast, AUTO_HIDE);
+
+    // Tự động ẩn sau DISPLAY_MS
+    autoHideTimer = setTimeout(hideToast, DISPLAY_MS);
   }
 
   function hideToast() {
     clearTimeout(autoHideTimer);
+    clearTimeout(nextShowTimer);
+
     toast.classList.add('is-hiding');
     toast.classList.remove('is-visible');
+
     setTimeout(function () {
       toast.hidden = true;
       toast.classList.remove('is-hiding');
     }, 420);
+
+    // Lên lịch xuất hiện lại sau 7 giây
+    nextShowTimer = setTimeout(showToast, INTERVAL_MS);
   }
 
-  // Show after delay
-  setTimeout(showToast, DELAY_MS);
+  // Khởi động: lần đầu tiên xuất hiện sau 7 giây
+  nextShowTimer = setTimeout(showToast, INTERVAL_MS);
 
-  // Close button
+  // Expose global test helper
+  window.showCtaToast = function () {
+    showToast();
+  };
+  window.hideCtaToast = function () {
+    hideToast();
+  };
+
+  // Close button: đóng và lên lịch 7s sau hiện lại
   if (closeBtn) {
-    closeBtn.addEventListener('click', hideToast);
+    closeBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      hideToast();
+    });
   }
 
   // CTA button: hide toast after navigation
@@ -648,7 +672,13 @@ if (hamburger && mobileNavs) {
       }
     });
   }
-})();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCtaToast);
+} else {
+  initCtaToast();
+}
 
 /* ════════════════════════════════════════════════════════════════════════════
    SLOW SMOOTH SCROLL — Custom eased scroll for all #contact anchor links

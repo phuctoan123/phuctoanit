@@ -401,14 +401,14 @@
       },
       footer: {
         desc: 'Sales Specialist representing a reputable technology company with 15+ years of experience consulting and demoing technology solutions for B2B enterprises in Ho Chi Minh City and nationwide. Specializing in: Custom Website Design, Hosting, Domain, Mail Server, Multi-industry Management Software.',
-        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>',
+        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoanit.id.vn" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>',
         online_label: 'online',
         views_label: 'total accesses'
       },
       toast: {
         title: 'Need a tech solution?',
-        sub: 'Response within 2 business hours.',
-        cta: 'Send now →'
+        sub: 'Our team is ready to assist you.',
+        cta: 'Connect'
       }
     },
 
@@ -797,14 +797,14 @@
       },
       footer: {
         desc: 'Sales Specialist đại diện cho công ty công nghệ uy tín có hơn 15 năm kinh nghiệm tư vấn và demo giải pháp công nghệ cho doanh nghiệp B2B tại TP. Hồ Chí Minh và toàn quốc. Thiết kế Website theo yêu cầu, Hosting, Domain, Mail Server, Phần mềm quản lý đa ngành nghề.',
-        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoansales" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>',
+        copyright: 'Copyright &copy; <time datetime="2026">2026</time> Phuc Toan. All rights reserved. Designed by <a href="https://www.facebook.com/phuctoanit.id.vn" target="_blank" rel="noopener noreferrer">Phuc Toan Nguyen</a>',
         online_label: 'đang xem',
         views_label: 'lượt truy cập'
       },
       toast: {
         title: 'Bạn cần tư vấn giải pháp?',
-        sub: 'Phản hồi trong vòng 2 giờ làm việc.',
-        cta: 'Gửi ngay →'
+        sub: 'Đội ngũ của chúng tôi sẵn sàng hỗ trợ bạn.',
+        cta: 'Kết nối'
       }
     }
 
