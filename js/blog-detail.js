@@ -222,7 +222,7 @@
 
     // Live Sync from Supabase
     var supabaseUrl = window.SUPABASE_URL || 'https://zsyiznoqbxyezejllqos.supabase.co';
-    var supabaseAnonKey = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpzeWl6bm9xYnh5ZXplamxscW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzIxNTg1NjQsImV4cCI6MjA0NzczNDU2NH0.74hKj7lUa-fP8L_l-y6P2Yx-rV4y6T1sU8q0l-3d1kM';
+    var supabaseAnonKey = window.SUPABASE_ANON_KEY || 'sb_publishable_BJVKtPhE6IbpEf5fdyGhUQ_NgjIH9fA';
 
     if (window.fetch && supabaseUrl && supabaseAnonKey && slug) {
       fetch(supabaseUrl + '/rest/v1/posts?slug=eq.' + encodeURIComponent(slug) + '&status=eq.published&limit=1', {
