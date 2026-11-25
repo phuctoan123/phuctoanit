@@ -91,7 +91,7 @@ export function PostsManager() {
       author_name: 'Nguyễn Phúc Toàn',
       author_role_vi: 'Sales Engineer & Solution Consultant',
       status: 'published',
-      featured: true,
+      is_featured: true,
       key_takeaways_vi: ['', '', ''],
       key_takeaways_en: ['', '', ''],
     })

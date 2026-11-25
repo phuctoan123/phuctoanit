@@ -491,15 +491,62 @@ export async function getPostById(id: string): Promise<{ data: Post | null; erro
 
 export async function upsertPost(post: Partial<Post>): Promise<{ data: Post | null; error: string | null }> {
   try {
+    const isFeatured = post.is_featured !== undefined ? post.is_featured : (post.featured ?? false)
+
+    // Build clean sanitized payload with only real database columns
+    const payload: Record<string, unknown> = {
+      slug: post.slug,
+      title_vi: post.title_vi,
+      title_en: post.title_en || '',
+      excerpt_vi: post.excerpt_vi || '',
+      excerpt_en: post.excerpt_en || '',
+      category: post.category || 'tu-van-giai-phap',
+      thumbnail: post.thumbnail || '',
+      thumbnail_alt: post.thumbnail_alt || '',
+      read_time_vi: post.read_time_vi || '5 phút đọc',
+      read_time_en: post.read_time_en || '5 min read',
+      published_at: post.published_at || new Date().toISOString().split('T')[0],
+      key_takeaways_vi: Array.isArray(post.key_takeaways_vi) ? post.key_takeaways_vi : [],
+      key_takeaways_en: Array.isArray(post.key_takeaways_en) ? post.key_takeaways_en : [],
+      content_vi: post.content_vi || '',
+      content_en: post.content_en || '',
+      related_service: post.related_service || 'web-development',
+      author_name: post.author_name || 'Nguyễn Phúc Toàn',
+      author_role_vi: post.author_role_vi || 'Sales Engineer & Solution Consultant',
+      author_role_en: post.author_role_en || 'Sales Engineer & Solution Consultant',
+      author_avatar: post.author_avatar || 'assets/images/user1.png',
+      is_featured: Boolean(isFeatured),
+      status: post.status || 'published',
+      updated_at: new Date().toISOString(),
+    }
+
+    // Only assign ID if it is a valid UUID (not temporary like 'post-email-...' or '')
+    if (post.id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(post.id)) {
+      payload.id = post.id
+    }
+
+    if (post.views_count !== undefined) {
+      payload.views_count = post.views_count
+    }
+
+    if (post.created_at) {
+      payload.created_at = post.created_at
+    }
+
     const { data, error } = await supabase
       .from('posts')
-      .upsert(post)
+      .upsert(payload, { onConflict: 'slug' })
       .select()
       .single()
-    if (error) return { data: null, error: error.message }
+
+    if (error) {
+      console.error('[CMS] upsertPost error:', error)
+      return { data: null, error: error.message }
+    }
     return { data: data as Post, error: null }
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Lỗi lưu bài viết'
+    console.error('[CMS] upsertPost exception:', err)
     return { data: null, error: message }
   }
 }

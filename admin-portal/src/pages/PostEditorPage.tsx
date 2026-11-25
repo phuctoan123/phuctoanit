@@ -209,7 +209,7 @@ export function PostEditorPage() {
   const [loading, setLoading] = useState(isEdit)
   const [saving, setSaving] = useState(false)
   const [langTab, setLangTab] = useState<'vi' | 'en'>('vi')
-  
+
   // 3 Editor Modes: 'write' | 'split' | 'preview'
   const [editorMode, setEditorMode] = useState<'write' | 'split' | 'preview'>('split')
   const [autoSlug, setAutoSlug] = useState(!isEdit)
@@ -267,7 +267,7 @@ export function PostEditorPage() {
           if (parsed && (parsed.title_vi || parsed.content_vi)) {
             setHasDraft(true)
           }
-        } catch {}
+        } catch { }
       }
       return
     }
@@ -306,7 +306,7 @@ export function PostEditorPage() {
           ...formData,
           _savedAt: new Date().toLocaleTimeString('vi-VN')
         }))
-      } catch {}
+      } catch { }
     }, 12000)
 
     return () => clearInterval(timer)
@@ -465,8 +465,13 @@ export function PostEditorPage() {
 
     setSaving(true)
 
+    // Strip legacy or non-column 'featured' attribute
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { featured: _legacyFeatured, ...cleanFormData } = formData as unknown as { featured?: boolean; [key: string]: unknown }
+
     const payload: Partial<Post> = {
-      ...formData,
+      ...(cleanFormData as Partial<Post>),
+      is_featured: Boolean(formData.is_featured ?? (formData as unknown as { featured?: boolean }).featured ?? false),
       slug: currentSlug,
       status: overrideStatus || formData.status || 'published',
       updated_at: new Date().toISOString(),
@@ -511,7 +516,7 @@ export function PostEditorPage() {
 
   return (
     <div className="space-y-5 pb-16">
-      
+
       {/* Draft Recovery Notification */}
       {hasDraft && (
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 flex items-center justify-between gap-3 text-sm text-amber-900">
@@ -620,10 +625,10 @@ export function PostEditorPage() {
 
       {/* Main 2-Column Responsive Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        
+
         {/* ── LEFT COLUMN (70%): Main Content ─────────────────────────────── */}
         <div className="lg:col-span-8 space-y-5">
-          
+
           {/* Language Switcher Tabs */}
           <div className="bg-white rounded-xl border border-[#EDEDED] p-4 shadow-sm flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -730,8 +735,8 @@ export function PostEditorPage() {
                         idx === 0
                           ? 'Ý chính 1 (Bối cảnh / Quy định kỹ thuật mới)...'
                           : idx === 1
-                          ? 'Ý chính 2 (Cơ chế hoạt động / Bản chất giải pháp)...'
-                          : 'Ý chính 3 (Hiệu quả kinh doanh & ROI cụ thể)...'
+                            ? 'Ý chính 2 (Cơ chế hoạt động / Bản chất giải pháp)...'
+                            : 'Ý chính 3 (Hiệu quả kinh doanh & ROI cụ thể)...'
                       }
                       className="w-full text-sm bg-transparent outline-none text-[#1F1F1F]"
                     />
@@ -745,17 +750,16 @@ export function PostEditorPage() {
           <div className="bg-white rounded-xl border border-[#EDEDED] overflow-hidden shadow-sm">
             {/* Editor Top Bar & Snippet Toolbar */}
             <div className="p-3 border-b border-[#EDEDED] bg-[#FAFAFA] flex flex-wrap items-center justify-between gap-3">
-              
+
               {/* 3 Layout Switchers */}
               <div className="flex items-center gap-1 bg-[#EDEDED]/80 p-0.5 rounded-lg">
                 <button
                   type="button"
                   onClick={() => setEditorMode('write')}
-                  className={`px-2.5 py-1.5 rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors ${
-                    editorMode === 'write'
-                      ? 'bg-white text-[#FA520F] shadow-xs'
-                      : 'text-[#6A6A6A] hover:text-[#1F1F1F]'
-                  }`}
+                  className={`px-2.5 py-1.5 rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors ${editorMode === 'write'
+                    ? 'bg-white text-[#FA520F] shadow-xs'
+                    : 'text-[#6A6A6A] hover:text-[#1F1F1F]'
+                    }`}
                   title="Chế độ tập trung soạn thảo"
                 >
                   <Code className="w-3.5 h-3.5" />
@@ -764,11 +768,10 @@ export function PostEditorPage() {
                 <button
                   type="button"
                   onClick={() => setEditorMode('split')}
-                  className={`px-2.5 py-1.5 rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors ${
-                    editorMode === 'split'
-                      ? 'bg-white text-[#4F46E5] shadow-xs'
-                      : 'text-[#6A6A6A] hover:text-[#1F1F1F]'
-                  }`}
+                  className={`px-2.5 py-1.5 rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors ${editorMode === 'split'
+                    ? 'bg-white text-[#4F46E5] shadow-xs'
+                    : 'text-[#6A6A6A] hover:text-[#1F1F1F]'
+                    }`}
                   title="Vừa gõ vừa xem trực tiếp kết quả song song"
                 >
                   <Columns className="w-3.5 h-3.5" />
@@ -777,11 +780,10 @@ export function PostEditorPage() {
                 <button
                   type="button"
                   onClick={() => setEditorMode('preview')}
-                  className={`px-2.5 py-1.5 rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors ${
-                    editorMode === 'preview'
-                      ? 'bg-white text-emerald-600 shadow-xs'
-                      : 'text-[#6A6A6A] hover:text-[#1F1F1F]'
-                  }`}
+                  className={`px-2.5 py-1.5 rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors ${editorMode === 'preview'
+                    ? 'bg-white text-emerald-600 shadow-xs'
+                    : 'text-[#6A6A6A] hover:text-[#1F1F1F]'
+                    }`}
                   title="Xem trước giao diện hoàn chỉnh"
                 >
                   <Eye className="w-3.5 h-3.5" />
@@ -981,7 +983,7 @@ export function PostEditorPage() {
 
         {/* ── RIGHT COLUMN (30%): Sticky Configuration Panel ──────────────── */}
         <div className="lg:col-span-4 space-y-5 lg:sticky lg:top-4">
-          
+
           {/* Card 1: Cấu hình Xuất bản */}
           <div className="bg-white rounded-xl border border-[#EDEDED] p-5 shadow-sm space-y-4">
             <h3 className="text-xs font-bold text-[#4A4A4A] uppercase tracking-wider border-b border-[#EDEDED] pb-2 flex items-center justify-between">
