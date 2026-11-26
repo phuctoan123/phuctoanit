@@ -105,6 +105,17 @@ export async function upsertCaseStudy(study: Partial<CaseStudy>) {
   return { data: data as CaseStudy, error: null }
 }
 
+export async function updateCaseStudy(id: string, patch: Partial<CaseStudy>) {
+  const { data, error } = await supabase
+    .from('case_studies')
+    .update(patch)
+    .eq('id', id)
+    .select()
+    .single()
+  if (error) return { data: null, error: error.message }
+  return { data: data as CaseStudy, error: null }
+}
+
 export async function deleteCaseStudy(id: string) {
   const { error } = await supabase
     .from('case_studies')

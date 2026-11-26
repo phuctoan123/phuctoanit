@@ -6,7 +6,7 @@ import { Modal, ConfirmDialog } from '../ui/Modal'
 import { Badge } from '../ui/Badge'
 import { Tabs } from '../ui/Tabs'
 import { EmptyState, Skeleton } from '../ui/EmptyState'
-import { getCaseStudies, upsertCaseStudy, deleteCaseStudy, uploadToCloudinary, uploadMedia } from '../../../lib/cms'
+import { getCaseStudies, upsertCaseStudy, updateCaseStudy, deleteCaseStudy, uploadToCloudinary, uploadMedia } from '../../../lib/cms'
 import type { CaseStudy } from '../../../types/admin'
 import { useToast } from '../../../hooks/useToast'
 
@@ -150,7 +150,7 @@ export function CaseStudiesManager() {
 
   // Toggle active status
   const handleToggleActive = async (item: CaseStudy) => {
-    const { error: err } = await upsertCaseStudy({ id: item.id, is_active: !item.is_active })
+    const { error: err } = await updateCaseStudy(item.id, { is_active: !item.is_active })
     if (err) {
       showToast('Lỗi khi đổi trạng thái: ' + err, 'error')
     } else {
