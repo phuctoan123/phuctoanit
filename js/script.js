@@ -224,8 +224,15 @@ if (hamburger && mobileNavs) {
     return true;
   }
 
-  // ── 4. Multi-Step Wizard Navigation
-  function goToStep(step) {
+  // ── 4. Multi-Step Wizard Navigation with Smooth Slide Transition
+  var isWizardAnimating = false;
+
+  function goToStep(step, immediate) {
+    if (step === currentStep && !immediate) return;
+    if (isWizardAnimating && !immediate) return;
+
+    var prevStep = currentStep;
+    var isForward = step > prevStep;
     currentStep = step;
 
     // Progress bar width
@@ -247,15 +254,49 @@ if (hamburger && mobileNavs) {
       }
     });
 
-    // Panels visibility
-    panels.forEach(function(panel) {
-      var p = parseInt(panel.getAttribute('data-panel'), 10);
-      if (p === step) {
-        panel.classList.add('is-active');
+    var currentPanel = form.querySelector('.wizard-panel[data-panel="' + prevStep + '"]');
+    var targetPanel = form.querySelector('.wizard-panel[data-panel="' + step + '"]');
+
+    if (immediate || !currentPanel || !targetPanel || prevStep === step) {
+      panels.forEach(function(panel) {
+        panel.classList.remove('slide-in-right', 'slide-out-left', 'slide-in-left', 'slide-out-right');
+        var p = parseInt(panel.getAttribute('data-panel'), 10);
+        if (p === step) {
+          panel.classList.add('is-active');
+        } else {
+          panel.classList.remove('is-active');
+        }
+      });
+      isWizardAnimating = false;
+    } else {
+      isWizardAnimating = true;
+
+      // Reset animation classes first
+      panels.forEach(function(p) {
+        p.classList.remove('slide-in-right', 'slide-out-left', 'slide-in-left', 'slide-out-right');
+      });
+
+      if (isForward) {
+        currentPanel.classList.add('slide-out-left');
+        targetPanel.classList.add('slide-in-right');
       } else {
-        panel.classList.remove('is-active');
+        currentPanel.classList.add('slide-out-right');
+        targetPanel.classList.add('slide-in-left');
       }
-    });
+
+      setTimeout(function() {
+        panels.forEach(function(panel) {
+          panel.classList.remove('slide-in-right', 'slide-out-left', 'slide-in-left', 'slide-out-right');
+          var p = parseInt(panel.getAttribute('data-panel'), 10);
+          if (p === step) {
+            panel.classList.add('is-active');
+          } else {
+            panel.classList.remove('is-active');
+          }
+        });
+        isWizardAnimating = false;
+      }, 650);
+    }
 
     // Smooth scroll to form header if scrolled past
     var formTop = form.getBoundingClientRect().top + window.pageYOffset - 100;

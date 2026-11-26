@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import {
   ArrowLeft,
@@ -23,6 +23,10 @@ import {
   Image as ImageIcon,
   BookTemplate,
   RotateCcw,
+  Maximize2,
+  Minimize2,
+  CheckCircle2,
+  X,
 } from 'lucide-react'
 import { Button } from '../components/admin/ui/Button'
 import { Badge } from '../components/admin/ui/Badge'
@@ -228,6 +232,12 @@ export function PostEditorPage() {
   // Local draft recovery state
   const [hasDraft, setHasDraft] = useState(false)
 
+  // Fullscreen editor
+  const [isFullscreen, setIsFullscreen] = useState(false)
+
+  // Publish confirm modal
+  const [publishConfirmOpen, setPublishConfirmOpen] = useState(false)
+
   const fileInputRef = useRef<HTMLInputElement>(null)
   const contentFileInputRef = useRef<HTMLInputElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -240,10 +250,10 @@ export function PostEditorPage() {
     excerpt_vi: '',
     excerpt_en: '',
     category: 'tu-van-giai-phap',
-    thumbnail: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&h=675&q=80',
+    thumbnail: '',
     thumbnail_alt: '',
-    read_time_vi: '5 phút đọc',
-    read_time_en: '5 min read',
+    read_time_vi: '',
+    read_time_en: '',
     published_at: new Date().toISOString().split('T')[0],
     key_takeaways_vi: ['', '', ''],
     key_takeaways_en: ['', '', ''],
@@ -253,7 +263,7 @@ export function PostEditorPage() {
     author_name: 'Nguyễn Phúc Toàn',
     author_role_vi: 'Sales Engineer & Solution Consultant',
     is_featured: false,
-    status: 'published',
+    status: 'draft',
   })
 
   // Load existing post if in edit mode
@@ -327,6 +337,15 @@ export function PostEditorPage() {
       }
     }
   }
+
+  // Escape key to close fullscreen
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isFullscreen) setIsFullscreen(false)
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isFullscreen])
 
   // Handle title change & auto slug
   const handleTitleChange = (val: string) => {
@@ -457,6 +476,20 @@ export function PostEditorPage() {
       return
     }
 
+    // ── Validation trước khi Publish ──
+    if (overrideStatus === 'published') {
+      const errors: string[] = []
+      if (!formData.excerpt_vi?.trim()) errors.push('Tóm tắt (Excerpt)')
+      const bodyText = (formData.content_vi || '').replace(/<[^>]*>/g, '').trim()
+      if (bodyText.length < 100) errors.push('Nội dung bài viết (tối thiểu 100 ký tự)')
+      const currentSlugCheck = formData.slug?.trim() || slugify(formData.title_vi)
+      if (!currentSlugCheck) errors.push('URL Slug')
+      if (errors.length > 0) {
+        showToast(`⚠️ Chưa đủ điều kiện xuất bản: ${errors.join(' • ')}`, 'error')
+        return
+      }
+    }
+
     const currentSlug = formData.slug?.trim() || slugify(formData.title_vi)
     if (!currentSlug) {
       showToast('Vui lòng cung cấp URL slug hợp lệ', 'error')
@@ -473,7 +506,7 @@ export function PostEditorPage() {
       ...(cleanFormData as Partial<Post>),
       is_featured: Boolean(formData.is_featured ?? (formData as unknown as { featured?: boolean }).featured ?? false),
       slug: currentSlug,
-      status: overrideStatus || formData.status || 'published',
+      status: overrideStatus || formData.status || 'draft',
       updated_at: new Date().toISOString(),
     }
 
@@ -633,15 +666,43 @@ export function PostEditorPage() {
           <div className="bg-white rounded-xl border border-[#EDEDED] p-4 shadow-sm flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-xs font-semibold text-[#6A6A6A] uppercase tracking-wider">Ngôn ngữ:</span>
-              <Tabs
-                tabs={[
-                  { id: 'vi', label: '🇻🇳 Tiếng Việt (Chính)' },
-                  { id: 'en', label: '🇬🇧 Tiếng Anh (Tùy chọn)' },
-                ]}
-                activeTab={langTab}
-                onChange={(id) => setLangTab(id as 'vi' | 'en')}
-                variant="pill"
-              />
+              <div className="flex items-center gap-1">
+                {/* VI tab */}
+                <button
+                  type="button"
+                  onClick={() => setLangTab('vi')}
+                  className={`relative px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${
+                    langTab === 'vi'
+                      ? 'bg-[#FA520F] text-white shadow-sm'
+                      : 'bg-[#EDEDED]/80 text-[#6A6A6A] hover:text-[#1F1F1F]'
+                  }`}
+                >
+                  🇻🇳 Tiếng Việt (Chính)
+                </button>
+                {/* EN tab with filled indicator */}
+                <button
+                  type="button"
+                  onClick={() => setLangTab('en')}
+                  className={`relative px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${
+                    langTab === 'en'
+                      ? 'bg-[#FA520F] text-white shadow-sm'
+                      : 'bg-[#EDEDED]/80 text-[#6A6A6A] hover:text-[#1F1F1F]'
+                  }`}
+                >
+                  🇬🇧 Tiếng Anh
+                  {formData.content_en?.trim() ? (
+                    <span
+                      className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-white"
+                      title="Đã có nội dung tiếng Anh"
+                    />
+                  ) : (
+                    <span
+                      className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-gray-300 border-2 border-white"
+                      title="Chưa có nội dung tiếng Anh"
+                    />
+                  )}
+                </button>
+              </div>
             </div>
             <button
               type="button"
@@ -747,7 +808,10 @@ export function PostEditorPage() {
           </div>
 
           {/* Interactive Rich Content Editor */}
-          <div className="bg-white rounded-xl border border-[#EDEDED] overflow-hidden shadow-sm">
+          <div className={isFullscreen
+            ? "fixed inset-0 z-[9999] bg-white flex flex-col overflow-hidden shadow-2xl"
+            : "bg-white rounded-xl border border-[#EDEDED] overflow-hidden shadow-sm"
+          }>
             {/* Editor Top Bar & Snippet Toolbar */}
             <div className="p-3 border-b border-[#EDEDED] bg-[#FAFAFA] flex flex-wrap items-center justify-between gap-3">
 
@@ -791,7 +855,7 @@ export function PostEditorPage() {
                 </button>
               </div>
 
-              {/* Formatting Toolbar */}
+              {/* Formatting Toolbar + Fullscreen toggle */}
               <div className="flex items-center gap-1 flex-wrap">
                 <button
                   type="button"
@@ -890,6 +954,15 @@ export function PostEditorPage() {
                   className="px-2 py-1 rounded bg-blue-50 hover:bg-blue-100 text-blue-800 text-xs font-semibold flex items-center gap-1 border border-blue-200"
                 >
                   <ImageIcon className="w-3.5 h-3.5 text-blue-600" /> Chèn ảnh
+                </button>
+                <div className="h-4 w-px bg-[#E0E0E0] mx-0.5" />
+                <button
+                  type="button"
+                  onClick={() => setIsFullscreen(f => !f)}
+                  className="p-1.5 rounded hover:bg-[#EAEAEA] text-[#6A6A6A] hover:text-[#1F1F1F]"
+                  title={isFullscreen ? 'Thu nhỏ (Esc)' : 'Mở rộng toàn màn hình'}
+                >
+                  {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
                 </button>
               </div>
 
@@ -995,7 +1068,7 @@ export function PostEditorPage() {
             <div>
               <label className="text-xs font-semibold text-[#4A4A4A] block mb-1">Trạng thái bài viết</label>
               <select
-                value={formData.status || 'published'}
+                value={formData.status || 'draft'}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
                 className="w-full text-sm border border-[#EDEDED] rounded-lg px-3 py-2 outline-none focus:border-[#FA520F] bg-white font-medium"
               >
@@ -1080,10 +1153,10 @@ export function PostEditorPage() {
               <label className="text-xs font-semibold text-[#4A4A4A] block mb-1">Thời gian đọc ước tính</label>
               <input
                 type="text"
-                value={formData.read_time_vi || '5 phút đọc'}
+                value={formData.read_time_vi || (formData.content_vi ? calculateReadTime(formData.content_vi) : '')}
                 onChange={(e) => setFormData({ ...formData, read_time_vi: e.target.value })}
                 className="w-full text-xs border border-[#EDEDED] rounded-lg px-3 py-2 outline-none focus:border-[#FA520F]"
-                placeholder="VD: 6 phút đọc"
+                placeholder="Tự động tính theo số từ..."
               />
             </div>
           </div>
@@ -1144,16 +1217,30 @@ export function PostEditorPage() {
             </h3>
 
             {/* Preview */}
-            <div className="w-full aspect-video rounded-lg overflow-hidden bg-[#EDEDED] border border-[#E0E0E0] relative group">
+            <div className="w-full aspect-video rounded-lg overflow-hidden bg-[#F4F4F5] border-2 border-dashed border-[#DADADA] relative group">
               {formData.thumbnail ? (
-                <img
-                  src={formData.thumbnail}
-                  alt={formData.thumbnail_alt || formData.title_vi || 'Thumbnail'}
-                  className="w-full h-full object-cover"
-                />
+                <>
+                  <img
+                    src={formData.thumbnail}
+                    alt={formData.thumbnail_alt || formData.title_vi || 'Thumbnail'}
+                    className="w-full h-full object-cover"
+                    onError={(e) => { e.currentTarget.style.display = 'none' }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, thumbnail: '' }))}
+                    className="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                    title="Xóa ảnh bìa"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                  <span className="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded font-mono">16:9</span>
+                </>
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center text-xs text-[#A8A8A8]">
-                  <span>Chưa có ảnh bìa</span>
+                <div className="flex flex-col items-center justify-center h-full gap-2 text-[#A8A8A8]">
+                  <ImageIcon className="w-8 h-8" />
+                  <span className="text-xs font-medium">Chưa có ảnh bìa (16:9)</span>
+                  <span className="text-[11px]">Tải lên Cloudinary hoặc dán URL bên dưới</span>
                 </div>
               )}
             </div>

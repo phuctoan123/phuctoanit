@@ -207,6 +207,7 @@
         font-size: 1rem;
         color: #111827;
       }
+
       span {
         display: block;
         font-size: 0.85rem;
@@ -236,19 +237,28 @@
       &.zalo {
         background: #0068ff;
         color: #fff;
-        &:hover { background: #0056d6; }
+
+        &:hover {
+          background: #0056d6;
+        }
       }
 
       &.whatsapp {
         background: #25d366;
         color: #fff;
-        &:hover { background: #1eb857; }
+
+        &:hover {
+          background: #1eb857;
+        }
       }
 
       &.phone {
         background: #10b981;
         color: #fff;
-        &:hover { background: #059669; }
+
+        &:hover {
+          background: #059669;
+        }
       }
     }
   }
@@ -344,6 +354,7 @@
 
     &.is-active {
       color: #9921e8;
+
       .step-num {
         background: linear-gradient(135deg, #9921e8 0%, #7b15be 100%);
         color: #ffffff;
@@ -354,6 +365,7 @@
 
     &.is-completed {
       color: #10b981;
+
       .step-num {
         background: #10b981;
         color: #ffffff;
@@ -403,6 +415,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -445,6 +458,7 @@
 
 // ── Inputs & Textareas
 .contact-form {
+
   input[type="text"],
   input[type="tel"],
   input[type="email"],
@@ -493,8 +507,8 @@
   margin-top: 2px;
 }
 
-.contact-form input.touched:invalid ~ .field-error,
-.contact-form textarea.touched:invalid ~ .field-error {
+.contact-form input.touched:invalid~.field-error,
+.contact-form textarea.touched:invalid~.field-error {
   display: block;
 }
 
@@ -793,6 +807,7 @@
     &:hover {
       transform: translateY(-2px) scale(1.02);
       box-shadow: 0 8px 30px rgba(153, 33, 232, 0.5), 0 2px 8px rgba(203, 32, 39, 0.25);
+
       &::before {
         opacity: 1;
       }
@@ -831,9 +846,11 @@
       .btn-label {
         display: none;
       }
+
       .btn-loading {
         display: inline-flex;
       }
+
       .btn-icon {
         display: none;
       }
@@ -965,6 +982,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1011,6 +1029,7 @@
 }
 
 @media screen and (max-width: 540px) {
+
   // Mobile step names: keep icons and compact labels
   .wizard-progress .wizard-step {
     .step-name {
@@ -1020,6 +1039,7 @@
 
   .form-actions-b2b {
     flex-direction: column;
+
     .form-submit-btn,
     .btn-zalo-direct {
       width: 100%;
