@@ -150,7 +150,12 @@ export function CaseStudiesManager() {
 
   // Toggle active status
   const handleToggleActive = async (item: CaseStudy) => {
-    const { error: err } = await updateCaseStudy(item.id, { is_active: !item.is_active })
+    const patch: Partial<CaseStudy> = {
+      is_active: !item.is_active,
+      industry_vi: item.industry_vi || item.title_vi || 'Dự án',
+      industry_en: item.industry_en || item.title_en || 'Project',
+    }
+    const { error: err } = await updateCaseStudy(item.id, patch)
     if (err) {
       showToast('Lỗi khi đổi trạng thái: ' + err, 'error')
     } else {

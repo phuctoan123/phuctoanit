@@ -96,9 +96,14 @@ export async function getCaseStudies() {
 }
 
 export async function upsertCaseStudy(study: Partial<CaseStudy>) {
+  const payload = {
+    ...study,
+    industry_vi: study.industry_vi || study.title_vi || 'Dự án',
+    industry_en: study.industry_en || study.title_en || 'Project',
+  }
   const { data, error } = await supabase
     .from('case_studies')
-    .upsert(study)
+    .upsert(payload)
     .select()
     .single()
   if (error) return { data: null, error: error.message }

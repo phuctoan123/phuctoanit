@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import {
   ArrowLeft,
@@ -25,12 +25,10 @@ import {
   RotateCcw,
   Maximize2,
   Minimize2,
-  CheckCircle2,
   X,
 } from 'lucide-react'
 import { Button } from '../components/admin/ui/Button'
 import { Badge } from '../components/admin/ui/Badge'
-import { Tabs } from '../components/admin/ui/Tabs'
 import { Modal } from '../components/admin/ui/Modal'
 import { getPostById, upsertPost, uploadToCloudinary, uploadMedia } from '../lib/cms'
 import type { Post } from '../types/admin'
@@ -234,9 +232,6 @@ export function PostEditorPage() {
 
   // Fullscreen editor
   const [isFullscreen, setIsFullscreen] = useState(false)
-
-  // Publish confirm modal
-  const [publishConfirmOpen, setPublishConfirmOpen] = useState(false)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const contentFileInputRef = useRef<HTMLInputElement>(null)
